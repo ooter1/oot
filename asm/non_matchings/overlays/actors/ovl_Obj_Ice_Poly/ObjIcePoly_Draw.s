@@ -1,3 +1,17 @@
+.rdata
+glabel D_80B94BB0
+    .asciz "../z_obj_ice_poly.c"
+    .balign 4
+
+glabel D_80B94BC4
+    .asciz "../z_obj_ice_poly.c"
+    .balign 4
+
+glabel D_80B94BD8
+    .asciz "../z_obj_ice_poly.c"
+    .balign 4
+
+.text
 glabel ObjIcePoly_Draw
 /* 0071C 80B9497C 27BDFF90 */  addiu   $sp, $sp, 0xFF90           ## $sp = FFFFFF90
 /* 00720 80B94980 AFB10038 */  sw      $s1, 0x0038($sp)
@@ -21,7 +35,7 @@ glabel ObjIcePoly_Draw
 /* 00768 80B949C8 24040500 */  addiu   $a0, $zero, 0x0500         ## $a0 = 00000500
 /* 0076C 80B949CC 00002825 */  or      $a1, $zero, $zero          ## $a1 = 00000000
 /* 00770 80B949D0 2406FB00 */  addiu   $a2, $zero, 0xFB00         ## $a2 = FFFFFB00
-/* 00774 80B949D4 0C034421 */  jal     Matrix_RotateZYX
+/* 00774 80B949D4 0C034421 */  jal     Matrix_RotateRPY
 /* 00778 80B949D8 24070001 */  addiu   $a3, $zero, 0x0001         ## $a3 = 00000001
 /* 0077C 80B949DC 8E0202D0 */  lw      $v0, 0x02D0($s0)           ## 000002D0
 /* 00780 80B949E0 3C0FDA38 */  lui     $t7, 0xDA38                ## $t7 = DA380000
@@ -100,4 +114,3 @@ glabel ObjIcePoly_Draw
 /* 008A4 80B94B04 27BD0070 */  addiu   $sp, $sp, 0x0070           ## $sp = 00000000
 /* 008A8 80B94B08 00000000 */  nop
 /* 008AC 80B94B0C 00000000 */  nop
-

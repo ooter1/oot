@@ -1,3 +1,8 @@
+.late_rodata
+glabel D_808F7E58
+    .float 0.6
+
+.text
 glabel func_808D6F3C
 /* 006CC 808D6F3C 27BDFFE0 */  addiu   $sp, $sp, 0xFFE0           ## $sp = FFFFFFE0
 /* 006D0 808D6F40 3C020001 */  lui     $v0, 0x0001                ## $v0 = 00010000
@@ -65,5 +70,3 @@ glabel func_808D6F3C
 /* 007B8 808D7028 27BD0020 */  addiu   $sp, $sp, 0x0020           ## $sp = 00000000
 /* 007BC 808D702C 03E00008 */  jr      $ra                        
 /* 007C0 808D7030 00000000 */  nop
-
-

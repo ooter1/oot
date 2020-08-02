@@ -1,3 +1,29 @@
+.rdata
+glabel D_808AA7D0
+    .asciz "../z_bg_spot00_hanebasi.c"
+    .balign 4
+
+glabel D_808AA7EC
+    .asciz "../z_bg_spot00_hanebasi.c"
+    .balign 4
+
+glabel D_808AA808
+    .asciz "../z_bg_spot00_hanebasi.c"
+    .balign 4
+
+.late_rodata
+glabel D_808AA88C
+    .float 0.008
+
+glabel D_808AA890
+ .word 0x3583126F
+glabel D_808AA894
+    .float 9.58738019108e-05
+
+glabel D_808AA898
+ .word 0x442C8000, 0x00000000
+
+.text
 glabel func_808AA2B0
 /* 00B30 808AA2B0 27BDFF30 */  addiu   $sp, $sp, 0xFF30           ## $sp = FFFFFF30
 /* 00B34 808AA2B4 AFB3006C */  sw      $s3, 0x006C($sp)           
@@ -26,8 +52,8 @@ glabel func_808AA2B0
 /* 00B90 808AA310 00A09025 */  or      $s2, $a1, $zero            ## $s2 = 00000000
 /* 00B94 808AA314 0C024F61 */  jal     func_80093D84              
 /* 00B98 808AA318 8E640000 */  lw      $a0, 0x0000($s3)           ## 00000000
-/* 00B9C 808AA31C 3C0E8016 */  lui     $t6, 0x8016                ## $t6 = 80160000
-/* 00BA0 808AA320 8DCEF9C0 */  lw      $t6, -0x0640($t6)          ## 8015F9C0
+/* 00B9C 808AA31C 3C0E8016 */  lui     $t6, %hi(gSaveContext+0x1360)
+/* 00BA0 808AA320 8DCEF9C0 */  lw      $t6, %lo(gSaveContext+0x1360)($t6)
 /* 00BA4 808AA324 29C10004 */  slti    $at, $t6, 0x0004           
 /* 00BA8 808AA328 14200005 */  bne     $at, $zero, .L808AA340     
 /* 00BAC 808AA32C 3C01808B */  lui     $at, %hi(D_808AA88C)       ## $at = 808B0000
@@ -186,5 +212,3 @@ glabel func_808AA2B0
 /* 00DFC 808AA57C 8FBE0080 */  lw      $s8, 0x0080($sp)           
 /* 00E00 808AA580 03E00008 */  jr      $ra                        
 /* 00E04 808AA584 27BD00D0 */  addiu   $sp, $sp, 0x00D0           ## $sp = 00000000
-
-

@@ -1,3 +1,21 @@
+.rdata
+glabel D_809A55AC
+    .asciz "../z_eff_fhg_flash.c"
+    .balign 4
+
+glabel D_809A55C4
+    .asciz "../z_eff_fhg_flash.c"
+    .balign 4
+
+glabel D_809A55DC
+    .asciz "../z_eff_fhg_flash.c"
+    .balign 4
+
+.late_rodata
+glabel D_809A563C
+    .float 3.1416
+
+.text
 glabel func_809A49B8
 /* 00358 809A49B8 27BDFFA0 */  addiu   $sp, $sp, 0xFFA0           ## $sp = FFFFFFA0
 /* 0035C 809A49BC AFBF001C */  sw      $ra, 0x001C($sp)           
@@ -43,8 +61,8 @@ glabel func_809A49B8
 /* 003FC 809A4A5C 3C018000 */  lui     $at, 0x8000                ## $at = 80000000
 /* 00400 809A4A60 3C0CDB06 */  lui     $t4, 0xDB06                ## $t4 = DB060000
 /* 00404 809A4A64 00815021 */  addu    $t2, $a0, $at              
-/* 00408 809A4A68 3C018016 */  lui     $at, 0x8016                ## $at = 80160000
-/* 0040C 809A4A6C AC2A6FC0 */  sw      $t2, 0x6FC0($at)           ## 80166FC0
+/* 00408 809A4A68 3C018016 */  lui     $at, %hi(gSegments+0x18)
+/* 0040C 809A4A6C AC2A6FC0 */  sw      $t2, %lo(gSegments+0x18)($at)
 /* 00410 809A4A70 8E0202D0 */  lw      $v0, 0x02D0($s0)           ## 000002D0
 /* 00414 809A4A74 358C0018 */  ori     $t4, $t4, 0x0018           ## $t4 = DB060018
 /* 00418 809A4A78 244B0008 */  addiu   $t3, $v0, 0x0008           ## $t3 = 00000008
@@ -139,5 +157,3 @@ glabel func_809A49B8
 /* 0057C 809A4BDC 8FB10018 */  lw      $s1, 0x0018($sp)           
 /* 00580 809A4BE0 03E00008 */  jr      $ra                        
 /* 00584 809A4BE4 27BD0060 */  addiu   $sp, $sp, 0x0060           ## $sp = 00000000
-
-

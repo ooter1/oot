@@ -1,3 +1,17 @@
+.rdata
+glabel D_80B43F70
+    .asciz "../z_en_yukabyun.c"
+    .balign 4
+
+glabel D_80B43F84
+    .asciz "../z_en_yukabyun.c"
+    .balign 4
+
+glabel D_80B43F98
+    .asciz "../z_en_yukabyun.c"
+    .balign 4
+
+.text
 glabel EnYukabyun_Draw
 /* 00420 80B43DE0 27BDFFB8 */  addiu   $sp, $sp, 0xFFB8           ## $sp = FFFFFFB8
 /* 00424 80B43DE4 AFBF001C */  sw      $ra, 0x001C($sp)           
@@ -22,7 +36,7 @@ glabel EnYukabyun_Draw
 /* 00470 80B43E30 AC590000 */  sw      $t9, 0x0000($v0)           ## 00000000
 /* 00474 80B43E34 8FA80048 */  lw      $t0, 0x0048($sp)           
 /* 00478 80B43E38 3C0480B4 */  lui     $a0, %hi(D_80B43F64)       ## $a0 = 80B40000
-/* 0047C 80B43E3C 3C0F8016 */  lui     $t7, 0x8016                ## $t7 = 80160000
+/* 0047C 80B43E3C 3C0F8016 */  lui     $t7, %hi(gSegments)
 /* 00480 80B43E40 91090152 */  lbu     $t1, 0x0152($t0)           ## 00000152
 /* 00484 80B43E44 3C0100FF */  lui     $at, 0x00FF                ## $at = 00FF0000
 /* 00488 80B43E48 3421FFFF */  ori     $at, $at, 0xFFFF           ## $at = 00FFFFFF
@@ -35,7 +49,7 @@ glabel EnYukabyun_Draw
 /* 004A4 80B43E64 000C6F02 */  srl     $t5, $t4, 28               
 /* 004A8 80B43E68 000D7080 */  sll     $t6, $t5,  2               
 /* 004AC 80B43E6C 01EE7821 */  addu    $t7, $t7, $t6              
-/* 004B0 80B43E70 8DEF6FA8 */  lw      $t7, 0x6FA8($t7)           ## 80166FA8
+/* 004B0 80B43E70 8DEF6FA8 */  lw      $t7, %lo(gSegments)($t7)
 /* 004B4 80B43E74 00815824 */  and     $t3, $a0, $at              
 /* 004B8 80B43E78 3C018000 */  lui     $at, 0x8000                ## $at = 80000000
 /* 004BC 80B43E7C 016FC021 */  addu    $t8, $t3, $t7              
@@ -75,4 +89,3 @@ glabel EnYukabyun_Draw
 /* 00544 80B43F04 03E00008 */  jr      $ra                        
 /* 00548 80B43F08 00000000 */  nop
 /* 0054C 80B43F0C 00000000 */  nop
-

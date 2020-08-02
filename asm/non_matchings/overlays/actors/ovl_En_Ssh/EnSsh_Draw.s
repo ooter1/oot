@@ -1,3 +1,13 @@
+.rdata
+glabel D_80B045D0
+    .asciz "../z_en_ssh.c"
+    .balign 4
+
+glabel D_80B045E0
+    .asciz "../z_en_ssh.c"
+    .balign 4
+
+.text
 glabel EnSsh_Draw
 /* 02048 80B042B8 27BDFFB0 */  addiu   $sp, $sp, 0xFFB0           ## $sp = FFFFFFB0
 /* 0204C 80B042BC AFBF0024 */  sw      $ra, 0x0024($sp)           
@@ -20,7 +30,7 @@ glabel EnSsh_Draw
 /* 02090 80B04300 37180020 */  ori     $t8, $t8, 0x0020           ## $t8 = DB060020
 /* 02094 80B04304 8D0302C0 */  lw      $v1, 0x02C0($t0)           ## 000002C0
 /* 02098 80B04308 3C0480B0 */  lui     $a0, %hi(D_80B045B8)       ## $a0 = 80B00000
-/* 0209C 80B0430C 3C0E8016 */  lui     $t6, 0x8016                ## $t6 = 80160000
+/* 0209C 80B0430C 3C0E8016 */  lui     $t6, %hi(gSegments)
 /* 020A0 80B04310 246F0008 */  addiu   $t7, $v1, 0x0008           ## $t7 = 00000008
 /* 020A4 80B04314 AD0F02C0 */  sw      $t7, 0x02C0($t0)           ## 000002C0
 /* 020A8 80B04318 AC780000 */  sw      $t8, 0x0000($v1)           ## 00000000
@@ -36,7 +46,7 @@ glabel EnSsh_Draw
 /* 020D0 80B04340 000B6702 */  srl     $t4, $t3, 28               
 /* 020D4 80B04344 000C6880 */  sll     $t5, $t4,  2               
 /* 020D8 80B04348 01CD7021 */  addu    $t6, $t6, $t5              
-/* 020DC 80B0434C 8DCE6FA8 */  lw      $t6, 0x6FA8($t6)           ## 80166FA8
+/* 020DC 80B0434C 8DCE6FA8 */  lw      $t6, %lo(gSegments)($t6)
 /* 020E0 80B04350 00815024 */  and     $t2, $a0, $at              
 /* 020E4 80B04354 3C018000 */  lui     $at, 0x8000                ## $at = 80000000
 /* 020E8 80B04358 014E7821 */  addu    $t7, $t2, $t6              
@@ -66,4 +76,3 @@ glabel EnSsh_Draw
 /* 02144 80B043B4 00000000 */  nop
 /* 02148 80B043B8 00000000 */  nop
 /* 0214C 80B043BC 00000000 */  nop
-

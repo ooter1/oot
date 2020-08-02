@@ -1,3 +1,14 @@
+.rdata
+
+glabel D_8082FD40
+    .asciz "../z_kaleido_scope_PAL.c"
+    .balign 4
+
+glabel D_8082FD5C
+    .asciz "../z_kaleido_scope_PAL.c"
+    .balign 4
+
+.text
 glabel func_80825C14
 /* 123F4 80825C14 27BDFF20 */  addiu   $sp, $sp, 0xFF20           ## $sp = FFFFFF20
 /* 123F8 80825C18 AFBF0014 */  sw      $ra, 0x0014($sp)           
@@ -16,7 +27,7 @@ glabel func_80825C14
 /* 1242C 80825C4C 37180A01 */  ori     $t8, $t8, 0x0A01           ## $t8 = E3000A01
 /* 12430 80825C50 8CA202C0 */  lw      $v0, 0x02C0($a1)           ## 000002C0
 /* 12434 80825C54 3C190010 */  lui     $t9, 0x0010                ## $t9 = 00100000
-/* 12438 80825C58 3C068016 */  lui     $a2, 0x8016                ## $a2 = 80160000
+/* 12438 80825C58 3C068016 */  lui     $a2, %hi(gGameInfo)
 /* 1243C 80825C5C 244F0008 */  addiu   $t7, $v0, 0x0008           ## $t7 = 00000008
 /* 12440 80825C60 ACAF02C0 */  sw      $t7, 0x02C0($a1)           ## 000002C0
 /* 12444 80825C64 AC590004 */  sw      $t9, 0x0004($v0)           ## 00000004
@@ -49,7 +60,7 @@ glabel func_80825C14
 /* 124B0 80825CD0 3C0E8083 */  lui     $t6, %hi(D_8082AB8C)       ## $t6 = 80830000
 /* 124B4 80825CD4 85CFAB8C */  lh      $t7, %lo(D_8082AB8C)($t6)  
 /* 124B8 80825CD8 8739AB90 */  lh      $t9, %lo(D_8082AB90)($t9)  
-/* 124BC 80825CDC 24C6FA90 */  addiu   $a2, $a2, 0xFA90           ## $a2 = 8015FA90
+/* 124BC 80825CDC 24C6FA90 */  addiu   $a2, %lo(gGameInfo)
 /* 124C0 80825CE0 000FC600 */  sll     $t8, $t7, 24               
 /* 124C4 80825CE4 332E00FF */  andi    $t6, $t9, 0x00FF           ## $t6 = 00000000
 /* 124C8 80825CE8 000E7C00 */  sll     $t7, $t6, 16               
@@ -424,5 +435,3 @@ glabel func_80825C14
 /* 12A8C 808262AC 27BD00E0 */  addiu   $sp, $sp, 0x00E0           ## $sp = 00000000
 /* 12A90 808262B0 03E00008 */  jr      $ra                        
 /* 12A94 808262B4 00000000 */  nop
-
-

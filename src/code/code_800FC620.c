@@ -13,7 +13,7 @@ typedef struct InitFunc {
 // .data
 void* sInitFuncs = NULL;
 
-char sNew[4] = { 'n', 'e', 'w' };
+char sNew[] = { 'n', 'e', 'w' };
 
 char D_80134488[0x18] = {
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x7F, 0x80, 0x00, 0x00,
@@ -21,7 +21,7 @@ char D_80134488[0x18] = {
 };
 
 s32 Overlay_Load(u32 vRomStart, u32 vRomEnd, void* vRamStart, void* vRamEnd, void* allocatedVRamAddr) {
-    u32 pad;
+    s32 pad;
     u32 end;
     u32 bssSize;
     OverlayRelocationSection* ovl;

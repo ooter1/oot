@@ -1,3 +1,38 @@
+.late_rodata
+glabel D_808F8240
+    .float 0.3
+
+glabel D_808F8244
+    .float 1.5707964
+
+glabel D_808F8248
+    .float 1.5707964
+
+glabel D_808F824C
+    .float 1.5707964
+
+glabel D_808F8250
+    .float 1.5707964
+
+glabel D_808F8254
+    .float 13.9
+
+glabel D_808F8258
+    .float 17.9
+
+glabel D_808F825C
+    .float 1.5707964
+
+glabel D_808F8260
+    .float 1.5707964
+
+glabel D_808F8264
+    .float 3.14159274101
+
+glabel D_808F8268
+    .float 1.5707964
+
+.text
 glabel func_808E3564
 /* 0CCF4 808E3564 27BDFF30 */  addiu   $sp, $sp, 0xFF30           ## $sp = FFFFFF30
 /* 0CCF8 808E3568 AFB00050 */  sw      $s0, 0x0050($sp)           
@@ -334,7 +369,7 @@ glabel func_808E3564
 /* 0D1BC 808E3A2C 00000000 */  nop
 /* 0D1C0 808E3A30 4500000F */  bc1f    .L808E3A70                 
 /* 0D1C4 808E3A34 00000000 */  nop
-/* 0D1C8 808E3A38 0C030129 */  jal     func_800C04A4              
+/* 0D1C8 808E3A38 0C030129 */  jal     Gameplay_GetCamera              
 /* 0D1CC 808E3A3C 00002825 */  or      $a1, $zero, $zero          ## $a1 = 00000000
 /* 0D1D0 808E3A40 0C016A52 */  jal     func_8005A948              
 /* 0D1D4 808E3A44 00402025 */  or      $a0, $v0, $zero            ## $a0 = 00000000
@@ -567,5 +602,3 @@ glabel func_808E3564
 /* 0D508 808E3D78 8FBE0070 */  lw      $s8, 0x0070($sp)           
 /* 0D50C 808E3D7C 03E00008 */  jr      $ra                        
 /* 0D510 808E3D80 27BD00D0 */  addiu   $sp, $sp, 0x00D0           ## $sp = 00000000
-
-

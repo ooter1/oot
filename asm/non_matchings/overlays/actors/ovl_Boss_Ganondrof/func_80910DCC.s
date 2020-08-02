@@ -1,3 +1,13 @@
+.rdata
+glabel D_80915150
+    .asciz "SW %d------------------------------------------------\n"
+    .balign 4
+
+.late_rodata
+glabel D_80915414
+    .float 0.03
+
+.text
 glabel func_80910DCC
 /* 0078C 80910DCC 27BDFF60 */  addiu   $sp, $sp, 0xFF60           ## $sp = FFFFFF60
 /* 00790 80910DD0 AFBF0054 */  sw      $ra, 0x0054($sp)
@@ -333,5 +343,3 @@ glabel func_80910DCC
 /* 00C48 80911288 D7B40030 */  ldc1    $f20, 0x0030($sp)
 /* 00C4C 8091128C 03E00008 */  jr      $ra
 /* 00C50 80911290 27BD00A0 */  addiu   $sp, $sp, 0x00A0           ## $sp = 00000000
-
-

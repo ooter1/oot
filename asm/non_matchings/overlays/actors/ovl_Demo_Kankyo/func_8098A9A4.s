@@ -1,3 +1,17 @@
+.rdata
+glabel D_8098C99C
+    .asciz "../z_demo_kankyo.c"
+    .balign 4
+
+glabel D_8098C9B0
+    .asciz "../z_demo_kankyo.c"
+    .balign 4
+
+glabel D_8098C9C4
+    .asciz "../z_demo_kankyo.c"
+    .balign 4
+
+.text
 glabel func_8098A9A4
 /* 01B24 8098A9A4 27BDFFA8 */  addiu   $sp, $sp, 0xFFA8           ## $sp = FFFFFFA8
 /* 01B28 8098A9A8 AFB10020 */  sw      $s1, 0x0020($sp)           
@@ -13,10 +27,10 @@ glabel func_8098A9A4
 /* 01B50 8098A9D0 0C031AB1 */  jal     Graph_OpenDisps              
 /* 01B54 8098A9D4 00A08025 */  or      $s0, $a1, $zero            ## $s0 = 00000000
 /* 01B58 8098A9D8 922E1D6C */  lbu     $t6, 0x1D6C($s1)           ## 00001D6C
-/* 01B5C 8098A9DC 3C0F8016 */  lui     $t7, 0x8016                ## $t7 = 80160000
+/* 01B5C 8098A9DC 3C0F8016 */  lui     $t7, %hi(gSaveContext+0x1360)
 /* 01B60 8098A9E0 11C00005 */  beq     $t6, $zero, .L8098A9F8     
 /* 01B64 8098A9E4 00000000 */  nop
-/* 01B68 8098A9E8 8DEFF9C0 */  lw      $t7, -0x0640($t7)          ## 8015F9C0
+/* 01B68 8098A9E8 8DEFF9C0 */  lw      $t7, %lo(gSaveContext+0x1360)($t7)
 /* 01B6C 8098A9EC 29E10004 */  slti    $at, $t7, 0x0004           
 /* 01B70 8098A9F0 1420002A */  bne     $at, $zero, .L8098AA9C     
 /* 01B74 8098A9F4 00000000 */  nop
@@ -74,5 +88,3 @@ glabel func_8098A9A4
 /* 01C3C 8098AABC 8FB10020 */  lw      $s1, 0x0020($sp)           
 /* 01C40 8098AAC0 03E00008 */  jr      $ra                        
 /* 01C44 8098AAC4 27BD0058 */  addiu   $sp, $sp, 0x0058           ## $sp = 00000000
-
-

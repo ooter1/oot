@@ -1,3 +1,31 @@
+.rdata
+glabel D_80976A3C
+    .asciz "../z_demo_effect.c"
+    .balign 4
+
+glabel D_80976A50
+    .asciz "../z_demo_effect.c"
+    .balign 4
+
+glabel D_80976A64
+    .asciz "../z_demo_effect.c"
+    .balign 4
+
+glabel D_80976A78
+    .asciz "../z_demo_effect.c"
+    .balign 4
+
+.late_rodata
+glabel D_80976D58
+    .float 0.017453292
+
+glabel D_80976D5C
+    .float 1.57079637051
+
+glabel D_80976D60
+    .float 0.03
+
+.text
 glabel func_80975074
 /* 04124 80975074 27BDFF78 */  addiu   $sp, $sp, 0xFF78           ## $sp = FFFFFF78
 /* 04128 80975078 3C0F0001 */  lui     $t7, 0x0001                ## $t7 = 00010000
@@ -21,8 +49,8 @@ glabel func_80975074
 /* 04170 809750C0 0C25D1AD */  jal     func_809746B4              
 /* 04174 809750C4 24060002 */  addiu   $a2, $zero, 0x0002         ## $a2 = 00000002
 /* 04178 809750C8 144000E6 */  bne     $v0, $zero, .L80975464     
-/* 0417C 809750CC 3C028016 */  lui     $v0, 0x8016                ## $v0 = 80160000
-/* 04180 809750D0 2442E660 */  addiu   $v0, $v0, 0xE660           ## $v0 = 8015E660
+/* 0417C 809750CC 3C028016 */  lui     $v0, %hi(gSaveContext)
+/* 04180 809750D0 2442E660 */  addiu   $v0, %lo(gSaveContext)
 /* 04184 809750D4 8C580000 */  lw      $t8, 0x0000($v0)           ## 8015E660
 /* 04188 809750D8 240100A0 */  addiu   $at, $zero, 0x00A0         ## $at = 000000A0
 /* 0418C 809750DC 57010014 */  bnel    $t8, $at, .L80975130       
@@ -268,5 +296,3 @@ glabel func_80975074
 /* 04538 80975488 8FB10038 */  lw      $s1, 0x0038($sp)           
 /* 0453C 8097548C 03E00008 */  jr      $ra                        
 /* 04540 80975490 27BD0088 */  addiu   $sp, $sp, 0x0088           ## $sp = 00000000
-
-

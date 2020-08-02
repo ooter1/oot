@@ -1,3 +1,13 @@
+.rdata
+glabel D_80AC947C
+    .asciz "../z_en_oB1.c"
+    .balign 4
+
+glabel D_80AC948C
+    .asciz "../z_en_oB1.c"
+    .balign 4
+
+.text
 glabel func_80AC83DC
 /* 0573C 80AC83DC 27BDFF98 */  addiu   $sp, $sp, 0xFF98           ## $sp = FFFFFF98
 /* 05740 80AC83E0 AFB20030 */  sw      $s2, 0x0030($sp)
@@ -37,7 +47,7 @@ glabel func_80AC83DC
 /* 057C8 80AC8468 AC620004 */  sw      $v0, 0x0004($v1)           ## 00000004
 /* 057CC 80AC846C 8E2202C0 */  lw      $v0, 0x02C0($s1)           ## 000002C0
 /* 057D0 80AC8470 3C0480AD */  lui     $a0, %hi(D_80AC8EC4)       ## $a0 = 80AD0000
-/* 057D4 80AC8474 3C198016 */  lui     $t9, 0x8016                ## $t9 = 80160000
+/* 057D4 80AC8474 3C198016 */  lui     $t9, %hi(gSegments)
 /* 057D8 80AC8478 24490008 */  addiu   $t1, $v0, 0x0008           ## $t1 = 00000008
 /* 057DC 80AC847C AE2902C0 */  sw      $t1, 0x02C0($s1)           ## 000002C0
 /* 057E0 80AC8480 AC4A0000 */  sw      $t2, 0x0000($v0)           ## 00000000
@@ -53,7 +63,7 @@ glabel func_80AC83DC
 /* 05808 80AC84A8 000E7F02 */  srl     $t7, $t6, 28
 /* 0580C 80AC84AC 000FC080 */  sll     $t8, $t7,  2
 /* 05810 80AC84B0 0338C821 */  addu    $t9, $t9, $t8
-/* 05814 80AC84B4 8F396FA8 */  lw      $t9, 0x6FA8($t9)           ## 80166FA8
+/* 05814 80AC84B4 8F396FA8 */  lw      $t9, %lo(gSegments)($t9)
 /* 05818 80AC84B8 00816824 */  and     $t5, $a0, $at
 /* 0581C 80AC84BC 3C018000 */  lui     $at, 0x8000                ## $at = 80000000
 /* 05820 80AC84C0 01B94021 */  addu    $t0, $t5, $t9
@@ -91,5 +101,3 @@ glabel func_80AC83DC
 /* 058A0 80AC8540 8FB20030 */  lw      $s2, 0x0030($sp)
 /* 058A4 80AC8544 03E00008 */  jr      $ra
 /* 058A8 80AC8548 27BD0068 */  addiu   $sp, $sp, 0x0068           ## $sp = 00000000
-
-

@@ -1,6 +1,11 @@
+.late_rodata
+glabel D_80855450
+    .float -1.2
+
+.text
 glabel func_8084411C
-/* 11F0C 8084411C 3C0E8016 */  lui     $t6, 0x8016                ## $t6 = 80160000
-/* 11F10 80844120 81CEFA13 */  lb      $t6, -0x05ED($t6)          ## 8015FA13
+/* 11F0C 8084411C 3C0E8016 */  lui     $t6, %hi(gSaveContext+0x13b3)
+/* 11F10 80844120 81CEFA13 */  lb      $t6, %lo(gSaveContext+0x13b3)($t6)
 /* 11F14 80844124 27BDFFB0 */  addiu   $sp, $sp, 0xFFB0           ## $sp = FFFFFFB0
 /* 11F18 80844128 AFB00028 */  sw      $s0, 0x0028($sp)
 /* 11F1C 8084412C 29C10029 */  slti    $at, $t6, 0x0029
@@ -405,5 +410,3 @@ glabel func_8084411C
 /* 124EC 808446FC 27BD0050 */  addiu   $sp, $sp, 0x0050           ## $sp = 00000000
 /* 124F0 80844700 03E00008 */  jr      $ra
 /* 124F4 80844704 00000000 */  nop
-
-

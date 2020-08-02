@@ -4,9 +4,6 @@
 
 // TODO: rename these
 //      SM64                OOT
-#define guMtxIdentF         func_80101B40
-#define guMtxF2L            func_801064E0
-
 s32 __osDisableInt();
 void __osRestoreInt(s32);
 void __osEnqueueAndYield(OSThread**);

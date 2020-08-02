@@ -1,3 +1,25 @@
+.rdata
+glabel D_80969478
+    .asciz "../z_demo_6k.c"
+    .balign 4
+
+glabel D_80969488
+    .asciz "../z_demo_6k.c"
+    .balign 4
+
+glabel D_80969498
+    .asciz "../z_demo_6k.c"
+    .balign 4
+
+glabel D_809694A8
+    .asciz "../z_demo_6k.c"
+    .balign 4
+
+.late_rodata
+glabel D_80969644
+    .float -1.57079637051
+
+.text
 glabel func_80968298
 /* 01948 80968298 27BDFF50 */  addiu   $sp, $sp, 0xFF50           ## $sp = FFFFFF50
 /* 0194C 8096829C AFBF003C */  sw      $ra, 0x003C($sp)           
@@ -14,10 +36,10 @@ glabel func_80968298
 /* 01978 809682C8 0018CF02 */  srl     $t9, $t8, 28               
 /* 0197C 809682CC 46062202 */  mul.s   $f8, $f4, $f6              
 /* 01980 809682D0 00194880 */  sll     $t1, $t9,  2               
-/* 01984 809682D4 3C0A8016 */  lui     $t2, 0x8016                ## $t2 = 80160000
+/* 01984 809682D4 3C0A8016 */  lui     $t2, %hi(gSegments)
 /* 01988 809682D8 01495021 */  addu    $t2, $t2, $t1              
 /* 0198C 809682DC 3C0100FF */  lui     $at, 0x00FF                ## $at = 00FF0000
-/* 01990 809682E0 8D4A6FA8 */  lw      $t2, 0x6FA8($t2)           ## 80166FA8
+/* 01990 809682E0 8D4A6FA8 */  lw      $t2, %lo(gSegments)($t2)
 /* 01994 809682E4 3421FFFF */  ori     $at, $at, 0xFFFF           ## $at = 00FFFFFF
 /* 01998 809682E8 00415824 */  and     $t3, $v0, $at              
 /* 0199C 809682EC E7A800A0 */  swc1    $f8, 0x00A0($sp)           
@@ -242,5 +264,3 @@ glabel func_80968298
 /* 01D00 80968650 27BD00B0 */  addiu   $sp, $sp, 0x00B0           ## $sp = 00000000
 /* 01D04 80968654 03E00008 */  jr      $ra                        
 /* 01D08 80968658 00000000 */  nop
-
-

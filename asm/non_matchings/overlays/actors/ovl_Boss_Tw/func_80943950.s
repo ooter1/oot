@@ -1,3 +1,44 @@
+.rdata
+glabel D_8094AC48
+    .asciz "../z_boss_tw.c"
+    .balign 4
+
+glabel D_8094AC58
+    .asciz "../z_boss_tw.c"
+    .balign 4
+
+.late_rodata
+glabel jtbl_8094B070
+.word L80943CA8
+.word L80943C20
+.word L80943B0C
+.word L80943B94
+.word L80943CFC
+.word L80943D1C
+.word L809439B8
+.word L80943D38
+.word L80943D38
+.word L80943D38
+.word L80943D38
+.word L80943D38
+.word L80943D38
+.word L80943D38
+.word L80943D38
+.word L80943D38
+.word L80943CA8
+.word L80943C20
+.word L80943D38
+.word L80943D38
+.word L80943D38
+.word L80943D38
+.word L80943D38
+.word L80943D38
+.word L80943D38
+.word L80943D38
+.word L80943B0C
+.word L80943B94
+
+.text
 glabel func_80943950
 /* 0AC80 80943950 27BDFF88 */  addiu   $sp, $sp, 0xFF88           ## $sp = FFFFFF88
 /* 0AC84 80943954 AFBF0034 */  sw      $ra, 0x0034($sp)           
@@ -67,8 +108,8 @@ glabel L809439B8
 /* 0AD80 80943A50 000E7880 */  sll     $t7, $t6,  2               
 /* 0AD84 80943A54 00AFC021 */  addu    $t8, $a1, $t7              
 /* 0AD88 80943A58 8F040000 */  lw      $a0, 0x0000($t8)           ## 00000000
-/* 0AD8C 80943A5C 3C078016 */  lui     $a3, 0x8016                ## $a3 = 80160000
-/* 0AD90 80943A60 24E76FA8 */  addiu   $a3, $a3, 0x6FA8           ## $a3 = 80166FA8
+/* 0AD8C 80943A5C 3C078016 */  lui     $a3, %hi(gSegments)
+/* 0AD90 80943A60 24E76FA8 */  addiu   $a3, %lo(gSegments)
 /* 0AD94 80943A64 00046100 */  sll     $t4, $a0,  4               
 /* 0AD98 80943A68 000C6F02 */  srl     $t5, $t4, 28               
 /* 0AD9C 80943A6C 000D7080 */  sll     $t6, $t5,  2               
@@ -284,5 +325,3 @@ glabel L80943D38
 /* 0B0B4 80943D84 00001025 */  or      $v0, $zero, $zero          ## $v0 = 00000000
 /* 0B0B8 80943D88 03E00008 */  jr      $ra                        
 /* 0B0BC 80943D8C 00000000 */  nop
-
-

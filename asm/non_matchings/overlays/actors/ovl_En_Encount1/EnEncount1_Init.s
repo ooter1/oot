@@ -1,3 +1,61 @@
+.rdata
+glabel D_80A07490
+    .asciz "\n\n"
+    .balign 4
+
+glabel D_80A07494
+    .asciz "\x1b[32m☆☆☆☆☆ 入力エラーデッス！ ☆☆☆☆☆ \n\x1b[m"
+    .balign 4
+
+glabel D_80A074C8
+    .asciz "\x1b[32m☆☆☆☆☆ 入力エラーデッス！ ☆☆☆☆☆ \n\x1b[m"
+    .balign 4
+
+glabel D_80A074FC
+    .asciz "\x1b[32m☆☆☆☆☆ 入力エラーデッス！ ☆☆☆☆☆ \n\x1b[m"
+    .balign 4
+
+glabel D_80A07530
+    .asciz "\x1b[32m☆☆☆☆☆ 入力エラーデッス！ ☆☆☆☆☆ \n\x1b[m"
+    .balign 4
+
+glabel D_80A07564
+    .asciz "\x1b[32m☆☆☆☆☆ 入力エラーデッス！ ☆☆☆☆☆ \n\x1b[m"
+    .balign 4
+
+glabel D_80A07598
+    .asciz "\n\n"
+    .balign 4
+
+glabel D_80A0759C
+    .asciz "\n\n"
+    .balign 4
+
+glabel D_80A075A0
+    .asciz "\x1b[32m☆☆☆☆☆ 敵発生ゾーンでた！ ☆☆☆☆☆ %x\n\x1b[m"
+    .balign 4
+
+glabel D_80A075D8
+    .asciz "\x1b[33m☆☆☆☆☆ 種類		   ☆☆☆☆☆ %d\n\x1b[m"
+    .balign 4
+
+glabel D_80A07604
+    .asciz "\x1b[35m☆☆☆☆☆ 最大同時発生数     ☆☆☆☆☆ %d\n\x1b[m"
+    .balign 4
+
+glabel D_80A0763C
+    .asciz "\x1b[36m☆☆☆☆☆ 最大発生数  	   ☆☆☆☆☆ %d\n\x1b[m"
+    .balign 4
+
+glabel D_80A07670
+    .asciz "\x1b[32m☆☆☆☆☆ 発生チェック範囲   ☆☆☆☆☆ %f\n\x1b[m"
+    .balign 4
+
+glabel D_80A076A8
+    .asciz "\n\n"
+    .balign 4
+
+.text
 glabel EnEncount1_Init
 /* 00000 80A06720 27BDFFE0 */  addiu   $sp, $sp, 0xFFE0           ## $sp = FFFFFFE0
 /* 00004 80A06724 AFBF001C */  sw      $ra, 0x001C($sp)           
@@ -158,5 +216,3 @@ glabel EnEncount1_Init
 /* 00210 80A06930 27BD0020 */  addiu   $sp, $sp, 0x0020           ## $sp = 00000000
 /* 00214 80A06934 03E00008 */  jr      $ra                        
 /* 00218 80A06938 00000000 */  nop
-
-

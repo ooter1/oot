@@ -1,3 +1,17 @@
+.rdata
+glabel D_8089B210
+    .asciz "../z_bg_jya_megami.c"
+    .balign 4
+
+glabel D_8089B228
+    .asciz "../z_bg_jya_megami.c"
+    .balign 4
+
+glabel D_8089B240
+    .asciz "../z_bg_jya_megami.c"
+    .balign 4
+
+.text
 glabel func_8089ABC8
 /* 00A98 8089ABC8 27BDFFB8 */  addiu   $sp, $sp, 0xFFB8           ## $sp = FFFFFFB8
 /* 00A9C 8089ABCC AFBF001C */  sw      $ra, 0x001C($sp)           
@@ -23,11 +37,11 @@ glabel func_8089ABC8
 /* 00AEC 8089AC1C AC590000 */  sw      $t9, 0x0000($v0)           ## 00000000
 /* 00AF0 8089AC20 850901CC */  lh      $t1, 0x01CC($t0)           ## 000001CC
 /* 00AF4 8089AC24 3C04808A */  lui     $a0, %hi(D_8089B1AC)       ## $a0 = 808A0000
-/* 00AF8 8089AC28 3C068016 */  lui     $a2, 0x8016                ## $a2 = 80160000
+/* 00AF8 8089AC28 3C068016 */  lui     $a2, %hi(gSegments)
 /* 00AFC 8089AC2C 00095080 */  sll     $t2, $t1,  2               
 /* 00B00 8089AC30 008A2021 */  addu    $a0, $a0, $t2              
 /* 00B04 8089AC34 8C84B1AC */  lw      $a0, %lo(D_8089B1AC)($a0)  
-/* 00B08 8089AC38 24C66FA8 */  addiu   $a2, $a2, 0x6FA8           ## $a2 = 80166FA8
+/* 00B08 8089AC38 24C66FA8 */  addiu   $a2, %lo(gSegments)
 /* 00B0C 8089AC3C 3C0500FF */  lui     $a1, 0x00FF                ## $a1 = 00FF0000
 /* 00B10 8089AC40 00046100 */  sll     $t4, $a0,  4               
 /* 00B14 8089AC44 000C6F02 */  srl     $t5, $t4, 28               
@@ -95,5 +109,3 @@ glabel func_8089ABC8
 /* 00C0C 8089AD3C 27BD0048 */  addiu   $sp, $sp, 0x0048           ## $sp = 00000000
 /* 00C10 8089AD40 03E00008 */  jr      $ra                        
 /* 00C14 8089AD44 00000000 */  nop
-
-

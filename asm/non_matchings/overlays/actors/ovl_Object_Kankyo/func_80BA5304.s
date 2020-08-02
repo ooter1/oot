@@ -1,3 +1,13 @@
+.rdata
+glabel D_80BA5B7C
+    .asciz "0"
+    .balign 4
+
+glabel D_80BA5B80
+    .asciz "../z_object_kankyo.c"
+    .balign 4
+
+.text
 glabel func_80BA5304
 /* 02864 80BA5304 27BDFFE8 */  addiu   $sp, $sp, 0xFFE8           ## $sp = FFFFFFE8
 /* 02868 80BA5308 3C010001 */  lui     $at, 0x0001                ## $at = 00010000
@@ -24,11 +34,9 @@ glabel func_80BA5304
 .L80BA5350:
 /* 028B0 80BA5350 3C0580BA */  lui     $a1, %hi(func_80BA5370)    ## $a1 = 80BA0000
 /* 028B4 80BA5354 24A55370 */  addiu   $a1, $a1, %lo(func_80BA5370) ## $a1 = 80BA5370
-/* 028B8 80BA5358 0C2E8AA8 */  jal     func_80BA2AA0              
+/* 028B8 80BA5358 0C2E8AA8 */  jal     ObjectKankyo_SetupAction              
 /* 028BC 80BA535C 8FA40018 */  lw      $a0, 0x0018($sp)           
 /* 028C0 80BA5360 8FBF0014 */  lw      $ra, 0x0014($sp)           
 /* 028C4 80BA5364 27BD0018 */  addiu   $sp, $sp, 0x0018           ## $sp = 00000000
 /* 028C8 80BA5368 03E00008 */  jr      $ra                        
 /* 028CC 80BA536C 00000000 */  nop
-
-

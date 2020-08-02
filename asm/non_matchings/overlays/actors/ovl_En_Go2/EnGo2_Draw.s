@@ -1,3 +1,13 @@
+.rdata
+glabel D_80A4862C
+    .asciz "../z_en_go2.c"
+    .balign 4
+
+glabel D_80A4863C
+    .asciz "../z_en_go2.c"
+    .balign 4
+
+.text
 glabel EnGo2_Draw
 /* 05160 80A47E90 27BDFF90 */  addiu   $sp, $sp, 0xFF90           ## $sp = FFFFFF90
 /* 05164 80A47E94 3C0F80A5 */  lui     $t7, %hi(D_80A48578)       ## $t7 = 80A50000
@@ -82,8 +92,8 @@ glabel EnGo2_Draw
 /* 05294 80A47FC4 3C0BDB06 */  lui     $t3, 0xDB06                ## $t3 = DB060000
 /* 05298 80A47FC8 356B0020 */  ori     $t3, $t3, 0x0020           ## $t3 = DB060020
 /* 0529C 80A47FCC 8D0302C0 */  lw      $v1, 0x02C0($t0)           ## 000002C0
-/* 052A0 80A47FD0 3C068016 */  lui     $a2, 0x8016                ## $a2 = 80160000
-/* 052A4 80A47FD4 24C66FA8 */  addiu   $a2, $a2, 0x6FA8           ## $a2 = 80166FA8
+/* 052A0 80A47FD0 3C068016 */  lui     $a2, %hi(gSegments)
+/* 052A4 80A47FD4 24C66FA8 */  addiu   $a2, %lo(gSegments)
 /* 052A8 80A47FD8 246A0008 */  addiu   $t2, $v1, 0x0008           ## $t2 = 00000008
 /* 052AC 80A47FDC AD0A02C0 */  sw      $t2, 0x02C0($t0)           ## 000002C0
 /* 052B0 80A47FE0 AC6B0000 */  sw      $t3, 0x0000($v1)           ## 00000000
@@ -147,4 +157,3 @@ glabel EnGo2_Draw
 /* 05394 80A480C4 27BD0070 */  addiu   $sp, $sp, 0x0070           ## $sp = 00000000
 /* 05398 80A480C8 03E00008 */  jr      $ra
 /* 0539C 80A480CC 00000000 */  nop
-

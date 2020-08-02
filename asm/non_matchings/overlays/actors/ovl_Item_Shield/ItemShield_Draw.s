@@ -1,3 +1,17 @@
+.rdata
+glabel D_80B87298
+    .asciz "../z_item_shield.c"
+    .balign 4
+
+glabel D_80B872AC
+    .asciz "../z_item_shield.c"
+    .balign 4
+
+glabel D_80B872C0
+    .asciz "../z_item_shield.c"
+    .balign 4
+
+.text
 glabel ItemShield_Draw
 /* 00778 80B87098 27BDFFB8 */  addiu   $sp, $sp, 0xFFB8           ## $sp = FFFFFFB8
 /* 0077C 80B8709C AFBF001C */  sw      $ra, 0x001C($sp)           
@@ -40,11 +54,11 @@ glabel ItemShield_Draw
 /* 00810 80B87130 AE0B02C0 */  sw      $t3, 0x02C0($s0)           ## 000002C0
 /* 00814 80B87134 000E7880 */  sll     $t7, $t6,  2               
 /* 00818 80B87138 3C0CDE00 */  lui     $t4, 0xDE00                ## $t4 = DE000000
-/* 0081C 80B8713C 3C188016 */  lui     $t8, 0x8016                ## $t8 = 80160000
+/* 0081C 80B8713C 3C188016 */  lui     $t8, %hi(gSegments)
 /* 00820 80B87140 030FC021 */  addu    $t8, $t8, $t7              
 /* 00824 80B87144 3C0100FF */  lui     $at, 0x00FF                ## $at = 00FF0000
 /* 00828 80B87148 AC4C0000 */  sw      $t4, 0x0000($v0)           ## 00000000
-/* 0082C 80B8714C 8F186FA8 */  lw      $t8, 0x6FA8($t8)           ## 80166FA8
+/* 0082C 80B8714C 8F186FA8 */  lw      $t8, %lo(gSegments)($t8)
 /* 00830 80B87150 3421FFFF */  ori     $at, $at, 0xFFFF           ## $at = 00FFFFFF
 /* 00834 80B87154 0081C824 */  and     $t9, $a0, $at              
 /* 00838 80B87158 3C018000 */  lui     $at, 0x8000                ## $at = 80000000
@@ -66,4 +80,3 @@ glabel ItemShield_Draw
 /* 00874 80B87194 00000000 */  nop
 /* 00878 80B87198 00000000 */  nop
 /* 0087C 80B8719C 00000000 */  nop
-

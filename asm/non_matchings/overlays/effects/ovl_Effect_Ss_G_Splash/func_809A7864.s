@@ -1,3 +1,8 @@
+.late_rodata
+glabel D_809A7980
+    .float 0.002
+
+.text
 glabel func_809A7864
 /* 00324 809A7864 27BDFFC8 */  addiu   $sp, $sp, 0xFFC8           ## $sp = FFFFFFC8
 /* 00328 809A7868 AFBF0024 */  sw      $ra, 0x0024($sp)           
@@ -56,4 +61,3 @@ glabel func_809A7864
 /* 003F4 809A7934 00000000 */  nop
 /* 003F8 809A7938 00000000 */  nop
 /* 003FC 809A793C 00000000 */  nop
-

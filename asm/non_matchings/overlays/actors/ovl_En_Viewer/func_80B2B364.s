@@ -1,3 +1,17 @@
+.rdata
+glabel D_80B2D044
+    .asciz "../z_en_viewer.c"
+    .balign 4
+
+glabel D_80B2D058
+    .asciz "../z_en_viewer.c"
+    .balign 4
+
+glabel D_80B2D06C
+    .asciz "../z_en_viewer.c"
+    .balign 4
+
+.text
 glabel func_80B2B364
 /* 01164 80B2B364 27BDFFC0 */  addiu   $sp, $sp, 0xFFC0           ## $sp = FFFFFFC0
 /* 01168 80B2B368 2401000B */  addiu   $at, $zero, 0x000B         ## $at = 0000000B
@@ -41,11 +55,11 @@ glabel func_80B2B364
 /* 01200 80B2B400 AE0902D0 */  sw      $t1, 0x02D0($s0)           ## 000002D0
 /* 01204 80B2B404 000C6880 */  sll     $t5, $t4,  2               
 /* 01208 80B2B408 3C0ADE00 */  lui     $t2, 0xDE00                ## $t2 = DE000000
-/* 0120C 80B2B40C 3C0E8016 */  lui     $t6, 0x8016                ## $t6 = 80160000
+/* 0120C 80B2B40C 3C0E8016 */  lui     $t6, %hi(gSegments)
 /* 01210 80B2B410 01CD7021 */  addu    $t6, $t6, $t5              
 /* 01214 80B2B414 3C0100FF */  lui     $at, 0x00FF                ## $at = 00FF0000
 /* 01218 80B2B418 AC4A0000 */  sw      $t2, 0x0000($v0)           ## 00000000
-/* 0121C 80B2B41C 8DCE6FA8 */  lw      $t6, 0x6FA8($t6)           ## 80166FA8
+/* 0121C 80B2B41C 8DCE6FA8 */  lw      $t6, %lo(gSegments)($t6)
 /* 01220 80B2B420 3421FFFF */  ori     $at, $at, 0xFFFF           ## $at = 00FFFFFF
 /* 01224 80B2B424 00817824 */  and     $t7, $a0, $at              
 /* 01228 80B2B428 3C018000 */  lui     $at, 0x8000                ## $at = 80000000
@@ -65,5 +79,3 @@ glabel func_80B2B364
 /* 0125C 80B2B45C 27BD0040 */  addiu   $sp, $sp, 0x0040           ## $sp = 00000000
 /* 01260 80B2B460 03E00008 */  jr      $ra                        
 /* 01264 80B2B464 00000000 */  nop
-
-

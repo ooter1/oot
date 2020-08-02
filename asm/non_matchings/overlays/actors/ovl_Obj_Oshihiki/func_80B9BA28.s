@@ -1,3 +1,11 @@
+.late_rodata
+glabel D_80B9CCFC
+    .float -0.001
+
+glabel D_80B9CD00
+    .float -0.001
+
+.text
 glabel func_80B9BA28
 /* 008A8 80B9BA28 24820004 */  addiu   $v0, $a0, 0x0004           ## $v0 = 00000004
 /* 008AC 80B9BA2C C44001A8 */  lwc1    $f0, 0x01A8($v0)           ## 000001AC
@@ -93,5 +101,3 @@ glabel func_80B9BA28
 .L80B9BB68:
 /* 009E8 80B9BB68 03E00008 */  jr      $ra                        
 /* 009EC 80B9BB6C 00601025 */  or      $v0, $v1, $zero            ## $v0 = 00000004
-
-

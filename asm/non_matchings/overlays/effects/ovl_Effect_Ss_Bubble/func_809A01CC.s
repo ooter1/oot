@@ -1,3 +1,17 @@
+.rdata
+glabel D_809A04A0
+    .asciz "../z_eff_ss_bubble.c"
+    .balign 4
+
+glabel D_809A04B8
+    .asciz "../z_eff_ss_bubble.c"
+    .balign 4
+
+glabel D_809A04D0
+    .asciz "../z_eff_ss_bubble.c"
+    .balign 4
+
+.text
 glabel func_809A01CC
 /* 0018C 809A01CC 27BDFFA8 */  addiu   $sp, $sp, 0xFFA8           ## $sp = FFFFFFA8
 /* 00190 809A01D0 AFBF001C */  sw      $ra, 0x001C($sp)           
@@ -77,12 +91,12 @@ glabel func_809A01CC
 /* 002B8 809A02F8 24590008 */  addiu   $t9, $v0, 0x0008           ## $t9 = 00000008
 /* 002BC 809A02FC AE1902C0 */  sw      $t9, 0x02C0($s0)           ## 000002C0
 /* 002C0 809A0300 000A5880 */  sll     $t3, $t2,  2               
-/* 002C4 809A0304 3C0C8016 */  lui     $t4, 0x8016                ## $t4 = 80160000
+/* 002C4 809A0304 3C0C8016 */  lui     $t4, %hi(gSegments)
 /* 002C8 809A0308 3C08DE00 */  lui     $t0, 0xDE00                ## $t0 = DE000000
 /* 002CC 809A030C 018B6021 */  addu    $t4, $t4, $t3              
 /* 002D0 809A0310 3C0100FF */  lui     $at, 0x00FF                ## $at = 00FF0000
 /* 002D4 809A0314 AC480000 */  sw      $t0, 0x0000($v0)           ## 00000000
-/* 002D8 809A0318 8D8C6FA8 */  lw      $t4, 0x6FA8($t4)           ## 80166FA8
+/* 002D8 809A0318 8D8C6FA8 */  lw      $t4, %lo(gSegments)($t4)
 /* 002DC 809A031C 3421FFFF */  ori     $at, $at, 0xFFFF           ## $at = 00FFFFFF
 /* 002E0 809A0320 00816824 */  and     $t5, $a0, $at              
 /* 002E4 809A0324 3C018000 */  lui     $at, 0x8000                ## $at = 80000000
@@ -100,5 +114,3 @@ glabel func_809A01CC
 /* 00314 809A0354 8FB10018 */  lw      $s1, 0x0018($sp)           
 /* 00318 809A0358 03E00008 */  jr      $ra                        
 /* 0031C 809A035C 27BD0058 */  addiu   $sp, $sp, 0x0058           ## $sp = 00000000
-
-

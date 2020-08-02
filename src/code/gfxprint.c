@@ -174,7 +174,7 @@ void GfxPrint_InitDlist(GfxPrint* this) {
         gDPSetTileSize(this->dlist++, i * 2, 0, 0, 60, 1020);
     }
 
-    gDPSetPrimColorMod(this->dlist++, 0, 0, *(u32*)&this->color);
+    gDPSetPrimColorMod(this->dlist++, 0, 0, this->color.rgba);
 
     gDPSetTextureImage(this->dlist++, G_IM_FMT_CI, G_IM_SIZ_8b, 1, sGfxPrintUnkData);
     gDPSetTile(this->dlist++, G_IM_FMT_CI, G_IM_SIZ_8b, 1, 0, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 3,
@@ -204,7 +204,7 @@ void GfxPrint_SetColor(GfxPrint* this, u32 r, u32 g, u32 b, u32 a) {
     this->color.b = b;
     this->color.a = a;
     gDPPipeSync(this->dlist++);
-    gDPSetPrimColorMod(this->dlist++, 0, 0, *(u32*)&this->color);
+    gDPSetPrimColorMod(this->dlist++, 0, 0, this->color.rgba);
 }
 
 void GfxPrint_SetPosPx(GfxPrint* this, s32 x, s32 y) {
@@ -252,7 +252,7 @@ void GfxPrint_PrintCharImpl(GfxPrint* this, u8 c) {
                                 c * 2, (u16)(c & 4) * 64, (u16)(c >> 3) * 256, 1024, 1024);
         }
 
-        gDPSetPrimColorMod(this->dlist++, 0, 0, *(u32*)&this->color);
+        gDPSetPrimColorMod(this->dlist++, 0, 0, this->color.rgba);
     }
 
     if (this->flag & GFXPRINT_FLAG64) {
@@ -341,7 +341,7 @@ GfxPrint* GfxPrint_Callback(GfxPrint* this, const char* str, size_t size) {
     return this;
 }
 
-void GfxPrint_Ctor(GfxPrint* this) {
+void GfxPrint_Init(GfxPrint* this) {
     this->flag &= ~GFXPRINT_OPEN;
 
     this->callback = &GfxPrint_Callback;
@@ -350,7 +350,7 @@ void GfxPrint_Ctor(GfxPrint* this) {
     this->posY = 0;
     this->baseX = 0;
     this->baseY = 0;
-    *(u32*)&this->color = 0;
+    this->color.rgba = 0;
 
     this->flag &= ~GFXPRINT_FLAG1;
     this->flag &= ~GFXPRINT_USE_RGBA16;
@@ -364,7 +364,7 @@ void GfxPrint_Ctor(GfxPrint* this) {
     }
 }
 
-void GfxPrint_Dtor(GfxPrint* this) {
+void GfxPrint_Destroy(GfxPrint* this) {
 }
 
 void GfxPrint_Open(GfxPrint* this, Gfx* dlist) {
@@ -388,7 +388,7 @@ Gfx* GfxPrint_Close(GfxPrint* this) {
 }
 
 void GfxPrint_VPrintf(GfxPrint* this, const char* fmt, va_list args) {
-    func_800FF340(&this->callback, fmt, args);
+    PrintUtils_VPrintf(&this->callback, fmt, args);
 }
 
 void GfxPrint_Printf(GfxPrint* this, const char* fmt, ...) {

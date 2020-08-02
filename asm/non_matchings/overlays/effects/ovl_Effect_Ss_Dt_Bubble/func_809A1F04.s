@@ -1,3 +1,21 @@
+.rdata
+glabel D_809A2220
+    .asciz "../z_eff_ss_dt_bubble.c"
+    .balign 4
+
+glabel D_809A2238
+    .asciz "../z_eff_ss_dt_bubble.c"
+    .balign 4
+
+glabel D_809A2250
+    .asciz "../z_eff_ss_dt_bubble.c"
+    .balign 4
+
+.late_rodata
+glabel D_809A2268
+    .float 0.004
+
+.text
 glabel func_809A1F04
 /* 00254 809A1F04 27BDFFA8 */  addiu   $sp, $sp, 0xFFA8           ## $sp = FFFFFFA8
 /* 00258 809A1F08 AFB00014 */  sw      $s0, 0x0014($sp)           
@@ -139,7 +157,7 @@ glabel func_809A1F04
 /* 00468 809A2118 AC4B0000 */  sw      $t3, 0x0000($v0)           ## 00000000
 /* 0046C 809A211C 8E090038 */  lw      $t1, 0x0038($s0)           ## 00000038
 /* 00470 809A2120 00197080 */  sll     $t6, $t9,  2               
-/* 00474 809A2124 3C0F8016 */  lui     $t7, 0x8016                ## $t7 = 80160000
+/* 00474 809A2124 3C0F8016 */  lui     $t7, %hi(gSegments)
 /* 00478 809A2128 AC490004 */  sw      $t1, 0x0004($v0)           ## 00000004
 /* 0047C 809A212C 8E2202D0 */  lw      $v0, 0x02D0($s1)           ## 000002D0
 /* 00480 809A2130 3C0CDE00 */  lui     $t4, 0xDE00                ## $t4 = DE000000
@@ -148,7 +166,7 @@ glabel func_809A1F04
 /* 0048C 809A213C AE2A02D0 */  sw      $t2, 0x02D0($s1)           ## 000002D0
 /* 00490 809A2140 3C0100FF */  lui     $at, 0x00FF                ## $at = 00FF0000
 /* 00494 809A2144 AC4C0000 */  sw      $t4, 0x0000($v0)           ## 00000000
-/* 00498 809A2148 8DEF6FA8 */  lw      $t7, 0x6FA8($t7)           ## 80166FA8
+/* 00498 809A2148 8DEF6FA8 */  lw      $t7, %lo(gSegments)($t7)
 /* 0049C 809A214C 3421FFFF */  ori     $at, $at, 0xFFFF           ## $at = 00FFFFFF
 /* 004A0 809A2150 00816824 */  and     $t5, $a0, $at              
 /* 004A4 809A2154 3C018000 */  lui     $at, 0x8000                ## $at = 80000000
@@ -162,5 +180,3 @@ glabel func_809A1F04
 /* 004C4 809A2174 8FB10018 */  lw      $s1, 0x0018($sp)           
 /* 004C8 809A2178 03E00008 */  jr      $ra                        
 /* 004CC 809A217C 27BD0058 */  addiu   $sp, $sp, 0x0058           ## $sp = 00000000
-
-

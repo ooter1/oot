@@ -1,3 +1,13 @@
+.rdata
+glabel D_80A328A8
+    .asciz "../z_en_ge1.c"
+    .balign 4
+
+glabel D_80A328B8
+    .asciz "../z_en_ge1.c"
+    .balign 4
+
+.text
 glabel EnGe1_Draw
 /* 01CD8 80A32648 27BDFFA8 */  addiu   $sp, $sp, 0xFFA8           ## $sp = FFFFFFA8
 /* 01CDC 80A3264C AFBF002C */  sw      $ra, 0x002C($sp)
@@ -19,7 +29,7 @@ glabel EnGe1_Draw
 /* 01D1C 80A3268C 37390020 */  ori     $t9, $t9, 0x0020           ## $t9 = DB060020
 /* 01D20 80A32690 8CA302C0 */  lw      $v1, 0x02C0($a1)           ## 000002C0
 /* 01D24 80A32694 3C0480A3 */  lui     $a0, %hi(D_80A327B4)       ## $a0 = 80A30000
-/* 01D28 80A32698 3C0E8016 */  lui     $t6, 0x8016                ## $t6 = 80160000
+/* 01D28 80A32698 3C0E8016 */  lui     $t6, %hi(gSegments)
 /* 01D2C 80A3269C 24780008 */  addiu   $t8, $v1, 0x0008           ## $t8 = 00000008
 /* 01D30 80A326A0 ACB802C0 */  sw      $t8, 0x02C0($a1)           ## 000002C0
 /* 01D34 80A326A4 AC790000 */  sw      $t9, 0x0000($v1)           ## 00000000
@@ -35,7 +45,7 @@ glabel EnGe1_Draw
 /* 01D5C 80A326CC 000B6702 */  srl     $t4, $t3, 28
 /* 01D60 80A326D0 000C6880 */  sll     $t5, $t4,  2
 /* 01D64 80A326D4 01CD7021 */  addu    $t6, $t6, $t5
-/* 01D68 80A326D8 8DCE6FA8 */  lw      $t6, 0x6FA8($t6)           ## 80166FA8
+/* 01D68 80A326D8 8DCE6FA8 */  lw      $t6, %lo(gSegments)($t6)
 /* 01D6C 80A326DC 00815024 */  and     $t2, $a0, $at
 /* 01D70 80A326E0 3C018000 */  lui     $at, 0x8000                ## $at = 80000000
 /* 01D74 80A326E4 014E7821 */  addu    $t7, $t2, $t6
@@ -65,4 +75,3 @@ glabel EnGe1_Draw
 /* 01DD4 80A32744 00000000 */  nop
 /* 01DD8 80A32748 00000000 */  nop
 /* 01DDC 80A3274C 00000000 */  nop
-

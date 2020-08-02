@@ -1,3 +1,17 @@
+.rdata
+glabel D_8089C0D0
+    .asciz "../z_bg_menkuri_eye.c"
+    .balign 4
+
+glabel D_8089C0E8
+    .asciz "../z_bg_menkuri_eye.c"
+    .balign 4
+
+glabel D_8089C100
+	.asciz "../z_bg_menkuri_eye.c"
+	.balign 4
+
+.text
 glabel BgMenkuriEye_Draw
 /* 00270 8089BEE0 27BDFFA8 */  addiu   $sp, $sp, 0xFFA8           ## $sp = FFFFFFA8
 /* 00274 8089BEE4 AFBF001C */  sw      $ra, 0x001C($sp)
@@ -60,7 +74,7 @@ glabel BgMenkuriEye_Draw
 /* 00348 8089BFB8 86040030 */  lh      $a0, 0x0030($s0)           ## 00000030
 /* 0034C 8089BFBC 86050032 */  lh      $a1, 0x0032($s0)           ## 00000032
 /* 00350 8089BFC0 86060034 */  lh      $a2, 0x0034($s0)           ## 00000034
-/* 00354 8089BFC4 0C034421 */  jal     Matrix_RotateZYX
+/* 00354 8089BFC4 0C034421 */  jal     Matrix_RotateRPY
 /* 00358 8089BFC8 24070001 */  addiu   $a3, $zero, 0x0001         ## $a3 = 00000001
 /* 0035C 8089BFCC C60C0050 */  lwc1    $f12, 0x0050($s0)          ## 00000050
 /* 00360 8089BFD0 C60E0054 */  lwc1    $f14, 0x0054($s0)          ## 00000054
@@ -103,4 +117,3 @@ glabel BgMenkuriEye_Draw
 /* 003F4 8089C064 27BD0058 */  addiu   $sp, $sp, 0x0058           ## $sp = 00000000
 /* 003F8 8089C068 00000000 */  nop
 /* 003FC 8089C06C 00000000 */  nop
-

@@ -1,3 +1,49 @@
+.rdata
+glabel D_80B3AA08
+    .asciz "\x1b[35m☆☆☆☆☆ セーブしたよ！おもいっきり！ %x\n\x1b[m"
+    .balign 4
+
+glabel D_80B3AA3C
+    .asciz "\n\n"
+    .balign 4
+
+glabel D_80B3AA40
+    .asciz "\x1b[32m☆☆☆☆☆ 透明メッセージ君せっと %x\n\x1b[m"
+    .balign 4
+
+glabel D_80B3AA70
+    .asciz "\x1b[33m☆☆☆☆☆ セーブ情報 	           %x\n\x1b[m"
+    .balign 4
+
+glabel D_80B3AAA0
+    .asciz "\x1b[35m☆☆☆☆☆ 指定メッセージ種類     %x\n\x1b[m"
+    .balign 4
+
+glabel D_80B3AAD0
+    .asciz "\x1b[36m☆☆☆☆☆ 実質メッセージ種類     %x\n\x1b[m"
+    .balign 4
+
+glabel D_80B3AB00
+    .asciz "\x1b[32m☆☆☆☆☆ 指定範囲               %d\n\x1b[m"
+    .balign 4
+
+glabel D_80B3AB30
+    .asciz "\x1b[33m☆☆☆☆☆ 処理範囲               %f\n\x1b[m"
+    .balign 4
+
+glabel D_80B3AB60
+    .asciz "\x1b[35m ☆☆ 通常 ☆☆ \n\x1b[m"
+    .balign 4
+
+glabel D_80B3AB7C
+    .asciz "\x1b[35m ☆☆ チェックのみ ☆☆ \n\x1b[m"
+    .balign 4
+
+glabel D_80B3ABA0
+    .asciz "\x1b[35m ☆☆ ロックのみ ☆☆ \n\x1b[m"
+    .balign 4
+
+.text
 glabel func_80B3A15C
 /* 0028C 80B3A15C 27BDFFD0 */  addiu   $sp, $sp, 0xFFD0           ## $sp = FFFFFFD0
 /* 00290 80B3A160 AFBF0024 */  sw      $ra, 0x0024($sp)           
@@ -183,5 +229,3 @@ glabel func_80B3A15C
 /* 004F8 80B3A3C8 27BD0030 */  addiu   $sp, $sp, 0x0030           ## $sp = 00000000
 /* 004FC 80B3A3CC 03E00008 */  jr      $ra                        
 /* 00500 80B3A3D0 00000000 */  nop
-
-

@@ -1,3 +1,28 @@
+.rdata
+glabel D_809AA618
+    .asciz "../z_eff_kakera.c"
+    .balign 4
+
+glabel D_809AA62C
+    .asciz "../z_eff_kakera.c"
+    .balign 4
+
+glabel D_809AA640
+    .asciz "../z_eff_kakera.c"
+    .balign 4
+
+glabel D_809AA654
+    .asciz "../z_eff_kakera.c"
+    .balign 4
+
+.late_rodata
+glabel D_809AA670
+    .float 0.01
+
+glabel D_809AA674
+    .float 0.01
+
+.text
 glabel func_809A9874
 /* 001F4 809A9874 27BDFF98 */  addiu   $sp, $sp, 0xFF98           ## $sp = FFFFFF98
 /* 001F8 809A9878 AFBF001C */  sw      $ra, 0x001C($sp)           
@@ -211,5 +236,3 @@ glabel func_809A9874
 /* 0051C 809A9B9C 8FB10018 */  lw      $s1, 0x0018($sp)           
 /* 00520 809A9BA0 03E00008 */  jr      $ra                        
 /* 00524 809A9BA4 27BD0068 */  addiu   $sp, $sp, 0x0068           ## $sp = 00000000
-
-

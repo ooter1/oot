@@ -1,3 +1,13 @@
+.rdata
+glabel D_80B7B2E4
+    .asciz "../z_fishing.c"
+    .balign 4
+
+glabel D_80B7B2F4
+    .asciz "../z_fishing.c"
+    .balign 4
+
+.text
 glabel func_80B7A140
 /* 107A0 80B7A140 27BDFFC8 */  addiu   $sp, $sp, 0xFFC8           ## $sp = FFFFFFC8
 /* 107A4 80B7A144 24010008 */  addiu   $at, $zero, 0x0008         ## $at = 00000008
@@ -33,11 +43,11 @@ glabel func_80B7A140
 /* 1081C 80B7A1BC AD0F02C0 */  sw      $t7, 0x02C0($t0)           ## 000002C0
 /* 10820 80B7A1C0 00095080 */  sll     $t2, $t1,  2               
 /* 10824 80B7A1C4 3C18DE00 */  lui     $t8, 0xDE00                ## $t8 = DE000000
-/* 10828 80B7A1C8 3C0B8016 */  lui     $t3, 0x8016                ## $t3 = 80160000
+/* 10828 80B7A1C8 3C0B8016 */  lui     $t3, %hi(gSegments)
 /* 1082C 80B7A1CC 016A5821 */  addu    $t3, $t3, $t2              
 /* 10830 80B7A1D0 3C0100FF */  lui     $at, 0x00FF                ## $at = 00FF0000
 /* 10834 80B7A1D4 AC780000 */  sw      $t8, 0x0000($v1)           ## 00000000
-/* 10838 80B7A1D8 8D6B6FA8 */  lw      $t3, 0x6FA8($t3)           ## 80166FA8
+/* 10838 80B7A1D8 8D6B6FA8 */  lw      $t3, %lo(gSegments)($t3)
 /* 1083C 80B7A1DC 3421FFFF */  ori     $at, $at, 0xFFFF           ## $at = 00FFFFFF
 /* 10840 80B7A1E0 00816024 */  and     $t4, $a0, $at              
 /* 10844 80B7A1E4 3C018000 */  lui     $at, 0x8000                ## $at = 80000000
@@ -57,11 +67,11 @@ glabel func_80B7A140
 /* 10878 80B7A218 246F0008 */  addiu   $t7, $v1, 0x0008           ## $t7 = 00000008
 /* 1087C 80B7A21C AD0F02C0 */  sw      $t7, 0x02C0($t0)           ## 000002C0
 /* 10880 80B7A220 00095080 */  sll     $t2, $t1,  2               
-/* 10884 80B7A224 3C0B8016 */  lui     $t3, 0x8016                ## $t3 = 80160000
+/* 10884 80B7A224 3C0B8016 */  lui     $t3, %hi(gSegments)
 /* 10888 80B7A228 016A5821 */  addu    $t3, $t3, $t2              
 /* 1088C 80B7A22C 3C0100FF */  lui     $at, 0x00FF                ## $at = 00FF0000
 /* 10890 80B7A230 AC780000 */  sw      $t8, 0x0000($v1)           ## 00000000
-/* 10894 80B7A234 8D6B6FA8 */  lw      $t3, 0x6FA8($t3)           ## 80166FA8
+/* 10894 80B7A234 8D6B6FA8 */  lw      $t3, %lo(gSegments)($t3)
 /* 10898 80B7A238 3421FFFF */  ori     $at, $at, 0xFFFF           ## $at = 00FFFFFF
 /* 1089C 80B7A23C 00816024 */  and     $t4, $a0, $at              
 /* 108A0 80B7A240 3C018000 */  lui     $at, 0x8000                ## $at = 80000000
@@ -80,5 +90,3 @@ glabel func_80B7A140
 /* 108CC 80B7A26C 27BD0038 */  addiu   $sp, $sp, 0x0038           ## $sp = 00000000
 /* 108D0 80B7A270 03E00008 */  jr      $ra                        
 /* 108D4 80B7A274 00000000 */  nop
-
-

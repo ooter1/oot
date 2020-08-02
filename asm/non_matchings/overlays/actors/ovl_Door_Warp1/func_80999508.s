@@ -1,3 +1,21 @@
+.late_rodata
+.late_rodata_alignment 8
+glabel jtbl_8099C758
+    .word L80999558
+    .word L80999548
+    .word L80999538
+    .word L80999538
+    .word L80999538
+    .word L80999568
+    .word L80999538
+    .word L80999538
+    .word L80999538
+    .word L80999538
+    .word L80999538
+    .word L80999538
+    .word L80999538
+
+.text
 glabel func_80999508
 /* 00D88 80999508 27BDFFE8 */  addiu   $sp, $sp, 0xFFE8           ## $sp = FFFFFFE8
 /* 00D8C 8099950C AFBF0014 */  sw      $ra, 0x0014($sp)           
@@ -35,5 +53,3 @@ glabel L80999568
 /* 00DF4 80999574 27BD0018 */  addiu   $sp, $sp, 0x0018           ## $sp = 00000000
 /* 00DF8 80999578 03E00008 */  jr      $ra                        
 /* 00DFC 8099957C 00000000 */  nop
-
-

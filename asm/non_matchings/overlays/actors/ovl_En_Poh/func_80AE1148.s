@@ -1,3 +1,17 @@
+.rdata
+glabel D_80AE1BC0
+    .asciz "../z_en_poh.c"
+    .balign 4
+
+glabel D_80AE1BD0
+    .asciz "../z_en_poh.c"
+    .balign 4
+
+glabel D_80AE1BE0
+    .asciz "../z_en_poh.c"
+    .balign 4
+
+.text
 glabel func_80AE1148
 /* 033F8 80AE1148 27BDFF68 */  addiu   $sp, $sp, 0xFF68           ## $sp = FFFFFF68
 /* 033FC 80AE114C AFBF002C */  sw      $ra, 0x002C($sp)
@@ -98,10 +112,10 @@ glabel func_80AE1148
 /* 0356C 80AE12BC AFAE0010 */  sw      $t6, 0x0010($sp)
 /* 03570 80AE12C0 8FA3006C */  lw      $v1, 0x006C($sp)
 /* 03574 80AE12C4 3C18DB06 */  lui     $t8, 0xDB06                ## $t8 = DB060000
-/* 03578 80AE12C8 3C198011 */  lui     $t9, 0x8011                ## $t9 = 80110000
+/* 03578 80AE12C8 3C198011 */  lui     $t9, %hi(D_80116280+0x10)
 /* 0357C 80AE12CC AC620004 */  sw      $v0, 0x0004($v1)           ## 00000004
 /* 03580 80AE12D0 8E0202C0 */  lw      $v0, 0x02C0($s0)           ## 000002C0
-/* 03584 80AE12D4 27396290 */  addiu   $t9, $t9, 0x6290           ## $t9 = 80116290
+/* 03584 80AE12D4 27396290 */  addiu   $t9, %lo(D_80116280+0x10)
 /* 03588 80AE12D8 37180030 */  ori     $t8, $t8, 0x0030           ## $t8 = DB060030
 /* 0358C 80AE12DC 244F0008 */  addiu   $t7, $v0, 0x0008           ## $t7 = 00000008
 /* 03590 80AE12E0 AE0F02C0 */  sw      $t7, 0x02C0($s0)           ## 000002C0
@@ -187,10 +201,10 @@ glabel func_80AE1148
 /* 036CC 80AE141C AFAB0010 */  sw      $t3, 0x0010($sp)
 /* 036D0 80AE1420 8FA3005C */  lw      $v1, 0x005C($sp)
 /* 036D4 80AE1424 3C0DDB06 */  lui     $t5, 0xDB06                ## $t5 = DB060000
-/* 036D8 80AE1428 3C0E8011 */  lui     $t6, 0x8011                ## $t6 = 80110000
+/* 036D8 80AE1428 3C0E8011 */  lui     $t6, %hi(D_80116280)
 /* 036DC 80AE142C AC620004 */  sw      $v0, 0x0004($v1)           ## 00000004
 /* 036E0 80AE1430 8E0202D0 */  lw      $v0, 0x02D0($s0)           ## 000002D0
-/* 036E4 80AE1434 25CE6280 */  addiu   $t6, $t6, 0x6280           ## $t6 = 80116280
+/* 036E4 80AE1434 25CE6280 */  addiu   $t6, %lo(D_80116280)
 /* 036E8 80AE1438 35AD0030 */  ori     $t5, $t5, 0x0030           ## $t5 = DB060030
 /* 036EC 80AE143C 244C0008 */  addiu   $t4, $v0, 0x0008           ## $t4 = 00000008
 /* 036F0 80AE1440 AE0C02D0 */  sw      $t4, 0x02D0($s0)           ## 000002D0
@@ -306,5 +320,3 @@ glabel func_80AE1148
 /* 038A4 80AE15F4 8FB10028 */  lw      $s1, 0x0028($sp)
 /* 038A8 80AE15F8 03E00008 */  jr      $ra
 /* 038AC 80AE15FC 27BD0098 */  addiu   $sp, $sp, 0x0098           ## $sp = 00000000
-
-

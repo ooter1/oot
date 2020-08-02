@@ -1,3 +1,17 @@
+.rdata
+glabel D_80A485CC
+    .asciz "../z_en_go2.c"
+    .balign 4
+
+glabel D_80A485DC
+    .asciz "../z_en_go2.c"
+    .balign 4
+
+glabel D_80A485EC
+    .asciz "../z_en_go2.c"
+    .balign 4
+
+.text
 glabel func_80A479B0
 /* 04C80 80A479B0 27BDFFB0 */  addiu   $sp, $sp, 0xFFB0           ## $sp = FFFFFFB0
 /* 04C84 80A479B4 3C0F80A5 */  lui     $t7, %hi(D_80A48554)       ## $t7 = 80A50000
@@ -63,5 +77,3 @@ glabel func_80A479B0
 /* 04D74 80A47AA4 27BD0050 */  addiu   $sp, $sp, 0x0050           ## $sp = 00000000
 /* 04D78 80A47AA8 03E00008 */  jr      $ra                        
 /* 04D7C 80A47AAC 24020001 */  addiu   $v0, $zero, 0x0001         ## $v0 = 00000001
-
-

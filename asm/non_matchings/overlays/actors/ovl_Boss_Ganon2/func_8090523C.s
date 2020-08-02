@@ -1,3 +1,23 @@
+.rdata
+glabel D_8090D908
+    .asciz "../z_boss_ganon2.c"
+    .balign 4
+
+glabel D_8090D91C
+    .asciz "../z_boss_ganon2.c"
+    .balign 4
+
+glabel D_8090D930
+    .asciz "../z_boss_ganon2.c"
+    .balign 4
+
+.late_rodata
+glabel D_8090DD48
+ .word 0x3E6EEEED
+glabel D_8090DD4C
+    .float 6.28318548203
+
+.text
 glabel func_8090523C
 /* 082FC 8090523C 27BDFF40 */  addiu   $sp, $sp, 0xFF40           ## $sp = FFFFFF40
 /* 08300 80905240 AFBF006C */  sw      $ra, 0x006C($sp)           
@@ -62,8 +82,8 @@ glabel func_8090523C
 /* 083EC 8090532C AC4F0004 */  sw      $t7, 0x0004($v0)           ## 00000004
 /* 083F0 80905330 AC4E0000 */  sw      $t6, 0x0000($v0)           ## 00000000
 /* 083F4 80905334 8E4202D0 */  lw      $v0, 0x02D0($s2)           ## 000002D0
-/* 083F8 80905338 3C0B8016 */  lui     $t3, 0x8016                ## $t3 = 80160000
-/* 083FC 8090533C 256B6FA8 */  addiu   $t3, $t3, 0x6FA8           ## $t3 = 80166FA8
+/* 083F8 80905338 3C0B8016 */  lui     $t3, %hi(gSegments)
+/* 083FC 8090533C 256B6FA8 */  addiu   $t3, %lo(gSegments)
 /* 08400 80905340 24580008 */  addiu   $t8, $v0, 0x0008           ## $t8 = 00000008
 /* 08404 80905344 AE5802D0 */  sw      $t8, 0x02D0($s2)           ## 000002D0
 /* 08408 80905348 AC590004 */  sw      $t9, 0x0004($v0)           ## 00000004
@@ -183,5 +203,3 @@ glabel func_8090523C
 /* 085BC 809054FC 8FBE0068 */  lw      $s8, 0x0068($sp)           
 /* 085C0 80905500 03E00008 */  jr      $ra                        
 /* 085C4 80905504 27BD00C0 */  addiu   $sp, $sp, 0x00C0           ## $sp = 00000000
-
-

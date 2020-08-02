@@ -1,3 +1,45 @@
+.rdata
+glabel D_80B3A8F0
+    .asciz "\n\n"
+    .balign 4
+
+glabel D_80B3A8F4
+    .asciz "\x1b[32m☆☆☆☆☆ 透明メッセージ君 ☆☆☆☆☆ %x\n\x1b[m"
+    .balign 4
+
+glabel D_80B3A928
+    .asciz "\n\n"
+    .balign 4
+
+glabel D_80B3A92C
+    .asciz "\x1b[33m☆☆☆☆☆ 元は？       ☆☆☆☆☆ %d\n\x1b[m"
+    .balign 4
+
+glabel D_80B3A95C
+    .asciz "\x1b[35m☆☆☆☆☆ レンジは？   ☆☆☆☆☆ %d\n\x1b[m"
+    .balign 4
+
+glabel D_80B3A98C
+    .asciz "\x1b[36m☆☆☆☆☆ は、範囲わ？ ☆☆☆☆☆ %f\n\x1b[m"
+    .balign 4
+
+glabel D_80B3A9BC
+    .asciz "\n\n"
+    .balign 4
+
+glabel D_80B3A9C0
+    .asciz "\n\n"
+    .balign 4
+
+glabel D_80B3A9C4
+    .asciz "\n\n"
+    .balign 4
+
+glabel D_80B3A9C8
+    .asciz "\x1b[32m☆☆☆☆☆ Ｙｏｕ ａｒｅ Ｓｈｏｃｋ！  ☆☆☆☆☆ %d\n\x1b[m"
+    .balign 4
+
+.text
 glabel EnWonderTalk2_Init
 /* 0000C 80B39EDC 27BDFFE0 */  addiu   $sp, $sp, 0xFFE0           ## $sp = FFFFFFE0
 /* 00010 80B39EE0 AFB00018 */  sw      $s0, 0x0018($sp)           
@@ -163,5 +205,3 @@ glabel EnWonderTalk2_Init
 /* 00230 80B3A100 27BD0020 */  addiu   $sp, $sp, 0x0020           ## $sp = 00000000
 /* 00234 80B3A104 03E00008 */  jr      $ra                        
 /* 00238 80B3A108 00000000 */  nop
-
-

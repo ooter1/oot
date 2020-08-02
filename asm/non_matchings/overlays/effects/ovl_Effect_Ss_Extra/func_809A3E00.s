@@ -1,3 +1,17 @@
+.rdata
+glabel D_809A4080
+    .asciz "../z_eff_ss_extra.c"
+    .balign 4
+
+glabel D_809A4094
+    .asciz "../z_eff_ss_extra.c"
+    .balign 4
+
+glabel D_809A40A8
+    .asciz "../z_eff_ss_extra.c"
+    .balign 4
+
+.text
 glabel func_809A3E00
 /* 000140 809A3E00 27BDFFA0 */  addiu $sp, $sp, -0x60
 /* 000144 809A3E04 AFBF0024 */  sw    $ra, 0x24($sp)
@@ -75,7 +89,7 @@ glabel func_809A3E00
 /* 000264 809A3F24 35EF0020 */  ori   $t7, (0xDB060020 & 0xFFFF) # ori $t7, $t7, 0x20
 /* 000268 809A3F28 AC620004 */  sw    $v0, 4($v1)
 /* 00026C 809A3F2C 8E0202D0 */  lw    $v0, 0x2d0($s0)
-/* 000270 809A3F30 3C04809A */  lui   $a0, 0x809a
+/* 000270 809A3F30 3C04809A */  lui   $a0, %hi(D_809A4070)
 /* 000274 809A3F34 3C078016 */  lui   $a3, %hi(gSegments) # $a3, 0x8016
 /* 000278 809A3F38 244E0008 */  addiu $t6, $v0, 8
 /* 00027C 809A3F3C AE0E02D0 */  sw    $t6, 0x2d0($s0)
@@ -85,7 +99,7 @@ glabel func_809A3E00
 /* 00028C 809A3F4C 3C0500FF */  lui   $a1, (0x00FFFFFF >> 16) # lui $a1, 0xff
 /* 000290 809A3F50 0018C880 */  sll   $t9, $t8, 2
 /* 000294 809A3F54 00992021 */  addu  $a0, $a0, $t9
-/* 000298 809A3F58 8C844070 */  lw    $a0, 0x4070($a0)
+/* 000298 809A3F58 8C844070 */  lw    $a0, %lo(D_809A4070)($a0)
 /* 00029C 809A3F5C 34A5FFFF */  ori   $a1, (0x00FFFFFF & 0xFFFF) # ori $a1, $a1, 0xffff
 /* 0002A0 809A3F60 3C068000 */  lui   $a2, 0x8000
 /* 0002A4 809A3F64 00045100 */  sll   $t2, $a0, 4
@@ -125,4 +139,3 @@ glabel func_809A3E00
 /* 00032C 809A3FEC 8FB20020 */  lw    $s2, 0x20($sp)
 /* 000330 809A3FF0 03E00008 */  jr    $ra
 /* 000334 809A3FF4 27BD0060 */   addiu $sp, $sp, 0x60
-

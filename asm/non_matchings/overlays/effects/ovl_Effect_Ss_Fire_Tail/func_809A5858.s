@@ -1,3 +1,36 @@
+.rdata
+glabel D_809A5DE0
+    .asciz "../z_eff_fire_tail.c"
+    .balign 4
+
+glabel D_809A5DF8
+    .asciz "../z_eff_fire_tail.c"
+    .balign 4
+
+glabel D_809A5E10
+    .asciz "../z_eff_fire_tail.c"
+    .balign 4
+
+.late_rodata
+glabel D_809A5E28
+    .float 0.1
+
+glabel D_809A5E2C
+    .float 9.58738019108e-05
+
+glabel D_809A5E30
+    .float 0.0174532923847
+
+glabel D_809A5E34
+    .float 1.00000006569e-05
+
+glabel D_809A5E38
+    .float 0.1
+
+glabel D_809A5E3C
+    .float 0.01
+
+.text
 glabel func_809A5858
 /* 00118 809A5858 27BDFF48 */  addiu   $sp, $sp, 0xFF48           ## $sp = FFFFFF48
 /* 0011C 809A585C AFB00038 */  sw      $s0, 0x0038($sp)           
@@ -347,5 +380,3 @@ glabel func_809A5858
 /* 0064C 809A5D8C 8FB20040 */  lw      $s2, 0x0040($sp)           
 /* 00650 809A5D90 03E00008 */  jr      $ra                        
 /* 00654 809A5D94 27BD00B8 */  addiu   $sp, $sp, 0x00B8           ## $sp = 00000000
-
-

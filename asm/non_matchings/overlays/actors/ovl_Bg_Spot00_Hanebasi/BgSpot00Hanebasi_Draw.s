@@ -1,3 +1,17 @@
+.rdata
+glabel D_808AA824
+    .asciz "../z_bg_spot00_hanebasi.c"
+    .balign 4
+
+glabel D_808AA840
+    .asciz "../z_bg_spot00_hanebasi.c"
+    .balign 4
+
+glabel D_808AA85C
+    .asciz "../z_bg_spot00_hanebasi.c"
+    .balign 4
+
+.text
 glabel BgSpot00Hanebasi_Draw
 /* 00E08 808AA588 27BDFFA0 */  addiu   $sp, $sp, 0xFFA0           ## $sp = FFFFFFA0
 /* 00E0C 808AA58C 3C0F808B */  lui     $t7, %hi(D_808AA7C4)       ## $t7 = 808B0000
@@ -76,9 +90,9 @@ glabel BgSpot00Hanebasi_Draw
 /* 00F30 808AA6B0 E7B20054 */  swc1    $f18, 0x0054($sp)          
 /* 00F34 808AA6B4 8E0C011C */  lw      $t4, 0x011C($s0)           ## 0000011C
 /* 00F38 808AA6B8 C7A40048 */  lwc1    $f4, 0x0048($sp)           
-/* 00F3C 808AA6BC 3C038016 */  lui     $v1, 0x8016                ## $v1 = 80160000
+/* 00F3C 808AA6BC 3C038016 */  lui     $v1, %hi(gSaveContext)
 /* 00F40 808AA6C0 8D8D011C */  lw      $t5, 0x011C($t4)           ## 0000011C
-/* 00F44 808AA6C4 2463E660 */  addiu   $v1, $v1, 0xE660           ## $v1 = 8015E660
+/* 00F44 808AA6C4 2463E660 */  addiu   $v1, %lo(gSaveContext)
 /* 00F48 808AA6C8 2401000C */  addiu   $at, $zero, 0x000C         ## $at = 0000000C
 /* 00F4C 808AA6CC E5A40024 */  swc1    $f4, 0x0024($t5)           ## 00000024
 /* 00F50 808AA6D0 8E0E011C */  lw      $t6, 0x011C($s0)           ## 0000011C
@@ -134,4 +148,3 @@ glabel BgSpot00Hanebasi_Draw
 /* 01004 808AA784 03E00008 */  jr      $ra                        
 /* 01008 808AA788 00000000 */  nop
 /* 0100C 808AA78C 00000000 */  nop
-

@@ -1,3 +1,16 @@
+.late_rodata
+glabel jtbl_80B5FCE0
+.word L80B5DE5C
+.word L80B5DE84
+.word L80B5DEE0
+.word L80B5DF08
+.word L80B5DF30
+.word L80B5DF58
+.word L80B5DF80
+.word L80B5DFA8
+.word L80B5DFD0
+
+.text
 glabel func_80B5DE1C
 /* 0266C 80B5DE1C 27BDFFD8 */  addiu   $sp, $sp, 0xFFD8           ## $sp = FFFFFFD8
 /* 02670 80B5DE20 AFBF001C */  sw      $ra, 0x001C($sp)           
@@ -43,7 +56,7 @@ glabel L80B5DE84
 /* 02708 80B5DEB8 00002825 */  or      $a1, $zero, $zero          ## $a1 = 00000000
 /* 0270C 80B5DEBC 0C020978 */  jal     Interface_ChangeAlpha              
 /* 02710 80B5DEC0 24040002 */  addiu   $a0, $zero, 0x0002         ## $a0 = 00000002
-/* 02714 80B5DEC4 0C02CE10 */  jal     func_800B3840              ## letterbox_target_addr
+/* 02714 80B5DEC4 0C02CE10 */  jal     ShrinkWindow_SetVal              ## letterbox_target_addr
 /* 02718 80B5DEC8 24040020 */  addiu   $a0, $zero, 0x0020         ## $a0 = 00000020
 /* 0271C 80B5DECC 920A0209 */  lbu     $t2, 0x0209($s0)           ## 00000209
 /* 02720 80B5DED0 A2000208 */  sb      $zero, 0x0208($s0)         ## 00000208
@@ -125,8 +138,8 @@ glabel L80B5DFD0
 /* 02834 80B5DFE4 02002825 */  or      $a1, $s0, $zero            ## $a1 = 00000000
 /* 02838 80B5DFE8 0C00B7D5 */  jal     func_8002DF54              
 /* 0283C 80B5DFEC 24060007 */  addiu   $a2, $zero, 0x0007         ## $a2 = 00000007
-/* 02840 80B5DFF0 3C038016 */  lui     $v1, 0x8016                ## $v1 = 80160000
-/* 02844 80B5DFF4 2463E660 */  addiu   $v1, $v1, 0xE660           ## $v1 = 8015E660
+/* 02840 80B5DFF0 3C038016 */  lui     $v1, %hi(gSaveContext)
+/* 02844 80B5DFF4 2463E660 */  addiu   $v1, %lo(gSaveContext)
 /* 02848 80B5DFF8 946F0EDC */  lhu     $t7, 0x0EDC($v1)           ## 8015F53C
 /* 0284C 80B5DFFC 240E0032 */  addiu   $t6, $zero, 0x0032         ## $t6 = 00000032
 /* 02850 80B5E000 3C1980B6 */  lui     $t9, %hi(func_80B5E090)    ## $t9 = 80B60000
@@ -169,5 +182,3 @@ glabel L80B5DFD0
 /* 028D4 80B5E084 27BD0028 */  addiu   $sp, $sp, 0x0028           ## $sp = 00000000
 /* 028D8 80B5E088 03E00008 */  jr      $ra                        
 /* 028DC 80B5E08C 00000000 */  nop
-
-

@@ -1,3 +1,13 @@
+.rdata
+glabel D_80875608
+    .asciz "../z_bg_dy_yoseizo.c"
+    .balign 4
+
+glabel D_80875620
+    .asciz "../z_bg_dy_yoseizo.c"
+    .balign 4
+
+.text
 glabel func_80874BE0
 /* 023B0 80874BE0 27BDFFA8 */  addiu   $sp, $sp, 0xFFA8           ## $sp = FFFFFFA8
 /* 023B4 80874BE4 AFB10028 */  sw      $s1, 0x0028($sp)
@@ -30,8 +40,8 @@ glabel func_80874BE0
 /* 02420 80874C50 AD1802C0 */  sw      $t8, 0x02C0($t0)           ## 000002C0
 /* 02424 80874C54 AC590000 */  sw      $t9, 0x0000($v0)           ## 00000000
 /* 02428 80874C58 860A02F2 */  lh      $t2, 0x02F2($s0)           ## 000002F2
-/* 0242C 80874C5C 3C068016 */  lui     $a2, 0x8016                ## $a2 = 80160000
-/* 02430 80874C60 24C66FA8 */  addiu   $a2, $a2, 0x6FA8           ## $a2 = 80166FA8
+/* 0242C 80874C5C 3C068016 */  lui     $a2, %hi(gSegments)
+/* 02430 80874C60 24C66FA8 */  addiu   $a2, %lo(gSegments)
 /* 02434 80874C64 000A5880 */  sll     $t3, $t2,  2
 /* 02438 80874C68 012B6021 */  addu    $t4, $t1, $t3
 /* 0243C 80874C6C 8D840000 */  lw      $a0, 0x0000($t4)           ## 00000000
@@ -111,5 +121,3 @@ glabel func_80874BE0
 /* 02560 80874D90 8FB10028 */  lw      $s1, 0x0028($sp)
 /* 02564 80874D94 03E00008 */  jr      $ra
 /* 02568 80874D98 27BD0058 */  addiu   $sp, $sp, 0x0058           ## $sp = 00000000
-
-

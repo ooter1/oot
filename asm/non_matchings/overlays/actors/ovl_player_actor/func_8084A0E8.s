@@ -1,3 +1,33 @@
+.rdata
+glabel D_808552A0
+    .asciz "../z_player.c"
+    .balign 4
+
+glabel D_808552B0
+    .asciz "../z_player.c"
+    .balign 4
+
+glabel D_808552C0
+    .asciz "../z_player.c"
+    .balign 4
+
+glabel D_808552D0
+    .asciz "../z_player.c"
+    .balign 4
+
+glabel D_808552E0
+    .asciz "../z_player.c"
+    .balign 4
+
+.late_rodata
+glabel D_808554DC
+ .word 0xC4966000
+glabel D_808554E0
+ .word 0xC4966000
+glabel D_808554E4
+ .word 0x3DE38E39
+
+.text
 glabel func_8084A0E8
 /* 17ED8 8084A0E8 27BDFF70 */  addiu   $sp, $sp, 0xFF70           ## $sp = FFFFFF70
 /* 17EDC 8084A0EC AFB00034 */  sw      $s0, 0x0034($sp)           
@@ -23,8 +53,8 @@ glabel func_8084A0E8
 /* 17F2C 8084A13C AC640000 */  sw      $a0, 0x0000($v1)           ## 00000000
 /* 17F30 8084A140 AC650004 */  sw      $a1, 0x0004($v1)           ## 00000004
 /* 17F34 8084A144 8E2202D0 */  lw      $v0, 0x02D0($s1)           ## 000002D0
-/* 17F38 8084A148 3C0C8009 */  lui     $t4, 0x8009                ## $t4 = 80090000
-/* 17F3C 8084A14C 258C0D20 */  addiu   $t4, $t4, 0x0D20           ## $t4 = 80090D20
+/* 17F38 8084A148 3C0C8009 */  lui     $t4, %hi(func_80090D20)
+/* 17F3C 8084A14C 258C0D20 */  addiu   $t4, %lo(func_80090D20)
 /* 17F40 8084A150 24580008 */  addiu   $t8, $v0, 0x0008           ## $t8 = 00000008
 /* 17F44 8084A154 AE3802D0 */  sw      $t8, 0x02D0($s1)           ## 000002D0
 /* 17F48 8084A158 AC450004 */  sw      $a1, 0x0004($v0)           ## 00000004
@@ -47,8 +77,8 @@ glabel func_8084A0E8
 /* 17F8C 8084A19C 0C023D1C */  jal     func_8008F470              
 /* 17F90 8084A1A0 AFAA001C */  sw      $t2, 0x001C($sp)           
 /* 17F94 8084A1A4 8FAD00A0 */  lw      $t5, 0x00A0($sp)           
-/* 17F98 8084A1A8 3C0E8009 */  lui     $t6, 0x8009                ## $t6 = 80090000
-/* 17F9C 8084A1AC 25CE0014 */  addiu   $t6, $t6, 0x0014           ## $t6 = 80090014
+/* 17F98 8084A1A8 3C0E8009 */  lui     $t6, %hi(func_80090014)
+/* 17F9C 8084A1AC 25CE0014 */  addiu   $t6, %lo(func_80090014)
 /* 17FA0 8084A1B0 55AE0051 */  bnel    $t5, $t6, .L8084A2F8       
 /* 17FA4 8084A1B4 8209014F */  lb      $t1, 0x014F($s0)           ## 0000014F
 /* 17FA8 8084A1B8 920F015F */  lbu     $t7, 0x015F($s0)           ## 0000015F
@@ -319,5 +349,3 @@ glabel func_8084A0E8
 /* 183A8 8084A5B8 8FB10038 */  lw      $s1, 0x0038($sp)           
 /* 183AC 8084A5BC 03E00008 */  jr      $ra                        
 /* 183B0 8084A5C0 27BD0090 */  addiu   $sp, $sp, 0x0090           ## $sp = 00000000
-
-

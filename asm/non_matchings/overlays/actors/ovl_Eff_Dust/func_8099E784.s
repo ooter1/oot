@@ -1,3 +1,21 @@
+.rdata
+glabel D_8099EBB0
+    .asciz "../z_eff_dust.c"
+    .balign 4
+
+glabel D_8099EBC0
+    .asciz "../z_eff_dust.c"
+    .balign 4
+
+glabel D_8099EBD0
+    .asciz "../z_eff_dust.c"
+    .balign 4
+
+.late_rodata
+glabel D_8099EC28
+    .float 0.85
+
+.text
 glabel func_8099E784
 /* 00EB4 8099E784 27BDFF30 */  addiu   $sp, $sp, 0xFF30           ## $sp = FFFFFF30
 /* 00EB8 8099E788 AFBF0064 */  sw      $ra, 0x0064($sp)           
@@ -109,9 +127,9 @@ glabel func_8099E784
 /* 01054 8099E924 4458F800 */  cfc1    $t8, $31
 /* 01058 8099E928 44D9F800 */  ctc1    $t9, $31
 /* 0105C 8099E92C 3C010001 */  lui     $at, 0x0001                ## $at = 00010000
-/* 01060 8099E930 3C0D8016 */  lui     $t5, 0x8016                ## $t5 = 80160000
+/* 01060 8099E930 3C0D8016 */  lui     $t5, %hi(gSegments)
 /* 01064 8099E934 460084A4 */  cvt.w.s $f18, $f16                 
-/* 01068 8099E938 25AD6FA8 */  addiu   $t5, $t5, 0x6FA8           ## $t5 = 80166FA8
+/* 01068 8099E938 25AD6FA8 */  addiu   $t5, %lo(gSegments)
 /* 0106C 8099E93C 34211DA0 */  ori     $at, $at, 0x1DA0           ## $at = 00011DA0
 /* 01070 8099E940 000B6080 */  sll     $t4, $t3,  2               
 /* 01074 8099E944 4459F800 */  cfc1    $t9, $31
@@ -236,5 +254,3 @@ glabel func_8099E784
 /* 01240 8099EB10 8FBE0060 */  lw      $s8, 0x0060($sp)           
 /* 01244 8099EB14 03E00008 */  jr      $ra                        
 /* 01248 8099EB18 27BD00D0 */  addiu   $sp, $sp, 0x00D0           ## $sp = 00000000
-
-

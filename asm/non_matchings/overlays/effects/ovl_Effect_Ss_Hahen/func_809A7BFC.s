@@ -1,3 +1,27 @@
+.rdata
+glabel D_809A8020
+    .asciz "../z_eff_hahen.c"
+    .balign 4
+
+glabel D_809A8034
+    .asciz "../z_eff_hahen.c"
+    .balign 4
+
+glabel D_809A8048
+    .asciz "../z_eff_hahen.c"
+    .balign 4
+
+.late_rodata
+glabel D_809A8098
+    .float 0.001
+
+glabel D_809A809C
+    .float 0.01
+
+glabel D_809A80A0
+    .float 0.01
+
+.text
 glabel func_809A7BFC
 /* 0020C 809A7BFC 27BDFFB0 */  addiu   $sp, $sp, 0xFFB0           ## $sp = FFFFFFB0
 /* 00210 809A7C00 AFBF001C */  sw      $ra, 0x001C($sp)           
@@ -104,5 +128,3 @@ glabel func_809A7BFC
 /* 003A0 809A7D90 8FB10018 */  lw      $s1, 0x0018($sp)           
 /* 003A4 809A7D94 03E00008 */  jr      $ra                        
 /* 003A8 809A7D98 27BD0050 */  addiu   $sp, $sp, 0x0050           ## $sp = 00000000
-
-

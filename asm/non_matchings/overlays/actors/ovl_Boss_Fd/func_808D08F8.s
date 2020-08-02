@@ -1,3 +1,77 @@
+.rdata
+glabel D_808D1DDC
+    .asciz "../z_boss_fd.c"
+    .balign 4
+
+glabel D_808D1DEC
+    .asciz "LH\n"
+    .balign 4
+
+glabel D_808D1DF0
+    .asciz "RH\n"
+    .balign 4
+
+glabel D_808D1DF4
+    .asciz "BD\n"
+    .balign 4
+
+glabel D_808D1DF8
+    .asciz "../z_boss_fd.c"
+    .balign 4
+
+glabel D_808D1E08
+    .asciz "../z_boss_fd.c"
+    .balign 4
+
+glabel D_808D1E18
+    .asciz "BH\n"
+    .balign 4
+
+glabel D_808D1E1C
+    .asciz "BHC\n"
+    .balign 4
+
+glabel D_808D1E24
+    .asciz "BHCE\n"
+    .balign 4
+
+glabel D_808D1E2C
+    .asciz "SK\n"
+    .balign 4
+
+glabel D_808D1E30
+    .asciz "END\n"
+    .balign 4
+
+glabel D_808D1E38
+    .asciz "../z_boss_fd.c"
+    .balign 4
+
+.late_rodata
+glabel D_808D1FC0
+    .float 0.1
+
+glabel D_808D1FC4
+    .float 7000.0
+
+glabel D_808D1FC8
+    .float 5000.0
+
+glabel D_808D1FCC
+    .float 5000.0
+
+glabel D_808D1FD0
+    .float 1.57079637051
+
+glabel D_808D1FD4
+ .word 0xC0490FDB
+glabel D_808D1FD8
+    .float 0.2
+
+glabel D_808D1FDC
+    .float 3.14159274101
+
+.text
 glabel func_808D08F8
 /* 05B38 808D08F8 27BDFE88 */  addiu   $sp, $sp, 0xFE88           ## $sp = FFFFFE88
 /* 05B3C 808D08FC AFB60070 */  sw      $s6, 0x0070($sp)           
@@ -37,7 +111,7 @@ glabel func_808D08F8
 /* 05BC0 808D0980 AC580000 */  sw      $t8, 0x0000($v0)           ## 00000000
 /* 05BC4 808D0984 927902D5 */  lbu     $t9, 0x02D5($s3)           ## 000002D5
 /* 05BC8 808D0988 3C04808D */  lui     $a0, %hi(D_808D1BB8)       ## $a0 = 808D0000
-/* 05BCC 808D098C 3C0D8016 */  lui     $t5, 0x8016                ## $t5 = 80160000
+/* 05BCC 808D098C 3C0D8016 */  lui     $t5, %hi(gSegments)
 /* 05BD0 808D0990 00194080 */  sll     $t0, $t9,  2               
 /* 05BD4 808D0994 00882021 */  addu    $a0, $a0, $t0              
 /* 05BD8 808D0998 8C841BB8 */  lw      $a0, %lo(D_808D1BB8)($a0)  
@@ -47,7 +121,7 @@ glabel func_808D08F8
 /* 05BE8 808D09A8 000A5F02 */  srl     $t3, $t2, 28               
 /* 05BEC 808D09AC 000B6080 */  sll     $t4, $t3,  2               
 /* 05BF0 808D09B0 01AC6821 */  addu    $t5, $t5, $t4              
-/* 05BF4 808D09B4 8DAD6FA8 */  lw      $t5, 0x6FA8($t5)           ## 80166FA8
+/* 05BF4 808D09B4 8DAD6FA8 */  lw      $t5, %lo(gSegments)($t5)
 /* 05BF8 808D09B8 00814824 */  and     $t1, $a0, $at              
 /* 05BFC 808D09BC 3C018000 */  lui     $at, 0x8000                ## $at = 80000000
 /* 05C00 808D09C0 012D7021 */  addu    $t6, $t1, $t5              
@@ -881,4 +955,3 @@ glabel func_808D08F8
 /* 06874 808D1634 8FB60070 */  lw      $s6, 0x0070($sp)           
 /* 06878 808D1638 03E00008 */  jr      $ra                        
 /* 0687C 808D163C 27BD0178 */  addiu   $sp, $sp, 0x0178           ## $sp = 00000000
-

@@ -1,3 +1,13 @@
+.rdata
+glabel D_80A9A79C
+    .asciz "../z_en_ko.c"
+    .balign 4
+
+glabel D_80A9A7AC
+    .asciz "../z_en_ko.c"
+    .balign 4
+
+.text
 glabel EnKo_Draw
 /* 02F50 80A99D00 27BDFF98 */  addiu   $sp, $sp, 0xFF98           ## $sp = FFFFFF98
 /* 02F54 80A99D04 AFBF002C */  sw      $ra, 0x002C($sp)           
@@ -258,4 +268,3 @@ glabel EnKo_Draw
 /* 03324 80A9A0D4 8FB20028 */  lw      $s2, 0x0028($sp)           
 /* 03328 80A9A0D8 03E00008 */  jr      $ra                        
 /* 0332C 80A9A0DC 27BD0068 */  addiu   $sp, $sp, 0x0068           ## $sp = 00000000
-

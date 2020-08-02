@@ -1,3 +1,9 @@
+.rdata
+glabel D_80B9CBD4
+    .asciz "(dungeon keep 押し引きブロック)(arg_data 0x%04x)\n"
+    .balign 4
+
+.text
 glabel ObjOshihiki_Init
 /* 005E8 80B9B768 27BDFFE0 */  addiu   $sp, $sp, 0xFFE0           ## $sp = FFFFFFE0
 /* 005EC 80B9B76C AFBF001C */  sw      $ra, 0x001C($sp)           
@@ -86,5 +92,3 @@ glabel ObjOshihiki_Init
 /* 0070C 80B9B88C 27BD0020 */  addiu   $sp, $sp, 0x0020           ## $sp = 00000000
 /* 00710 80B9B890 03E00008 */  jr      $ra                        
 /* 00714 80B9B894 00000000 */  nop
-
-

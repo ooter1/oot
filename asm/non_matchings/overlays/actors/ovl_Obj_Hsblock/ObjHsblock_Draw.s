@@ -1,3 +1,17 @@
+.rdata
+glabel D_80B94154
+    .asciz "../z_obj_hsblock.c"
+    .balign 4
+
+glabel D_80B94168
+    .asciz "../z_obj_hsblock.c"
+    .balign 4
+
+glabel D_80B9417C
+    .asciz "../z_obj_hsblock.c"
+    .balign 4
+
+.text
 glabel ObjHsblock_Draw
 /* 003F0 80B93F50 27BDFFB0 */  addiu   $sp, $sp, 0xFFB0           ## $sp = FFFFFFB0
 /* 003F4 80B93F54 AFB10018 */  sw      $s1, 0x0018($sp)           
@@ -31,13 +45,13 @@ glabel ObjHsblock_Draw
 /* 00464 80B93FC4 3C0480B9 */  lui     $a0, %hi(D_80B940E8)       ## $a0 = 80B90000
 /* 00468 80B93FC8 AC620004 */  sw      $v0, 0x0004($v1)           ## 00000004
 /* 0046C 80B93FCC 863800A4 */  lh      $t8, 0x00A4($s1)           ## 000000A4
-/* 00470 80B93FD0 3C028016 */  lui     $v0, 0x8016                ## $v0 = 80160000
+/* 00470 80B93FD0 3C028016 */  lui     $v0, %hi(gGameInfo)
 /* 00474 80B93FD4 17010003 */  bne     $t8, $at, .L80B93FE4       
 /* 00478 80B93FD8 00000000 */  nop
 /* 0047C 80B93FDC 10000009 */  beq     $zero, $zero, .L80B94004   
 /* 00480 80B93FE0 248440E8 */  addiu   $a0, $a0, %lo(D_80B940E8)  ## $a0 = 80B940E8
 .L80B93FE4:
-/* 00484 80B93FE4 8C42FA90 */  lw      $v0, -0x0570($v0)          ## 8015FA90
+/* 00484 80B93FE4 8C42FA90 */  lw      $v0, %lo(gGameInfo)($v0)
 /* 00488 80B93FE8 27A40048 */  addiu   $a0, $sp, 0x0048           ## $a0 = FFFFFFF8
 /* 0048C 80B93FEC 8459116E */  lh      $t9, 0x116E($v0)           ## 8016116E
 /* 00490 80B93FF0 A3B90048 */  sb      $t9, 0x0048($sp)           
@@ -85,4 +99,3 @@ glabel ObjHsblock_Draw
 /* 00534 80B94094 8FB10018 */  lw      $s1, 0x0018($sp)           
 /* 00538 80B94098 03E00008 */  jr      $ra                        
 /* 0053C 80B9409C 27BD0050 */  addiu   $sp, $sp, 0x0050           ## $sp = 00000000
-

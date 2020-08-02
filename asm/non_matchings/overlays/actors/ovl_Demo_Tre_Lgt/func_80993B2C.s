@@ -1,3 +1,13 @@
+.rdata
+glabel D_80993E04
+    .asciz "../z_demo_tre_lgt.c"
+    .balign 4
+
+glabel D_80993E18
+    .asciz "../z_demo_tre_lgt.c"
+    .balign 4
+
+.text
 glabel func_80993B2C
 /* 0046C 80993B2C 27BDFF90 */  addiu   $sp, $sp, 0xFF90           ## $sp = FFFFFF90
 /* 00470 80993B30 AFB00038 */  sw      $s0, 0x0038($sp)           
@@ -100,5 +110,3 @@ glabel func_80993B2C
 /* 005E4 80993CA4 27BD0070 */  addiu   $sp, $sp, 0x0070           ## $sp = 00000000
 /* 005E8 80993CA8 03E00008 */  jr      $ra                        
 /* 005EC 80993CAC 00000000 */  nop
-
-

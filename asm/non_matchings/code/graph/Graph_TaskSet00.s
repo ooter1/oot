@@ -139,7 +139,7 @@ glabel Graph_TaskSet00
 /* B3D100 800C5F60 8E2502F0 */  lw    $a1, 0x2f0($s1)
 .L800C5F64:
 /* B3D104 800C5F64 0C001A78 */  jal   osGetTime
-/* B3D108 800C5F68 00000000 */   nop   
+/* B3D108 800C5F68 00000000 */   nop
 /* B3D10C 800C5F6C 3C048017 */  lui   $a0, %hi(D_8016A550) # $a0, 0x8017
 /* B3D110 800C5F70 2484A550 */  addiu $a0, %lo(D_8016A550) # addiu $a0, $a0, -0x5ab0
 /* B3D114 800C5F74 8C980000 */  lw    $t8, ($a0)
@@ -186,11 +186,11 @@ glabel Graph_TaskSet00
 /* B3D1B0 800C6010 AE090000 */  sw    $t1, ($s0)
 /* B3D1B4 800C6014 0C034B7C */  jal   SysUcode_GetUCodeBoot
 /* B3D1B8 800C6018 AE0C0004 */   sw    $t4, 4($s0)
-/* B3D1BC 800C601C 0C034B7F */  jal   SysUcode_GetUcodeBootSize
+/* B3D1BC 800C601C 0C034B7F */  jal   SysUcode_GetUCodeBootSize
 /* B3D1C0 800C6020 AE020008 */   sw    $v0, 8($s0)
-/* B3D1C4 800C6024 0C034B85 */  jal   SysUcode_GetUcode
+/* B3D1C4 800C6024 0C034B85 */  jal   SysUcode_GetUCode
 /* B3D1C8 800C6028 AE02000C */   sw    $v0, 0xc($s0)
-/* B3D1CC 800C602C 0C034B88 */  jal   SysUcode_GetUcodeData
+/* B3D1CC 800C602C 0C034B88 */  jal   SysUcode_GetUCodeData
 /* B3D1D0 800C6030 AE020010 */   sw    $v0, 0x10($s0)
 /* B3D1D4 800C6034 3C0F801B */  lui   $t7, %hi(gGfxSPTaskStack) # $t7, 0x801b
 /* B3D1D8 800C6038 3C19801A */  lui   $t9, %hi(gGfxSPTaskOutputBuffer) # $t9, 0x801a
@@ -291,7 +291,7 @@ glabel Graph_TaskSet00
 /* B3D350 800C61B0 0C000C18 */  jal   osSendMesg
 /* B3D354 800C61B4 AE240058 */   sw    $a0, 0x58($s1)
 /* B3D358 800C61B8 3C048016 */  lui   $a0, %hi(gSchedContext) # $a0, 0x8016
-/* B3D35C 800C61BC 0C03257E */  jal   func_800C95F8
+/* B3D35C 800C61BC 0C03257E */  jal   Sched_SendEntryMsg
 /* B3D360 800C61C0 24846668 */   addiu $a0, %lo(gSchedContext) # addiu $a0, $a0, 0x6668
 /* B3D364 800C61C4 8FBF002C */  lw    $ra, 0x2c($sp)
 /* B3D368 800C61C8 8FB00024 */  lw    $s0, 0x24($sp)

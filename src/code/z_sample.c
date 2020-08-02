@@ -1,22 +1,18 @@
 #include <ultra64.h>
+#include <ultra64/controller.h>
 #include <global.h>
-#include <PR/os_cont.h>
 
-void Sample_Calc(SampleContext* this) {
-    if (!~(this->state.input[0].padPressed | ~START_BUTTON)) {
-        SET_NEXT_GAMESTATE(&this->state, func_800BCA64, GlobalContext);
+void Sample_HandleStateChange(SampleContext* this) {
+    if (CHECK_PAD(this->state.input[0].press, START_BUTTON)) {
+        SET_NEXT_GAMESTATE(&this->state, Gameplay_Init, GlobalContext);
         this->state.running = false;
     }
 }
 
-// very close from matching, the only difference is the place of "mtx" in the stack
-#ifdef NON_MATCHING
 void Sample_Draw(SampleContext* this) {
-    u32 pad;
     GraphicsContext* gfxCtx = this->state.gfxCtx;
     View* view = &this->view;
-    Gfx* dispRefs[4];
-    Mtx* mtx;
+    Gfx* dispRefs[5];
 
     Graph_OpenDisps(dispRefs, gfxCtx, "../z_sample.c", 62);
 
@@ -25,12 +21,14 @@ void Sample_Draw(SampleContext* this) {
 
     func_80095248(gfxCtx, 0, 0, 0);
 
-    view->unk_120 = 7;
+    view->flags = 1 | 2 | 4;
     func_800AAA50(view, 15);
 
-    mtx = Graph_Alloc(gfxCtx, sizeof(Mtx));
-    func_80103D58(mtx, SREG(37), SREG(38), SREG(39), 1.0f, SREG(40), SREG(41), SREG(42));
-    gSPMatrix(gfxCtx->polyOpa.p++, mtx, G_MTX_LOAD);
+    if (1) {
+        Mtx* mtx = Graph_Alloc(gfxCtx, sizeof(Mtx));
+        guPosition(mtx, SREG(37), SREG(38), SREG(39), 1.0f, SREG(40), SREG(41), SREG(42));
+        gSPMatrix(gfxCtx->polyOpa.p++, mtx, G_MTX_LOAD);
+    }
 
     gfxCtx->polyOpa.p = Gfx_SetFog2(gfxCtx->polyOpa.p, 0xFF, 0xFF, 0xFF, 0, 0, 0);
     func_80093D18(gfxCtx);
@@ -38,17 +36,14 @@ void Sample_Draw(SampleContext* this) {
     gDPSetCycleType(gfxCtx->polyOpa.p++, G_CYC_1CYCLE);
     gDPSetRenderMode(gfxCtx->polyOpa.p++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gDPSetCombineMode(gfxCtx->polyOpa.p++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-    gDPSetPrimColor(gfxCtx->polyOpa.p++, 0, 0, 0xFF, 0xFF, 0x00, 0x00);
+    gDPSetPrimColor(gfxCtx->polyOpa.p++, 0, 0, 255, 255, 0, 0);
 
     Graph_CloseDisps(dispRefs, gfxCtx, "../z_sample.c", 111);
 }
-#else
-#pragma GLOBAL_ASM("asm/non_matchings/code/z_sample/Sample_Draw.s")
-#endif
 
-void Sample_Update(SampleContext* this) {
+void Sample_Main(SampleContext* this) {
     Sample_Draw(this);
-    Sample_Calc(this);
+    Sample_HandleStateChange(this);
 }
 
 void Sample_Destroy(SampleContext* this) {
@@ -57,45 +52,42 @@ void Sample_Destroy(SampleContext* this) {
 void Sample_SetupView(SampleContext* this) {
     View* view;
     GraphicsContext* gfxCtx;
-    u32 v0[4];
-    Vec3f v1;
-    Vec3f v2;
-    Vec3f v3;
 
     view = &this->view;
     gfxCtx = this->state.gfxCtx;
-    func_800AA278(view, gfxCtx);
 
-    // clang-format off
-    v0[1] = SCREEN_HEIGHT; v0[3] = SCREEN_WIDTH; 
-    v0[0] = 0; v0[2] = 0;
-    // clang-format on
-
-    func_800AA4FC(view, &v0);
+    View_Init(view, gfxCtx);
+    SET_FULLSCREEN_VIEWPORT(view);
     func_800AA460(view, 60, 10, 12800);
 
-    v1.x = 0;
-    v1.y = 0;
-    v2.x = 0;
-    v2.y = 0;
-    v2.z = 0;
-    v3.x = 0;
-    v3.z = 0;
-    v1.z = 3000;
-    v3.y = 1;
+    {
+        Vec3f v1;
+        Vec3f v2;
+        Vec3f v3;
 
-    func_800AA358(view, &v1, &v2, &v3);
+        v1.x = 0;
+        v1.y = 0;
+        v2.x = 0;
+        v2.y = 0;
+        v2.z = 0;
+        v3.x = 0;
+        v3.z = 0;
+        v1.z = 3000;
+        v3.y = 1;
+
+        func_800AA358(view, &v1, &v2, &v3);
+    }
 }
 
 void Sample_LoadTitleStatic(SampleContext* this) {
     u32 size = _title_staticSegmentRomEnd - _title_staticSegmentRomStart;
 
-    this->staticSegment = Game_Alloc(&this->state, size, "../z_sample.c", 163);
+    this->staticSegment = GameState_Alloc(&this->state, size, "../z_sample.c", 163);
     DmaMgr_SendRequest1(this->staticSegment, _title_staticSegmentRomStart, size, "../z_sample.c", 164);
 }
 
 void Sample_Init(SampleContext* this) {
-    this->state.main = Sample_Update;
+    this->state.main = Sample_Main;
     this->state.destroy = Sample_Destroy;
     R_UPDATE_RATE = 1;
     Sample_SetupView(this);

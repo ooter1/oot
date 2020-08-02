@@ -1,3 +1,8 @@
+.late_rodata
+glabel D_808F8000
+    .float 1.99
+
+.text
 glabel func_808DC14C
 /* 058DC 808DC14C 27BDFFB0 */  addiu   $sp, $sp, 0xFFB0           ## $sp = FFFFFFB0
 /* 058E0 808DC150 AFB00038 */  sw      $s0, 0x0038($sp)
@@ -39,12 +44,12 @@ glabel func_808DC14C
 /* 05960 808DC1D0 3C014140 */  lui     $at, 0x4140                ## $at = 41400000
 /* 05964 808DC1D4 44810000 */  mtc1    $at, $f0                   ## $f0 = 12.00
 /* 05968 808DC1D8 C6040168 */  lwc1    $f4, 0x0168($s0)           ## 00000168
-/* 0596C 808DC1DC 3C088016 */  lui     $t0, 0x8016                ## $t0 = 80160000
+/* 0596C 808DC1DC 3C088016 */  lui     $t0, %hi(D_8015FCF8)
 /* 05970 808DC1E0 44050000 */  mfc1    $a1, $f0
 /* 05974 808DC1E4 4600203E */  c.le.s  $f4, $f0
 /* 05978 808DC1E8 24180002 */  addiu   $t8, $zero, 0x0002         ## $t8 = 00000002
 /* 0597C 808DC1EC 24190002 */  addiu   $t9, $zero, 0x0002         ## $t9 = 00000002
-/* 05980 808DC1F0 2508FCF8 */  addiu   $t0, $t0, 0xFCF8           ## $t0 = 8015FCF8
+/* 05980 808DC1F0 2508FCF8 */  addiu   $t0, %lo(D_8015FCF8)
 /* 05984 808DC1F4 45000009 */  bc1f    .L808DC21C
 /* 05988 808DC1F8 00000000 */  nop
 /* 0598C 808DC1FC 8E0A0260 */  lw      $t2, 0x0260($s0)           ## 00000260
@@ -199,5 +204,3 @@ glabel func_808DC14C
 /* 05BA4 808DC414 27BD0050 */  addiu   $sp, $sp, 0x0050           ## $sp = 00000000
 /* 05BA8 808DC418 03E00008 */  jr      $ra
 /* 05BAC 808DC41C 00000000 */  nop
-
-

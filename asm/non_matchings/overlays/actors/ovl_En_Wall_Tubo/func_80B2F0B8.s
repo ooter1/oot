@@ -1,3 +1,25 @@
+.rdata
+glabel D_80B2F3A0
+    .asciz "\x1b[32m☆☆☆☆ やった原！ ☆☆☆☆☆ \n\x1b[m"
+    .balign 4
+
+glabel D_80B2F3CC
+    .asciz "\x1b[33m☆☆☆☆ やった原！ ☆☆☆☆☆ \n\x1b[m"
+    .balign 4
+
+glabel D_80B2F3F8
+    .asciz "\x1b[34m☆☆☆☆ やった原！ ☆☆☆☆☆ \n\x1b[m"
+    .balign 4
+
+glabel D_80B2F424
+    .asciz "\x1b[35m☆☆☆☆ やった原！ ☆☆☆☆☆ \n\x1b[m"
+    .balign 4
+
+glabel D_80B2F450
+    .asciz "\x1b[36m☆☆☆☆ やった原！ ☆☆☆☆☆ \n\x1b[m"
+    .balign 4
+
+.text
 glabel func_80B2F0B8
 /* 002C8 80B2F0B8 27BDFFA0 */  addiu   $sp, $sp, 0xFFA0           ## $sp = FFFFFFA0
 /* 002CC 80B2F0BC 3C0F80B3 */  lui     $t7, %hi(D_80B2F358)       ## $t7 = 80B30000
@@ -53,7 +75,7 @@ glabel func_80B2F0B8
 /* 0038C 80B2F17C AFB80014 */  sw      $t8, 0x0014($sp)           
 /* 00390 80B2F180 AFAF0010 */  sw      $t7, 0x0010($sp)           
 /* 00394 80B2F184 27A70050 */  addiu   $a3, $sp, 0x0050           ## $a3 = FFFFFFF0
-/* 00398 80B2F188 0C00A3A1 */  jal     func_80028E84              
+/* 00398 80B2F188 0C00A3A1 */  jal     EffectSsBomb2_SpawnLayered              
 /* 0039C 80B2F18C E7B00040 */  swc1    $f16, 0x0040($sp)          
 /* 003A0 80B2F190 24190032 */  addiu   $t9, $zero, 0x0032         ## $t9 = 00000032
 /* 003A4 80B2F194 2408000F */  addiu   $t0, $zero, 0x000F         ## $t0 = 0000000F
@@ -116,5 +138,3 @@ glabel func_80B2F0B8
 /* 00460 80B2F250 27BD0060 */  addiu   $sp, $sp, 0x0060           ## $sp = 00000000
 /* 00464 80B2F254 03E00008 */  jr      $ra                        
 /* 00468 80B2F258 00000000 */  nop
-
-

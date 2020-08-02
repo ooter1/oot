@@ -1,3 +1,21 @@
+.rdata
+glabel D_80A23AC8
+    .asciz "../z_en_g_switch.c"
+    .balign 4
+
+glabel D_80A23ADC
+    .asciz "../z_en_g_switch.c"
+    .balign 4
+
+glabel D_80A23AF0
+    .asciz "../z_en_g_switch.c"
+    .balign 4
+
+.late_rodata
+glabel D_80A23B24
+    .float 10000.0
+
+.text
 glabel func_80A234D4
 /* 01614 80A234D4 27BDFF70 */  addiu   $sp, $sp, 0xFF70           ## $sp = FFFFFF70
 /* 01618 80A234D8 AFBF004C */  sw      $ra, 0x004C($sp)           
@@ -80,7 +98,7 @@ glabel func_80A234D4
 /* 01748 80A23608 AC480000 */  sw      $t0, 0x0000($v0)           ## 00000000
 /* 0174C 80A2360C 86090010 */  lh      $t1, 0x0010($s0)           ## 000001D8
 /* 01750 80A23610 3C0480A2 */  lui     $a0, %hi(D_80A2375C)       ## $a0 = 80A20000
-/* 01754 80A23614 3C0F8016 */  lui     $t7, 0x8016                ## $t7 = 80160000
+/* 01754 80A23614 3C0F8016 */  lui     $t7, %hi(gSegments)
 /* 01758 80A23618 00095080 */  sll     $t2, $t1,  2               
 /* 0175C 80A2361C 008A2021 */  addu    $a0, $a0, $t2              
 /* 01760 80A23620 8C84375C */  lw      $a0, %lo(D_80A2375C)($a0)  
@@ -90,7 +108,7 @@ glabel func_80A234D4
 /* 01770 80A23630 000C6F02 */  srl     $t5, $t4, 28               
 /* 01774 80A23634 000D7080 */  sll     $t6, $t5,  2               
 /* 01778 80A23638 01EE7821 */  addu    $t7, $t7, $t6              
-/* 0177C 80A2363C 8DEF6FA8 */  lw      $t7, 0x6FA8($t7)           ## 80166FA8
+/* 0177C 80A2363C 8DEF6FA8 */  lw      $t7, %lo(gSegments)($t7)
 /* 01780 80A23640 00815824 */  and     $t3, $a0, $at              
 /* 01784 80A23644 3C018000 */  lui     $at, 0x8000                ## $at = 80000000
 /* 01788 80A23648 016FC021 */  addu    $t8, $t3, $t7              
@@ -133,4 +151,3 @@ glabel func_80A234D4
 /* 01814 80A236D4 27BD0090 */  addiu   $sp, $sp, 0x0090           ## $sp = 00000000
 /* 01818 80A236D8 00000000 */  nop
 /* 0181C 80A236DC 00000000 */  nop
-

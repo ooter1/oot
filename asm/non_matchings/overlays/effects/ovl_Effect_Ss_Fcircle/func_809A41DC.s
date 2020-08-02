@@ -1,3 +1,30 @@
+.rdata
+glabel D_809A45A0
+    .asciz "../z_eff_fcircle.c"
+    .balign 4
+
+glabel D_809A45B4
+    .asciz "../z_eff_fcircle.c"
+    .balign 4
+
+glabel D_809A45C8
+    .asciz "../z_eff_fcircle.c"
+    .balign 4
+
+.late_rodata
+glabel D_809A45DC
+    .float 0.001
+
+glabel D_809A45E0
+    .float 0.025
+
+glabel D_809A45E4
+    .float 0.01
+
+glabel D_809A45E8
+    .float 9.58738019108e-05
+
+.text
 glabel func_809A41DC
 /* 000BC 809A41DC 27BDFF80 */  addiu   $sp, $sp, 0xFF80           ## $sp = FFFFFF80
 /* 000C0 809A41E0 AFB10038 */  sw      $s1, 0x0038($sp)           
@@ -195,5 +222,3 @@ glabel func_809A41DC
 /* 003B4 809A44D4 8FB10038 */  lw      $s1, 0x0038($sp)           
 /* 003B8 809A44D8 03E00008 */  jr      $ra                        
 /* 003BC 809A44DC 27BD0080 */  addiu   $sp, $sp, 0x0080           ## $sp = 00000000
-
-

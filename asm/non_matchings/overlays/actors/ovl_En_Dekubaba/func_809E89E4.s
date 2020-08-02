@@ -1,3 +1,17 @@
+.rdata
+glabel D_809E90B8
+    .asciz "../z_en_dekubaba.c"
+    .balign 4
+
+glabel D_809E90CC
+    .asciz "../z_en_dekubaba.c"
+    .balign 4
+
+glabel D_809E90E0
+    .asciz "../z_en_dekubaba.c"
+    .balign 4
+
+.text
 glabel func_809E89E4
 /* 03214 809E89E4 27BDFFC0 */  addiu   $sp, $sp, 0xFFC0           ## $sp = FFFFFFC0
 /* 03218 809E89E8 AFBF001C */  sw      $ra, 0x001C($sp)
@@ -15,7 +29,7 @@ glabel func_809E89E4
 /* 03248 809E8A18 00003025 */  or      $a2, $zero, $zero          ## $a2 = 00000000
 /* 0324C 809E8A1C 24070001 */  addiu   $a3, $zero, 0x0001         ## $a3 = 00000001
 /* 03250 809E8A20 844401CE */  lh      $a0, 0x01CE($v0)           ## 000001CE
-/* 03254 809E8A24 0C034421 */  jal     Matrix_RotateZYX
+/* 03254 809E8A24 0C034421 */  jal     Matrix_RotateRPY
 /* 03258 809E8A28 844500B6 */  lh      $a1, 0x00B6($v0)           ## 000000B6
 /* 0325C 809E8A2C 8E0202C0 */  lw      $v0, 0x02C0($s0)           ## 000002C0
 /* 03260 809E8A30 3C18DA38 */  lui     $t8, 0xDA38                ## $t8 = DA380000
@@ -60,5 +74,3 @@ glabel func_809E89E4
 /* 032FC 809E8ACC 27BD0040 */  addiu   $sp, $sp, 0x0040           ## $sp = 00000000
 /* 03300 809E8AD0 03E00008 */  jr      $ra
 /* 03304 809E8AD4 00000000 */  nop
-
-

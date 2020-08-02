@@ -29,22 +29,22 @@ glabel func_800C05E4
 /* B377D4 800C0634 01F8C821 */  addu  $t9, $t7, $t8
 /* B377D8 800C0638 8F300790 */  lw    $s0, 0x790($t9)
 /* B377DC 800C063C 02403025 */  move  $a2, $s2
-/* B377E0 800C0640 0C016AA4 */  jal   func_8005AA90
+/* B377E0 800C0640 0C016AA4 */  jal   Camera_SetParam
 /* B377E4 800C0644 02002025 */   move  $a0, $s0
 /* B377E8 800C0648 00028840 */  sll   $s1, $v0, 1
 /* B377EC 800C064C 02002025 */  move  $a0, $s0
 /* B377F0 800C0650 24050002 */  li    $a1, 2
-/* B377F4 800C0654 0C016AA4 */  jal   func_8005AA90
+/* B377F4 800C0654 0C016AA4 */  jal   Camera_SetParam
 /* B377F8 800C0658 8FA60034 */   lw    $a2, 0x34($sp)
 /* B377FC 800C065C 02228825 */  or    $s1, $s1, $v0
 /* B37800 800C0660 00118840 */  sll   $s1, $s1, 1
 /* B37804 800C0664 02002025 */  move  $a0, $s0
 /* B37808 800C0668 24050004 */  li    $a1, 4
-/* B3780C 800C066C 0C016AA4 */  jal   func_8005AA90
+/* B3780C 800C066C 0C016AA4 */  jal   Camera_SetParam
 /* B37810 800C0670 8FA60038 */   lw    $a2, 0x38($sp)
 /* B37814 800C0674 02228825 */  or    $s1, $s1, $v0
 /* B37818 800C0678 02402025 */  move  $a0, $s2
-/* B3781C 800C067C 0C032D9E */  jal   func_800CB678
+/* B3781C 800C067C 0C032D9E */  jal   Math3D_Vec3f_DistXYZ
 /* B37820 800C0680 8FA50034 */   lw    $a1, 0x34($sp)
 /* B37824 800C0684 8E020090 */  lw    $v0, 0x90($s0)
 /* B37828 800C0688 E60000DC */  swc1  $f0, 0xdc($s0)
@@ -66,7 +66,7 @@ glabel func_800C05E4
 /* B37868 800C06C8 E60800EC */   swc1  $f8, 0xec($s0)
 /* B3786C 800C06CC 44800000 */  mtc1  $zero, $f0
 .L800C06D0:
-/* B37870 800C06D0 00000000 */  nop   
+/* B37870 800C06D0 00000000 */  nop
 /* B37874 800C06D4 E60000EC */  swc1  $f0, 0xec($s0)
 /* B37878 800C06D8 E60000E8 */  swc1  $f0, 0xe8($s0)
 /* B3787C 800C06DC E60000E4 */  swc1  $f0, 0xe4($s0)

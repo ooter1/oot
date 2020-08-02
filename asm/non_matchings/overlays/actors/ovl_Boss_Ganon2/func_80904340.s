@@ -1,3 +1,34 @@
+.rdata
+glabel D_8090D78C
+    .asciz "../z_boss_ganon2.c"
+    .balign 4
+
+glabel D_8090D7A0
+    .asciz "../z_boss_ganon2.c"
+    .balign 4
+
+glabel D_8090D7B4
+    .asciz "../z_boss_ganon2.c"
+    .balign 4
+
+.late_rodata
+glabel D_8090DD1C
+    .float 3.14159274101
+
+glabel D_8090DD20
+    .float 5000.0
+
+glabel D_8090DD24
+ .word 0x3FA0D97C
+glabel D_8090DD28
+ .word 0x45959000
+glabel D_8090DD2C
+    .float 0.01
+
+glabel D_8090DD30
+    .float 3.14159274101
+
+.text
 glabel func_80904340
 /* 07400 80904340 27BDFF48 */  addiu   $sp, $sp, 0xFF48           ## $sp = FFFFFF48
 /* 07404 80904344 AFB60060 */  sw      $s6, 0x0060($sp)           
@@ -90,8 +121,8 @@ glabel func_80904340
 /* 0754C 8090448C 0002C900 */  sll     $t9, $v0,  4               
 /* 07550 80904490 00194702 */  srl     $t0, $t9, 28               
 /* 07554 80904494 4481D000 */  mtc1    $at, $f26                  ## $f26 = -200.00
-/* 07558 80904498 3C0A8016 */  lui     $t2, 0x8016                ## $t2 = 80160000
-/* 0755C 8090449C 254A6FA8 */  addiu   $t2, $t2, 0x6FA8           ## $t2 = 80166FA8
+/* 07558 80904498 3C0A8016 */  lui     $t2, %hi(gSegments)
+/* 0755C 8090449C 254A6FA8 */  addiu   $t2, %lo(gSegments)
 /* 07560 809044A0 3C018091 */  lui     $at, %hi(D_8090DD20)       ## $at = 80910000
 /* 07564 809044A4 00084880 */  sll     $t1, $t0,  2               
 /* 07568 809044A8 46040782 */  mul.s   $f30, $f0, $f4             
@@ -204,5 +235,3 @@ glabel func_80904340
 /* 07700 80904640 8FB60060 */  lw      $s6, 0x0060($sp)           
 /* 07704 80904644 03E00008 */  jr      $ra                        
 /* 07708 80904648 27BD00B8 */  addiu   $sp, $sp, 0x00B8           ## $sp = 00000000
-
-

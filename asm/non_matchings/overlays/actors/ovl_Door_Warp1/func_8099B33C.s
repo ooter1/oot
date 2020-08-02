@@ -1,3 +1,13 @@
+.rdata
+glabel D_8099C644
+    .asciz "../z_door_warp1.c"
+    .balign 4
+
+glabel D_8099C658
+    .asciz "../z_door_warp1.c"
+    .balign 4
+
+.text
 glabel func_8099B33C
 /* 02BBC 8099B33C 27BDFF90 */  addiu   $sp, $sp, 0xFF90           ## $sp = FFFFFF90
 /* 02BC0 8099B340 AFBF0034 */  sw      $ra, 0x0034($sp)
@@ -181,5 +191,3 @@ glabel func_8099B33C
 /* 02E60 8099B5E0 8FB20030 */  lw      $s2, 0x0030($sp)
 /* 02E64 8099B5E4 03E00008 */  jr      $ra
 /* 02E68 8099B5E8 27BD0070 */  addiu   $sp, $sp, 0x0070           ## $sp = 00000000
-
-

@@ -1,3 +1,13 @@
+.rdata
+glabel D_80A6AFB0
+    .asciz "../z_en_horse_link_child.c"
+    .balign 4
+
+glabel D_80A6AFCC
+    .asciz "../z_en_horse_link_child.c"
+    .balign 4
+
+.text
 glabel func_80A6AD84
 /* 019B4 80A6AD84 27BDFFC0 */  addiu   $sp, $sp, 0xFFC0           ## $sp = FFFFFFC0
 /* 019B8 80A6AD88 AFBF0014 */  sw      $ra, 0x0014($sp)           
@@ -32,13 +42,13 @@ glabel func_80A6AD84
 /* 01A2C 80A6ADFC 008B2021 */  addu    $a0, $a0, $t3              
 /* 01A30 80A6AE00 AC6A0000 */  sw      $t2, 0x0000($v1)           ## 00000000
 /* 01A34 80A6AE04 8C84AF94 */  lw      $a0, %lo(D_80A6AF94)($a0)  
-/* 01A38 80A6AE08 3C188016 */  lui     $t8, 0x8016                ## $t8 = 80160000
+/* 01A38 80A6AE08 3C188016 */  lui     $t8, %hi(gSegments)
 /* 01A3C 80A6AE0C 3C0100FF */  lui     $at, 0x00FF                ## $at = 00FF0000
 /* 01A40 80A6AE10 00046900 */  sll     $t5, $a0,  4               
 /* 01A44 80A6AE14 000D7702 */  srl     $t6, $t5, 28               
 /* 01A48 80A6AE18 000E7880 */  sll     $t7, $t6,  2               
 /* 01A4C 80A6AE1C 030FC021 */  addu    $t8, $t8, $t7              
-/* 01A50 80A6AE20 8F186FA8 */  lw      $t8, 0x6FA8($t8)           ## 80166FA8
+/* 01A50 80A6AE20 8F186FA8 */  lw      $t8, %lo(gSegments)($t8)
 /* 01A54 80A6AE24 3421FFFF */  ori     $at, $at, 0xFFFF           ## $at = 00FFFFFF
 /* 01A58 80A6AE28 00816024 */  and     $t4, $a0, $at              
 /* 01A5C 80A6AE2C 3C018000 */  lui     $at, 0x8000                ## $at = 80000000
@@ -57,5 +67,3 @@ glabel func_80A6AD84
 /* 01A8C 80A6AE5C 24020001 */  addiu   $v0, $zero, 0x0001         ## $v0 = 00000001
 /* 01A90 80A6AE60 03E00008 */  jr      $ra                        
 /* 01A94 80A6AE64 00000000 */  nop
-
-

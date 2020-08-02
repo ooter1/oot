@@ -1,3 +1,10 @@
+.late_rodata
+glabel D_80AD2928
+ .word 0x40A9999A
+glabel D_80AD292C
+ .word 0x3A03126F
+
+.text
 glabel func_80AD076C
 /* 012CC 80AD076C 27BDFF70 */  addiu   $sp, $sp, 0xFF70           ## $sp = FFFFFF70
 /* 012D0 80AD0770 AFBF005C */  sw      $ra, 0x005C($sp)           
@@ -255,7 +262,7 @@ glabel func_80AD076C
 /* 01650 80AD0AF0 240B0028 */  addiu   $t3, $zero, 0x0028         ## $t3 = 00000028
 /* 01654 80AD0AF4 AFAB0014 */  sw      $t3, 0x0014($sp)           
 /* 01658 80AD0AF8 AFAA0010 */  sw      $t2, 0x0010($sp)           
-/* 0165C 80AD0AFC 0C00AA7D */  jal     func_8002A9F4              
+/* 0165C 80AD0AFC 0C00AA7D */  jal     EffectSsDeadSound_SpawnStationary              
 /* 01660 80AD0B00 24070001 */  addiu   $a3, $zero, 0x0001         ## $a3 = 00000001
 .L80AD0B04:
 /* 01664 80AD0B04 8FA40094 */  lw      $a0, 0x0094($sp)           
@@ -275,5 +282,3 @@ glabel func_80AD076C
 /* 01690 80AD0B30 8FB20058 */  lw      $s2, 0x0058($sp)           
 /* 01694 80AD0B34 03E00008 */  jr      $ra                        
 /* 01698 80AD0B38 27BD0090 */  addiu   $sp, $sp, 0x0090           ## $sp = 00000000
-
-

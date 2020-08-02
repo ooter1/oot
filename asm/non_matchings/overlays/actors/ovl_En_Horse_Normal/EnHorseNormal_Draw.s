@@ -1,3 +1,32 @@
+.rdata
+glabel D_80A6D560
+    .asciz "../z_en_horse_normal.c"
+    .balign 4
+
+glabel D_80A6D578
+    .asciz "../z_en_horse_normal.c"
+    .balign 4
+
+glabel D_80A6D590
+    .asciz "../z_en_horse_normal.c"
+    .balign 4
+
+.late_rodata
+glabel D_80A6D5E8
+ .word 0x43B18000
+glabel D_80A6D5EC
+ .word 0xC4368000
+glabel D_80A6D5F0
+ .word 0xC4898000
+glabel D_80A6D5F4
+ .word 0xC4924000
+glabel D_80A6D5F8
+    .float 0.01
+
+glabel D_80A6D5FC
+    .float 9.58738019108e-05
+
+.text
 glabel EnHorseNormal_Draw
 /* 01C1C 80A6CE6C 27BDFF30 */  addiu   $sp, $sp, 0xFF30           ## $sp = FFFFFF30
 /* 01C20 80A6CE70 AFB10030 */  sw      $s1, 0x0030($sp)           
@@ -199,10 +228,10 @@ glabel EnHorseNormal_Draw
 /* 01F18 80A6D168 8FA800C4 */  lw      $t0, 0x00C4($sp)           
 /* 01F1C 80A6D16C 8D0402C0 */  lw      $a0, 0x02C0($t0)           ## 000002C0
 /* 01F20 80A6D170 3C09DA38 */  lui     $t1, 0xDA38                ## $t1 = DA380000
-/* 01F24 80A6D174 3C198013 */  lui     $t9, 0x8013                ## $t9 = 80130000
+/* 01F24 80A6D174 3C198013 */  lui     $t9, %hi(gMtxClear)
 /* 01F28 80A6D178 24980008 */  addiu   $t8, $a0, 0x0008           ## $t8 = 00000008
 /* 01F2C 80A6D17C AD1802C0 */  sw      $t8, 0x02C0($t0)           ## 000002C0
-/* 01F30 80A6D180 2739DB20 */  addiu   $t9, $t9, 0xDB20           ## $t9 = 8012DB20
+/* 01F30 80A6D180 2739DB20 */  addiu   $t9, %lo(gMtxClear)
 /* 01F34 80A6D184 35290003 */  ori     $t1, $t1, 0x0003           ## $t1 = DA380003
 /* 01F38 80A6D188 AC890000 */  sw      $t1, 0x0000($a0)           ## 00000000
 /* 01F3C 80A6D18C AC990004 */  sw      $t9, 0x0004($a0)           ## 00000004
@@ -240,7 +269,7 @@ glabel EnHorseNormal_Draw
 /* 01FBC 80A6D20C C7A8006C */  lwc1    $f8, 0x006C($sp)           
 /* 01FC0 80A6D210 4600428D */  trunc.w.s $f10, $f8                  
 /* 01FC4 80A6D214 440A5000 */  mfc1    $t2, $f10                  
-/* 01FC8 80A6D218 0C017713 */  jal     Actor_CollisionCheck_SetOT
+/* 01FC8 80A6D218 0C017713 */  jal     CollisionCheck_SetOC
               ## CollisionCheck_setOT
 /* 01FCC 80A6D21C A60A031E */  sh      $t2, 0x031E($s0)           ## 0000031E
 /* 01FD0 80A6D220 0C025011 */  jal     func_80094044              
@@ -321,4 +350,3 @@ glabel EnHorseNormal_Draw
 /* 020F4 80A6D344 8FB10030 */  lw      $s1, 0x0030($sp)           
 /* 020F8 80A6D348 03E00008 */  jr      $ra                        
 /* 020FC 80A6D34C 27BD00D0 */  addiu   $sp, $sp, 0x00D0           ## $sp = 00000000
-

@@ -1,3 +1,38 @@
+.late_rodata
+glabel D_80A061FC
+    .float 0.03333333507180214
+
+glabel D_80A06200
+    .float 0.05
+
+glabel D_80A06204
+    .float 0.008
+
+glabel D_80A06208
+    .float 0.008
+
+glabel D_80A0620C
+    .float 1500.0
+
+glabel D_80A06210
+    .float 0.2
+
+glabel D_80A06214
+    .float 1500.0
+
+glabel D_80A06218
+    .float 0.2
+
+glabel D_80A0621C
+    .float 0.2
+
+glabel D_80A06220
+    .float 0.2
+
+glabel D_80A06224
+    .float 8.000000525498763e-05
+
+.text
 glabel func_80A03CF8
 /* 020C8 80A03CF8 27BDFFA0 */  addiu   $sp, $sp, 0xFFA0           ## $sp = FFFFFFA0
 /* 020CC 80A03CFC AFBF0024 */  sw      $ra, 0x0024($sp)           
@@ -62,11 +97,11 @@ glabel func_80A03CF8
 /* 021B0 80A03DE0 8FB80064 */  lw      $t8, 0x0064($sp)           
 .L80A03DE4:
 /* 021B4 80A03DE4 24010034 */  addiu   $at, $zero, 0x0034         ## $at = 00000034
-/* 021B8 80A03DE8 3C0F8016 */  lui     $t7, 0x8016                ## $t7 = 80160000
+/* 021B8 80A03DE8 3C0F8016 */  lui     $t7, %hi(gSaveContext+0x1360)
 /* 021BC 80A03DEC 871900A4 */  lh      $t9, 0x00A4($t8)           ## 000000A4
 /* 021C0 80A03DF0 17210028 */  bne     $t9, $at, .L80A03E94       
 /* 021C4 80A03DF4 00000000 */  nop
-/* 021C8 80A03DF8 8DEFF9C0 */  lw      $t7, -0x0640($t7)          ## 8015F9C0
+/* 021C8 80A03DF8 8DEFF9C0 */  lw      $t7, %lo(gSaveContext+0x1360)($t7)
 /* 021CC 80A03DFC 24010004 */  addiu   $at, $zero, 0x0004         ## $at = 00000004
 /* 021D0 80A03E00 8FA80064 */  lw      $t0, 0x0064($sp)           
 /* 021D4 80A03E04 15E10023 */  bne     $t7, $at, .L80A03E94       
@@ -456,5 +491,3 @@ glabel func_80A03CF8
 /* 02750 80A04380 27BD0060 */  addiu   $sp, $sp, 0x0060           ## $sp = 00000000
 /* 02754 80A04384 03E00008 */  jr      $ra                        
 /* 02758 80A04388 00000000 */  nop
-
-

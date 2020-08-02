@@ -1,3 +1,45 @@
+.rdata
+glabel D_80B10468
+    .asciz "\x1b[31m☆☆☆☆☆ １フレームの攻防！ ☆☆☆☆ \n\x1b[m"
+    .balign 4
+
+glabel D_80B1049C
+    .asciz "\x1b[31m☆☆☆☆☆ １フレームの攻防！ ☆☆☆☆ \n\x1b[m"
+    .balign 4
+
+glabel D_80B104D0
+    .asciz "\x1b[31m☆☆☆☆☆ １フレームの攻防！ ☆☆☆☆ \n\x1b[m"
+    .balign 4
+
+glabel D_80B10504
+    .asciz "\x1b[31m☆☆☆☆☆ １フレームの攻防！ ☆☆☆☆ \n\x1b[m"
+    .balign 4
+
+glabel D_80B10538
+    .asciz "\x1b[31m☆☆☆☆☆ １フレームの攻防！ ☆☆☆☆ \n\x1b[m"
+    .balign 4
+
+glabel D_80B1056C
+    .asciz "\x1b[31m☆☆☆☆☆ １フレームの攻防！ ☆☆☆☆ \n\x1b[m"
+    .balign 4
+
+glabel D_80B105A0
+    .asciz "\x1b[31m☆☆☆☆☆ １フレームの攻防！ ☆☆☆☆ \n\x1b[m"
+    .balign 4
+
+glabel D_80B105D4
+    .asciz "\x1b[31m☆☆☆☆☆ １フレームの攻防！ ☆☆☆☆ \n\x1b[m"
+    .balign 4
+
+glabel D_80B10608
+    .asciz "\x1b[31m☆☆☆☆☆ １フレームの攻防！ ☆☆☆☆ \n\x1b[m"
+    .balign 4
+
+glabel D_80B1063C
+    .asciz "\x1b[31m☆☆☆☆☆ １フレームの攻防！ ☆☆☆☆ \n\x1b[m"
+    .balign 4
+
+.text
 glabel func_80B10070
 /* 009C0 80B10070 27BDFFD8 */  addiu   $sp, $sp, 0xFFD8           ## $sp = FFFFFFD8
 /* 009C4 80B10074 AFBF001C */  sw      $ra, 0x001C($sp)           
@@ -69,5 +111,3 @@ glabel func_80B10070
 /* 00A9C 80B1014C 27BD0028 */  addiu   $sp, $sp, 0x0028           ## $sp = 00000000
 /* 00AA0 80B10150 03E00008 */  jr      $ra                        
 /* 00AA4 80B10154 00000000 */  nop
-
-

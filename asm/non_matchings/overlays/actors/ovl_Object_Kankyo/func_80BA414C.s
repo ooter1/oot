@@ -1,3 +1,30 @@
+.rdata
+glabel D_80BA5A88
+    .asciz "../z_object_kankyo.c"
+    .balign 4
+
+glabel D_80BA5AA0
+    .asciz "../z_object_kankyo.c"
+    .balign 4
+
+glabel D_80BA5AB8
+    .asciz "../z_object_kankyo.c"
+    .balign 4
+
+.late_rodata
+glabel D_80BA5CA4
+    .float 0.049999997
+
+glabel D_80BA5CA8
+    .float 0.01
+
+glabel D_80BA5CAC
+    .float 0.01
+
+glabel D_80BA5CB0
+    .float 0.05
+
+.text
 glabel func_80BA414C
 /* 016AC 80BA414C 27BDFEE8 */  addiu   $sp, $sp, 0xFEE8           ## $sp = FFFFFEE8
 /* 016B0 80BA4150 3C0F80BA */  lui     $t7, %hi(D_80BA5984)       ## $t7 = 80BA0000
@@ -85,8 +112,8 @@ glabel func_80BA414C
 /* 017F0 80BA4290 00026100 */  sll     $t4, $v0,  4               
 /* 017F4 80BA4294 000C6F02 */  srl     $t5, $t4, 28               
 /* 017F8 80BA4298 3C0142A0 */  lui     $at, 0x42A0                ## $at = 42A00000
-/* 017FC 80BA429C 3C0F8016 */  lui     $t7, 0x8016                ## $t7 = 80160000
-/* 01800 80BA42A0 25EF6FA8 */  addiu   $t7, $t7, 0x6FA8           ## $t7 = 80166FA8
+/* 017FC 80BA429C 3C0F8016 */  lui     $t7, %hi(gSegments)
+/* 01800 80BA42A0 25EF6FA8 */  addiu   $t7, %lo(gSegments)
 /* 01804 80BA42A4 000D7080 */  sll     $t6, $t5,  2               
 /* 01808 80BA42A8 3C080100 */  lui     $t0, 0x0100                ## $t0 = 01000000
 /* 0180C 80BA42AC 3C090401 */  lui     $t1, 0x0401                ## $t1 = 04010000
@@ -523,5 +550,3 @@ glabel func_80BA414C
 /* 01E68 80BA4908 8FB50058 */  lw      $s5, 0x0058($sp)           
 /* 01E6C 80BA490C 03E00008 */  jr      $ra                        
 /* 01E70 80BA4910 27BD0118 */  addiu   $sp, $sp, 0x0118           ## $sp = 00000000
-
-

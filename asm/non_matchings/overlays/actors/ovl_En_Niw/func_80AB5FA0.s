@@ -1,3 +1,17 @@
+.rdata
+glabel D_80AB87D8
+    .asciz "\n\n"
+    .balign 4
+
+glabel D_80AB87DC
+    .asciz "\x1b[32m ☆☆☆☆☆ 発生できず  ☆☆☆☆☆ \n\x1b[m"
+    .balign 4
+
+.late_rodata
+glabel D_80AB8AD0
+    .float 0.3
+
+.text
 glabel func_80AB5FA0
 /* 00820 80AB5FA0 27BDFFA8 */  addiu   $sp, $sp, 0xFFA8           ## $sp = FFFFFFA8
 /* 00824 80AB5FA4 AFBF003C */  sw      $ra, 0x003C($sp)           
@@ -96,5 +110,3 @@ glabel func_80AB5FA0
 /* 00974 80AB60F4 8FB10038 */  lw      $s1, 0x0038($sp)           
 /* 00978 80AB60F8 03E00008 */  jr      $ra                        
 /* 0097C 80AB60FC 27BD0058 */  addiu   $sp, $sp, 0x0058           ## $sp = 00000000
-
-

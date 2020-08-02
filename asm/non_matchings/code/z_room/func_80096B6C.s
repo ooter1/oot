@@ -158,18 +158,18 @@ glabel func_80096B6C
 /* B0DF08 80096D68 10A00053 */  beqz  $a1, .L80096EB8
 /* B0DF0C 80096D6C 3C0EE100 */   lui   $t6, 0xe100
 /* B0DF10 80096D70 8E0302C0 */  lw    $v1, 0x2c0($s0)
-/* B0DF14 80096D74 3C0F0015 */  lui   $t7, %hi(D_001579A0)
-/* B0DF18 80096D78 25EF79A0 */  addiu $t7, %lo(D_001579A0)
+/* B0DF14 80096D74 3C0F0015 */  lui   $t7, %hi(D_801579A0-0x80000000)
+/* B0DF18 80096D78 25EF79A0 */  addiu $t7, %lo(D_801579A0-0x80000000)
 /* B0DF1C 80096D7C 246D0008 */  addiu $t5, $v1, 8
 /* B0DF20 80096D80 AE0D02C0 */  sw    $t5, 0x2c0($s0)
 /* B0DF24 80096D84 AC6F0004 */  sw    $t7, 4($v1)
 /* B0DF28 80096D88 AC6E0000 */  sw    $t6, ($v1)
 /* B0DF2C 80096D8C 8E0302C0 */  lw    $v1, 0x2c0($s0)
 /* B0DF30 80096D90 3C19DD00 */  lui   $t9, (0xDD0007FF >> 16) # lui $t9, 0xdd00
-/* B0DF34 80096D94 3C0A0011 */  lui   $t2, %hi(D_00113070)
+/* B0DF34 80096D94 3C0A0011 */  lui   $t2, %hi(D_80113070-0x80000000)
 /* B0DF38 80096D98 24780008 */  addiu $t8, $v1, 8
 /* B0DF3C 80096D9C AE1802C0 */  sw    $t8, 0x2c0($s0)
-/* B0DF40 80096DA0 254A3070 */  addiu $t2, %lo(D_00113070)
+/* B0DF40 80096DA0 254A3070 */  addiu $t2, %lo(D_80113070-0x80000000)
 /* B0DF44 80096DA4 373907FF */  ori   $t9, (0xDD0007FF & 0xFFFF) # ori $t9, $t9, 0x7ff
 /* B0DF48 80096DA8 AC790000 */  sw    $t9, ($v1)
 /* B0DF4C 80096DAC AC6A0004 */  sw    $t2, 4($v1)
@@ -224,7 +224,7 @@ glabel func_80096B6C
 /* B0E010 80096E70 AE0A02C0 */  sw    $t2, 0x2c0($s0)
 /* B0E014 80096E74 AF2B0000 */  sw    $t3, ($t9)
 /* B0E018 80096E78 AFB90058 */  sw    $t9, 0x58($sp)
-/* B0E01C 80096E7C 0C034B88 */  jal   SysUcode_GetUcodeData
+/* B0E01C 80096E7C 0C034B88 */  jal   SysUcode_GetUCodeData
 /* B0E020 80096E80 AFA80048 */   sw    $t0, 0x48($sp)
 /* B0E024 80096E84 8FA40058 */  lw    $a0, 0x58($sp)
 /* B0E028 80096E88 3C0DDD00 */  lui   $t5, (0xDD0007FF >> 16) # lui $t5, 0xdd00
@@ -234,7 +234,7 @@ glabel func_80096B6C
 /* B0E038 80096E98 246C0008 */  addiu $t4, $v1, 8
 /* B0E03C 80096E9C AE0C02C0 */  sw    $t4, 0x2c0($s0)
 /* B0E040 80096EA0 AC6D0000 */  sw    $t5, ($v1)
-/* B0E044 80096EA4 0C034B85 */  jal   SysUcode_GetUcode
+/* B0E044 80096EA4 0C034B85 */  jal   SysUcode_GetUCode
 /* B0E048 80096EA8 AFA30058 */   sw    $v1, 0x58($sp)
 /* B0E04C 80096EAC 8FA40058 */  lw    $a0, 0x58($sp)
 /* B0E050 80096EB0 8FA80048 */  lw    $t0, 0x48($sp)

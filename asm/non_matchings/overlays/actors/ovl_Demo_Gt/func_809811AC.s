@@ -1,3 +1,21 @@
+.rdata
+glabel D_80982858
+    .asciz "../z_demo_gt_part4_1.c"
+    .balign 4
+
+glabel D_80982870
+    .asciz "../z_demo_gt_part4_1.c"
+    .balign 4
+
+glabel D_80982888
+    .asciz "../z_demo_gt_part4_1.c"
+    .balign 4
+
+.late_rodata
+glabel D_80982B18
+    .float 9.58738019108e-05
+
+.text
 glabel func_809811AC
 /* 03B3C 809811AC 27BDFF78 */  addiu   $sp, $sp, 0xFF78           ## $sp = FFFFFF78
 /* 03B40 809811B0 AFBF001C */  sw      $ra, 0x001C($sp)           
@@ -12,8 +30,8 @@ glabel func_809811AC
 /* 03B64 809811D4 3C018098 */  lui     $at, %hi(D_80982B18)       ## $at = 80980000
 /* 03B68 809811D8 C4282B18 */  lwc1    $f8, %lo(D_80982B18)($at)  
 /* 03B6C 809811DC 44862000 */  mtc1    $a2, $f4                   ## $f4 = 0.00
-/* 03B70 809811E0 3C028016 */  lui     $v0, 0x8016                ## $v0 = 80160000
-/* 03B74 809811E4 8C42FA90 */  lw      $v0, -0x0570($v0)          ## 8015FA90
+/* 03B70 809811E0 3C028016 */  lui     $v0, %hi(gGameInfo)
+/* 03B74 809811E4 8C42FA90 */  lw      $v0, %lo(gGameInfo)($v0)
 /* 03B78 809811E8 468021A0 */  cvt.s.w $f6, $f4                   
 /* 03B7C 809811EC 46083002 */  mul.s   $f0, $f6, $f8              
 /* 03B80 809811F0 46000005 */  abs.s   $f0, $f0                   
@@ -144,5 +162,3 @@ glabel func_809811AC
 /* 03D50 809813C0 27BD0088 */  addiu   $sp, $sp, 0x0088           ## $sp = 00000000
 /* 03D54 809813C4 03E00008 */  jr      $ra                        
 /* 03D58 809813C8 00000000 */  nop
-
-

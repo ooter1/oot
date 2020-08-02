@@ -1,3 +1,21 @@
+.rdata
+glabel D_808BAC80
+    .asciz "../z_bg_toki_hikari.c"
+    .balign 4
+
+glabel D_808BAC98
+    .asciz "../z_bg_toki_hikari.c"
+    .balign 4
+
+glabel D_808BACB0
+    .asciz "../z_bg_toki_hikari.c"
+    .balign 4
+
+glabel D_808BACC8
+    .asciz "../z_bg_toki_hikari.c"
+    .balign 4
+
+.text
 glabel func_808BA018
 /* 00118 808BA018 27BDFF98 */  addiu   $sp, $sp, 0xFF98           ## $sp = FFFFFF98
 /* 0011C 808BA01C AFB10020 */  sw      $s1, 0x0020($sp)           
@@ -27,10 +45,10 @@ glabel func_808BA018
 /* 0017C 808BA07C 0C0346A2 */  jal     Matrix_NewMtx              
 /* 00180 808BA080 AFA2004C */  sw      $v0, 0x004C($sp)           
 /* 00184 808BA084 8FA3004C */  lw      $v1, 0x004C($sp)           
-/* 00188 808BA088 3C188016 */  lui     $t8, 0x8016                ## $t8 = 80160000
+/* 00188 808BA088 3C188016 */  lui     $t8, %hi(gSaveContext+4)
 /* 0018C 808BA08C 3C09DE00 */  lui     $t1, 0xDE00                ## $t1 = DE000000
 /* 00190 808BA090 AC620004 */  sw      $v0, 0x0004($v1)           ## 00000004
-/* 00194 808BA094 8F18E664 */  lw      $t8, -0x199C($t8)          ## 8015E664
+/* 00194 808BA094 8F18E664 */  lw      $t8, %lo(gSaveContext+4)($t8)
 /* 00198 808BA098 3C0CDE00 */  lui     $t4, 0xDE00                ## $t4 = DE000000
 /* 0019C 808BA09C 5700000A */  bnel    $t8, $zero, .L808BA0C8     
 /* 001A0 808BA0A0 8E0202C0 */  lw      $v0, 0x02C0($s0)           ## 000002C0
@@ -124,5 +142,3 @@ glabel func_808BA018
 /* 002F8 808BA1F8 8FB10020 */  lw      $s1, 0x0020($sp)           
 /* 002FC 808BA1FC 03E00008 */  jr      $ra                        
 /* 00300 808BA200 27BD0068 */  addiu   $sp, $sp, 0x0068           ## $sp = 00000000
-
-

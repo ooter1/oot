@@ -1,6 +1,6 @@
 glabel func_80B3DA00
-/* 01820 80B3DA00 3C0F8016 */  lui     $t7, 0x8016                ## $t7 = 80160000
-/* 01824 80B3DA04 8DEFFA90 */  lw      $t7, -0x0570($t7)          ## 8015FA90
+/* 01820 80B3DA00 3C0F8016 */  lui     $t7, %hi(gGameInfo)
+/* 01824 80B3DA04 8DEFFA90 */  lw      $t7, %lo(gGameInfo)($t7)
 /* 01828 80B3DA08 27BDFFD8 */  addiu   $sp, $sp, 0xFFD8           ## $sp = FFFFFFD8
 /* 0182C 80B3DA0C AFBF0024 */  sw      $ra, 0x0024($sp)
 /* 01830 80B3DA10 AFA40028 */  sw      $a0, 0x0028($sp)
@@ -44,5 +44,3 @@ glabel func_80B3DA00
 /* 018BC 80B3DA9C 27BD0028 */  addiu   $sp, $sp, 0x0028           ## $sp = 00000000
 /* 018C0 80B3DAA0 03E00008 */  jr      $ra
 /* 018C4 80B3DAA4 00000000 */  nop
-
-

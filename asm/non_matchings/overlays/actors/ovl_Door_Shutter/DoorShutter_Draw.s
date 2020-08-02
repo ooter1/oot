@@ -1,3 +1,41 @@
+.rdata
+glabel D_8099832C
+    .asciz "../z_door_shutter.c"
+    .balign 4
+
+glabel D_80998340
+    .asciz "../z_door_shutter.c"
+    .balign 4
+
+glabel D_80998354
+    .asciz "../z_door_shutter.c"
+    .balign 4
+
+glabel D_80998368
+    .asciz "../z_door_shutter.c"
+    .balign 4
+
+glabel D_8099837C
+    .asciz "../z_door_shutter.c"
+    .balign 4
+
+.late_rodata
+glabel D_809983A4
+    .float 0.01
+
+glabel D_809983A8
+    .float 3.14159274101
+
+glabel D_809983AC
+    .float 3.14159274101
+
+glabel D_809983B0
+    .float 0.01
+
+glabel D_809983B4
+    .float 0.01
+
+.text
 glabel DoorShutter_Draw
 /* 01840 80997AE0 27BDFF80 */  addiu   $sp, $sp, 0xFF80           ## $sp = FFFFFF80
 /* 01844 80997AE4 AFBF001C */  sw      $ra, 0x001C($sp)           
@@ -218,7 +256,7 @@ glabel DoorShutter_Draw
 /* 01B74 80997E14 AC4D0000 */  sw      $t5, 0x0000($v0)           ## 00000000
 /* 01B78 80997E18 862E0168 */  lh      $t6, 0x0168($s1)           ## 00000168
 /* 01B7C 80997E1C 3C04809A */  lui     $a0, %hi(D_809982D4)       ## $a0 = 809A0000
-/* 01B80 80997E20 3C098016 */  lui     $t1, 0x8016                ## $t1 = 80160000
+/* 01B80 80997E20 3C098016 */  lui     $t1, %hi(gSegments)
 /* 01B84 80997E24 000E6080 */  sll     $t4, $t6,  2               
 /* 01B88 80997E28 008C2021 */  addu    $a0, $a0, $t4              
 /* 01B8C 80997E2C 8C8482D4 */  lw      $a0, %lo(D_809982D4)($a0)  
@@ -228,7 +266,7 @@ glabel DoorShutter_Draw
 /* 01B9C 80997E3C 0018CF02 */  srl     $t9, $t8, 28               
 /* 01BA0 80997E40 00194080 */  sll     $t0, $t9,  2               
 /* 01BA4 80997E44 01284821 */  addu    $t1, $t1, $t0              
-/* 01BA8 80997E48 8D296FA8 */  lw      $t1, 0x6FA8($t1)           ## 80166FA8
+/* 01BA8 80997E48 8D296FA8 */  lw      $t1, %lo(gSegments)($t1)
 /* 01BAC 80997E4C 00817824 */  and     $t7, $a0, $at              
 /* 01BB0 80997E50 3C018000 */  lui     $at, 0x8000                ## $at = 80000000
 /* 01BB4 80997E54 01E95021 */  addu    $t2, $t7, $t1              
@@ -364,5 +402,3 @@ glabel DoorShutter_Draw
 /* 01D90 80998030 8FB10018 */  lw      $s1, 0x0018($sp)           
 /* 01D94 80998034 03E00008 */  jr      $ra                        
 /* 01D98 80998038 27BD0080 */  addiu   $sp, $sp, 0x0080           ## $sp = 00000000
-
-

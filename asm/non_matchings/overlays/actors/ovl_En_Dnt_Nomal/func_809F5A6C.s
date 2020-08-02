@@ -1,3 +1,21 @@
+.rdata
+glabel D_809F5FBC
+    .asciz "../z_en_dnt_nomal.c"
+    .balign 4
+
+glabel D_809F5FD0
+    .asciz "../z_en_dnt_nomal.c"
+    .balign 4
+
+glabel D_809F5FE4
+    .asciz "../z_en_dnt_nomal.c"
+    .balign 4
+
+.late_rodata
+glabel D_809F6088
+    .float 0.01
+
+.text
 glabel func_809F5A6C
 /* 027AC 809F5A6C 27BDFF90 */  addiu   $sp, $sp, 0xFF90           ## $sp = FFFFFF90
 /* 027B0 809F5A70 3C0F809F */  lui     $t7, %hi(D_809F5E94)       ## $t7 = 809F0000
@@ -32,7 +50,7 @@ glabel func_809F5A6C
 /* 02824 809F5AE4 AC490000 */  sw      $t1, 0x0000($v0)           ## 00000000
 /* 02828 809F5AE8 862A0268 */  lh      $t2, 0x0268($s1)           ## 00000268
 /* 0282C 809F5AEC 3C04809F */  lui     $a0, %hi(D_809F5EA0)       ## $a0 = 809F0000
-/* 02830 809F5AF0 3C188016 */  lui     $t8, 0x8016                ## $t8 = 80160000
+/* 02830 809F5AF0 3C188016 */  lui     $t8, %hi(gSegments)
 /* 02834 809F5AF4 000A5880 */  sll     $t3, $t2,  2               
 /* 02838 809F5AF8 008B2021 */  addu    $a0, $a0, $t3              
 /* 0283C 809F5AFC 8C845EA0 */  lw      $a0, %lo(D_809F5EA0)($a0)  
@@ -42,7 +60,7 @@ glabel func_809F5A6C
 /* 0284C 809F5B0C 000D7702 */  srl     $t6, $t5, 28               
 /* 02850 809F5B10 000E7880 */  sll     $t7, $t6,  2               
 /* 02854 809F5B14 030FC021 */  addu    $t8, $t8, $t7              
-/* 02858 809F5B18 8F186FA8 */  lw      $t8, 0x6FA8($t8)           ## 80166FA8
+/* 02858 809F5B18 8F186FA8 */  lw      $t8, %lo(gSegments)($t8)
 /* 0285C 809F5B1C 00816024 */  and     $t4, $a0, $at              
 /* 02860 809F5B20 3C018000 */  lui     $at, 0x8000                ## $at = 80000000
 /* 02864 809F5B24 0198C821 */  addu    $t9, $t4, $t8              
@@ -140,5 +158,3 @@ glabel func_809F5A6C
 /* 029CC 809F5C8C 8FB20028 */  lw      $s2, 0x0028($sp)           
 /* 029D0 809F5C90 03E00008 */  jr      $ra                        
 /* 029D4 809F5C94 27BD0070 */  addiu   $sp, $sp, 0x0070           ## $sp = 00000000
-
-

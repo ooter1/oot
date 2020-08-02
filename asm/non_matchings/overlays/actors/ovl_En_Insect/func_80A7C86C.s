@@ -1,3 +1,14 @@
+.late_rodata
+glabel D_80A7DFF4
+    .float 0.8
+
+glabel D_80A7DFF8
+    .float 1.6
+
+glabel D_80A7DFFC
+    .float 1.9
+
+.text
 glabel func_80A7C86C
 /* 00A4C 80A7C86C 27BDFFB8 */  addiu   $sp, $sp, 0xFFB8           ## $sp = FFFFFFB8
 /* 00A50 80A7C870 AFBF0024 */  sw      $ra, 0x0024($sp)           
@@ -26,7 +37,7 @@ glabel func_80A7C86C
 /* 00AA4 80A7C8C4 26040024 */  addiu   $a0, $s0, 0x0024           ## $a0 = 00000024
 /* 00AA8 80A7C8C8 26050008 */  addiu   $a1, $s0, 0x0008           ## $a1 = 00000008
 /* 00AAC 80A7C8CC AFA5002C */  sw      $a1, 0x002C($sp)           
-/* 00AB0 80A7C8D0 0C29EF90 */  jal     func_80A7BE40              
+/* 00AB0 80A7C8D0 0C29EF90 */  jal     EnInsect_XZDistanceSquared              
 /* 00AB4 80A7C8D4 AFA40030 */  sw      $a0, 0x0030($sp)           
 /* 00AB8 80A7C8D8 3C0146C8 */  lui     $at, 0x46C8                ## $at = 46C80000
 /* 00ABC 80A7C8DC 44815000 */  mtc1    $at, $f10                  ## $f10 = 25600.00
@@ -144,5 +155,3 @@ glabel func_80A7C86C
 /* 00C38 80A7CA58 27BD0048 */  addiu   $sp, $sp, 0x0048           ## $sp = 00000000
 /* 00C3C 80A7CA5C 03E00008 */  jr      $ra                        
 /* 00C40 80A7CA60 00000000 */  nop
-
-

@@ -2,32 +2,32 @@
 #include <global.h>
 
 // "Get Item" Model Draw Functions
-static void func_800694E4(GlobalContext* globalCtx, s16 drawId);
-static void func_800695C0(GlobalContext* globalCtx, s16 drawId);
-static void func_8006969C(GlobalContext* globalCtx, s16 drawId);
-static void func_80069880(GlobalContext* globalCtx, s16 drawId);
-static void func_80069AC8(GlobalContext* globalCtx, s16 drawId);
-static void func_80069CF0(GlobalContext* globalCtx, s16 drawId);
-static void func_80069EB0(GlobalContext* globalCtx, s16 drawId);
-static void func_8006A060(GlobalContext* globalCtx, s16 drawId);
-static void func_8006A158(GlobalContext* globalCtx, s16 drawId);
-static void func_8006A2A0(GlobalContext* globalCtx, s16 drawId);
-static void func_8006A4B0(GlobalContext* globalCtx, s16 drawId);
-static void func_8006A5F0(GlobalContext* globalCtx, s16 drawId);
-static void func_8006A73C(GlobalContext* globalCtx, s16 drawId);
-static void func_8006A88C(GlobalContext* globalCtx, s16 drawId);
-static void func_8006A9CC(GlobalContext* globalCtx, s16 drawId);
-static void func_8006AAA8(GlobalContext* globalCtx, s16 drawId);
-static void func_8006ABEC(GlobalContext* globalCtx, s16 drawId);
-static void func_8006ACE4(GlobalContext* globalCtx, s16 drawId);
-static void func_8006AE40(GlobalContext* globalCtx, s16 drawId);
-static void func_8006AF9C(GlobalContext* globalCtx, s16 drawId);
-static void func_8006B124(GlobalContext* globalCtx, s16 drawId);
-static void func_8006B24C(GlobalContext* globalCtx, s16 drawId);
-static void func_8006B3C0(GlobalContext* globalCtx, s16 drawId);
-static void func_8006B54C(GlobalContext* globalCtx, s16 drawId);
-static void func_8006B6E4(GlobalContext* globalCtx, s16 drawId);
-static void func_8006B870(GlobalContext* globalCtx, s16 drawId);
+void func_800694E4(GlobalContext* globalCtx, s16 drawId);
+void func_800695C0(GlobalContext* globalCtx, s16 drawId);
+void func_8006969C(GlobalContext* globalCtx, s16 drawId);
+void func_80069880(GlobalContext* globalCtx, s16 drawId);
+void func_80069AC8(GlobalContext* globalCtx, s16 drawId);
+void func_80069CF0(GlobalContext* globalCtx, s16 drawId);
+void func_80069EB0(GlobalContext* globalCtx, s16 drawId);
+void func_8006A060(GlobalContext* globalCtx, s16 drawId);
+void func_8006A158(GlobalContext* globalCtx, s16 drawId);
+void func_8006A2A0(GlobalContext* globalCtx, s16 drawId);
+void func_8006A4B0(GlobalContext* globalCtx, s16 drawId);
+void func_8006A5F0(GlobalContext* globalCtx, s16 drawId);
+void func_8006A73C(GlobalContext* globalCtx, s16 drawId);
+void func_8006A88C(GlobalContext* globalCtx, s16 drawId);
+void func_8006A9CC(GlobalContext* globalCtx, s16 drawId);
+void func_8006AAA8(GlobalContext* globalCtx, s16 drawId);
+void func_8006ABEC(GlobalContext* globalCtx, s16 drawId);
+void func_8006ACE4(GlobalContext* globalCtx, s16 drawId);
+void func_8006AE40(GlobalContext* globalCtx, s16 drawId);
+void func_8006AF9C(GlobalContext* globalCtx, s16 drawId);
+void func_8006B124(GlobalContext* globalCtx, s16 drawId);
+void func_8006B24C(GlobalContext* globalCtx, s16 drawId);
+void func_8006B3C0(GlobalContext* globalCtx, s16 drawId);
+void func_8006B54C(GlobalContext* globalCtx, s16 drawId);
+void func_8006B6E4(GlobalContext* globalCtx, s16 drawId);
+void func_8006B870(GlobalContext* globalCtx, s16 drawId);
 
 typedef struct {
     /* 0x00 */ void (*drawFunc)(GlobalContext*, s16);
@@ -35,7 +35,7 @@ typedef struct {
 } DrawItemTableEntry; // size = 0x24
 
 // TODO: use symbols for these dlists once objects are in C
-static DrawItemTableEntry sDrawItemTable[] = {
+DrawItemTableEntry sDrawItemTable[] = {
     { func_8006AAA8, { 0x06000670, 0x06000750 } },
     { func_8006A9CC, { 0x06000800 } },
     { func_8006ABEC, { 0x06000A80, 0x06000AE0 } },
@@ -156,7 +156,6 @@ static DrawItemTableEntry sDrawItemTable[] = {
     { func_8006A9CC, { 0x06000960 } },
     { func_80069EB0, { 0x06004DB0, 0x06004EB8 } },
 };
-
 /**
  * Draw "Get Item" Model
  * Calls the corresponding draw function for the given draw ID
@@ -167,7 +166,7 @@ void func_800694A0(GlobalContext* globalCtx, s16 drawId) {
 
 // All remaining functions in this file are draw functions referenced in the table and called by the function above
 
-static void func_800694E4(GlobalContext* globalCtx, s16 drawId) {
+void func_800694E4(GlobalContext* globalCtx, s16 drawId) {
     GraphicsContext* gfxCtx = globalCtx->state.gfxCtx;
     Gfx* dispRefs[5];
 
@@ -181,7 +180,7 @@ static void func_800694E4(GlobalContext* globalCtx, s16 drawId) {
     Graph_CloseDisps(dispRefs, globalCtx->state.gfxCtx, "../z_draw.c", 565);
 }
 
-static void func_800695C0(GlobalContext* globalCtx, s16 drawId) {
+void func_800695C0(GlobalContext* globalCtx, s16 drawId) {
     GraphicsContext* gfxCtx = globalCtx->state.gfxCtx;
     Gfx* dispRefs[5];
 
@@ -195,7 +194,7 @@ static void func_800695C0(GlobalContext* globalCtx, s16 drawId) {
     Graph_CloseDisps(dispRefs, globalCtx->state.gfxCtx, "../z_draw.c", 581);
 }
 
-static void func_8006969C(GlobalContext* globalCtx, s16 drawId) {
+void func_8006969C(GlobalContext* globalCtx, s16 drawId) {
     GraphicsContext* gfxCtx = globalCtx->state.gfxCtx;
     Gfx* dispRefs[5];
 
@@ -222,7 +221,7 @@ static void func_8006969C(GlobalContext* globalCtx, s16 drawId) {
     Graph_CloseDisps(dispRefs, globalCtx->state.gfxCtx, "../z_draw.c", 621);
 }
 
-static void func_80069880(GlobalContext* globalCtx, s16 drawId) {
+void func_80069880(GlobalContext* globalCtx, s16 drawId) {
     GraphicsContext* gfxCtx = globalCtx->state.gfxCtx;
     Gfx* dispRefs[5];
 
@@ -252,7 +251,7 @@ static void func_80069880(GlobalContext* globalCtx, s16 drawId) {
     Graph_CloseDisps(dispRefs, globalCtx->state.gfxCtx, "../z_draw.c", 663);
 }
 
-static void func_80069AC8(GlobalContext* globalCtx, s16 drawId) {
+void func_80069AC8(GlobalContext* globalCtx, s16 drawId) {
     GraphicsContext* gfxCtx = globalCtx->state.gfxCtx;
     Gfx* dispRefs[5];
 
@@ -281,7 +280,7 @@ static void func_80069AC8(GlobalContext* globalCtx, s16 drawId) {
     Graph_CloseDisps(dispRefs, globalCtx->state.gfxCtx, "../z_draw.c", 704);
 }
 
-static void func_80069CF0(GlobalContext* globalCtx, s16 drawId) {
+void func_80069CF0(GlobalContext* globalCtx, s16 drawId) {
     GraphicsContext* gfxCtx = globalCtx->state.gfxCtx;
     Gfx* dispRefs[5];
 
@@ -305,7 +304,7 @@ static void func_80069CF0(GlobalContext* globalCtx, s16 drawId) {
     Graph_CloseDisps(dispRefs, globalCtx->state.gfxCtx, "../z_draw.c", 735);
 }
 
-static void func_80069EB0(GlobalContext* globalCtx, s16 drawId) {
+void func_80069EB0(GlobalContext* globalCtx, s16 drawId) {
     GraphicsContext* gfxCtx = globalCtx->state.gfxCtx;
     Gfx* dispRefs[5];
 
@@ -328,7 +327,7 @@ static void func_80069EB0(GlobalContext* globalCtx, s16 drawId) {
     Graph_CloseDisps(dispRefs, globalCtx->state.gfxCtx, "../z_draw.c", 765);
 }
 
-static void func_8006A060(GlobalContext* globalCtx, s16 drawId) {
+void func_8006A060(GlobalContext* globalCtx, s16 drawId) {
     GraphicsContext* gfxCtx = globalCtx->state.gfxCtx;
     Gfx* dispRefs[5];
 
@@ -343,7 +342,7 @@ static void func_8006A060(GlobalContext* globalCtx, s16 drawId) {
     Graph_CloseDisps(dispRefs, globalCtx->state.gfxCtx, "../z_draw.c", 783);
 }
 
-static void func_8006A158(GlobalContext* globalCtx, s16 drawId) {
+void func_8006A158(GlobalContext* globalCtx, s16 drawId) {
     GraphicsContext* gfxCtx = globalCtx->state.gfxCtx;
     Gfx* dispRefs[5];
 
@@ -362,7 +361,7 @@ static void func_8006A158(GlobalContext* globalCtx, s16 drawId) {
     Graph_CloseDisps(dispRefs, globalCtx->state.gfxCtx, "../z_draw.c", 827);
 }
 
-static void func_8006A2A0(GlobalContext* globalCtx, s16 drawId) {
+void func_8006A2A0(GlobalContext* globalCtx, s16 drawId) {
     GraphicsContext* gfxCtx = globalCtx->state.gfxCtx;
     Gfx* dispRefs[5];
 
@@ -389,7 +388,7 @@ static void func_8006A2A0(GlobalContext* globalCtx, s16 drawId) {
     Graph_CloseDisps(dispRefs, globalCtx->state.gfxCtx, "../z_draw.c", 861);
 }
 
-static void func_8006A4B0(GlobalContext* globalCtx, s16 drawId) {
+void func_8006A4B0(GlobalContext* globalCtx, s16 drawId) {
     GraphicsContext* gfxCtx = globalCtx->state.gfxCtx;
     Gfx* dispRefs[5];
 
@@ -407,7 +406,7 @@ static void func_8006A4B0(GlobalContext* globalCtx, s16 drawId) {
     Graph_CloseDisps(dispRefs, globalCtx->state.gfxCtx, "../z_draw.c", 883);
 }
 
-static void func_8006A5F0(GlobalContext* globalCtx, s16 drawId) {
+void func_8006A5F0(GlobalContext* globalCtx, s16 drawId) {
     GraphicsContext* gfxCtx = globalCtx->state.gfxCtx;
     Gfx* dispRefs[5];
 
@@ -425,7 +424,7 @@ static void func_8006A5F0(GlobalContext* globalCtx, s16 drawId) {
     Graph_CloseDisps(dispRefs, globalCtx->state.gfxCtx, "../z_draw.c", 906);
 }
 
-static void func_8006A73C(GlobalContext* globalCtx, s16 drawId) {
+void func_8006A73C(GlobalContext* globalCtx, s16 drawId) {
     GraphicsContext* gfxCtx = globalCtx->state.gfxCtx;
     Gfx* dispRefs[5];
 
@@ -443,7 +442,7 @@ static void func_8006A73C(GlobalContext* globalCtx, s16 drawId) {
     Graph_CloseDisps(dispRefs, globalCtx->state.gfxCtx, "../z_draw.c", 929);
 }
 
-static void func_8006A88C(GlobalContext* globalCtx, s16 drawId) {
+void func_8006A88C(GlobalContext* globalCtx, s16 drawId) {
     GraphicsContext* gfxCtx = globalCtx->state.gfxCtx;
     Gfx* dispRefs[5];
 
@@ -461,7 +460,7 @@ static void func_8006A88C(GlobalContext* globalCtx, s16 drawId) {
     Graph_CloseDisps(dispRefs, globalCtx->state.gfxCtx, "../z_draw.c", 952);
 }
 
-static void func_8006A9CC(GlobalContext* globalCtx, s16 drawId) {
+void func_8006A9CC(GlobalContext* globalCtx, s16 drawId) {
     GraphicsContext* gfxCtx = globalCtx->state.gfxCtx;
     Gfx* dispRefs[5];
 
@@ -475,7 +474,7 @@ static void func_8006A9CC(GlobalContext* globalCtx, s16 drawId) {
     Graph_CloseDisps(dispRefs, globalCtx->state.gfxCtx, "../z_draw.c", 968);
 }
 
-static void func_8006AAA8(GlobalContext* globalCtx, s16 drawId) {
+void func_8006AAA8(GlobalContext* globalCtx, s16 drawId) {
     GraphicsContext* gfxCtx = globalCtx->state.gfxCtx;
     Gfx* dispRefs[5];
 
@@ -494,7 +493,7 @@ static void func_8006AAA8(GlobalContext* globalCtx, s16 drawId) {
     Graph_CloseDisps(dispRefs, globalCtx->state.gfxCtx, "../z_draw.c", 991);
 }
 
-static void func_8006ABEC(GlobalContext* globalCtx, s16 drawId) {
+void func_8006ABEC(GlobalContext* globalCtx, s16 drawId) {
     GraphicsContext* gfxCtx = globalCtx->state.gfxCtx;
     Gfx* dispRefs[5];
 
@@ -507,7 +506,7 @@ static void func_8006ABEC(GlobalContext* globalCtx, s16 drawId) {
     Graph_CloseDisps(dispRefs, globalCtx->state.gfxCtx, "../z_draw.c", 1008);
 }
 
-static void func_8006ACE4(GlobalContext* globalCtx, s16 drawId) {
+void func_8006ACE4(GlobalContext* globalCtx, s16 drawId) {
     GraphicsContext* gfxCtx = globalCtx->state.gfxCtx;
     Gfx* dispRefs[5];
 
@@ -527,7 +526,7 @@ static void func_8006ACE4(GlobalContext* globalCtx, s16 drawId) {
     Graph_CloseDisps(dispRefs, globalCtx->state.gfxCtx, "../z_draw.c", 1032);
 }
 
-static void func_8006AE40(GlobalContext* globalCtx, s16 drawId) {
+void func_8006AE40(GlobalContext* globalCtx, s16 drawId) {
     GraphicsContext* gfxCtx = globalCtx->state.gfxCtx;
     Gfx* dispRefs[5];
 
@@ -547,7 +546,7 @@ static void func_8006AE40(GlobalContext* globalCtx, s16 drawId) {
     Graph_CloseDisps(dispRefs, globalCtx->state.gfxCtx, "../z_draw.c", 1056);
 }
 
-static void func_8006AF9C(GlobalContext* globalCtx, s16 drawId) {
+void func_8006AF9C(GlobalContext* globalCtx, s16 drawId) {
     GraphicsContext* gfxCtx = globalCtx->state.gfxCtx;
     Gfx* dispRefs[5];
 
@@ -567,7 +566,7 @@ static void func_8006AF9C(GlobalContext* globalCtx, s16 drawId) {
     Graph_CloseDisps(dispRefs, globalCtx->state.gfxCtx, "../z_draw.c", 1081);
 }
 
-static void func_8006B124(GlobalContext* globalCtx, s16 drawId) {
+void func_8006B124(GlobalContext* globalCtx, s16 drawId) {
     GraphicsContext* gfxCtx = globalCtx->state.gfxCtx;
     Gfx* dispRefs[5];
 
@@ -584,7 +583,7 @@ static void func_8006B124(GlobalContext* globalCtx, s16 drawId) {
     Graph_CloseDisps(dispRefs, globalCtx->state.gfxCtx, "../z_draw.c", 1100);
 }
 
-static void func_8006B24C(GlobalContext* globalCtx, s16 drawId) {
+void func_8006B24C(GlobalContext* globalCtx, s16 drawId) {
     GraphicsContext* gfxCtx = globalCtx->state.gfxCtx;
     Gfx* dispRefs[5];
 
@@ -605,7 +604,7 @@ static void func_8006B24C(GlobalContext* globalCtx, s16 drawId) {
     Graph_CloseDisps(dispRefs, globalCtx->state.gfxCtx, "../z_draw.c", 1126);
 }
 
-static void func_8006B3C0(GlobalContext* globalCtx, s16 drawId) {
+void func_8006B3C0(GlobalContext* globalCtx, s16 drawId) {
     GraphicsContext* gfxCtx = globalCtx->state.gfxCtx;
     Gfx* dispRefs[5];
 
@@ -628,7 +627,7 @@ static void func_8006B3C0(GlobalContext* globalCtx, s16 drawId) {
     Graph_CloseDisps(dispRefs, globalCtx->state.gfxCtx, "../z_draw.c", 1154);
 }
 
-static void func_8006B54C(GlobalContext* globalCtx, s16 drawId) {
+void func_8006B54C(GlobalContext* globalCtx, s16 drawId) {
     GraphicsContext* gfxCtx = globalCtx->state.gfxCtx;
     Gfx* dispRefs[5];
 
@@ -649,7 +648,7 @@ static void func_8006B54C(GlobalContext* globalCtx, s16 drawId) {
     Graph_CloseDisps(dispRefs, globalCtx->state.gfxCtx, "../z_draw.c", 1181);
 }
 
-static void func_8006B6E4(GlobalContext* globalCtx, s16 drawId) {
+void func_8006B6E4(GlobalContext* globalCtx, s16 drawId) {
     GraphicsContext* gfxCtx = globalCtx->state.gfxCtx;
     Gfx* dispRefs[5];
 
@@ -671,8 +670,8 @@ static void func_8006B6E4(GlobalContext* globalCtx, s16 drawId) {
     Graph_CloseDisps(dispRefs, globalCtx->state.gfxCtx, "../z_draw.c", 1207);
 }
 
-static void func_8006B870(GlobalContext* globalCtx, s16 drawId) {
-    u32 pad;
+void func_8006B870(GlobalContext* globalCtx, s16 drawId) {
+    s32 pad;
     GraphicsContext* gfxCtx = globalCtx->state.gfxCtx;
     Gfx* dispRefs[4];
 

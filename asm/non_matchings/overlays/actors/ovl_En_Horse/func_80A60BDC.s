@@ -1,3 +1,11 @@
+.late_rodata
+glabel D_80A66918
+    .float 0.3
+
+glabel D_80A6691C
+    .float 0.3
+
+.text
 glabel func_80A60BDC
 /* 058EC 80A60BDC 27BDFFC8 */  addiu   $sp, $sp, 0xFFC8           ## $sp = FFFFFFC8
 /* 058F0 80A60BE0 AFBF001C */  sw      $ra, 0x001C($sp)
@@ -20,7 +28,7 @@ glabel func_80A60BDC
 /* 05934 80A60C24 44988000 */  mtc1    $t8, $f16                  ## $f16 = 0.00
 /* 05938 80A60C28 00000000 */  nop
 /* 0593C 80A60C2C 468084A0 */  cvt.s.w $f18, $f16
-/* 05940 80A60C30 0C032D9E */  jal     func_800CB678
+/* 05940 80A60C30 0C032D9E */  jal     Math3D_Vec3f_DistXYZ
 /* 05944 80A60C34 E7B20034 */  swc1    $f18, 0x0034($sp)
 /* 05948 80A60C38 3C014100 */  lui     $at, 0x4100                ## $at = 41000000
 /* 0594C 80A60C3C 44811000 */  mtc1    $at, $f2                   ## $f2 = 8.00
@@ -86,5 +94,3 @@ glabel func_80A60BDC
 /* 05A2C 80A60D1C 27BD0038 */  addiu   $sp, $sp, 0x0038           ## $sp = 00000000
 /* 05A30 80A60D20 03E00008 */  jr      $ra
 /* 05A34 80A60D24 00000000 */  nop
-
-

@@ -1,3 +1,38 @@
+.rdata
+glabel D_80937940
+    .asciz "../z_boss_sst.c"
+    .balign 4
+
+glabel D_80937950
+    .asciz "../z_boss_sst.c"
+    .balign 4
+
+glabel D_80937960
+    .asciz "../z_boss_sst.c"
+    .balign 4
+
+glabel D_80937970
+    .asciz "../z_boss_sst.c"
+    .balign 4
+
+glabel D_80937980
+    .asciz "../z_boss_sst.c"
+    .balign 4
+
+.late_rodata
+glabel D_80937A6C
+    .float 0.001
+
+glabel D_80937A70
+    .float 0.005
+
+glabel D_80937A74
+    .float 0.001
+
+glabel D_80937A78
+    .float 0.001
+
+.text
 glabel func_8093639C
 /* 09DCC 8093639C 27BDFF10 */  addiu   $sp, $sp, 0xFF10           ## $sp = FFFFFF10
 /* 09DD0 809363A0 AFBF006C */  sw      $ra, 0x006C($sp)
@@ -123,7 +158,7 @@ glabel func_8093639C
 .L80936578:
 /* 09FA8 80936578 8605001A */  lh      $a1, 0x001A($s0)           ## 0000071A
 /* 09FAC 8093657C 8606001C */  lh      $a2, 0x001C($s0)           ## 0000071C
-/* 09FB0 80936580 0C034421 */  jal     Matrix_RotateZYX
+/* 09FB0 80936580 0C034421 */  jal     Matrix_RotateRPY
 /* 09FB4 80936584 24070001 */  addiu   $a3, $zero, 0x0001         ## $a3 = 00000001
 /* 09FB8 80936588 9619001E */  lhu     $t9, 0x001E($s0)           ## 0000071E
 /* 09FBC 8093658C 3C014F80 */  lui     $at, 0x4F80                ## $at = 4F800000
@@ -395,4 +430,3 @@ glabel func_8093639C
 /* 0A3B4 80936984 27BD00F0 */  addiu   $sp, $sp, 0x00F0           ## $sp = 00000000
 /* 0A3B8 80936988 00000000 */  nop
 /* 0A3BC 8093698C 00000000 */  nop
-

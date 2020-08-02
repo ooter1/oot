@@ -1,3 +1,27 @@
+.rdata
+glabel D_809A3260
+    .asciz "../z_eff_en_fire.c"
+    .balign 4
+
+glabel D_809A3274
+    .asciz "../z_eff_en_fire.c"
+    .balign 4
+
+glabel D_809A3288
+    .asciz "../z_eff_en_fire.c"
+    .balign 4
+
+.late_rodata
+glabel D_809A329C
+    .float 9.58738019108e-05
+
+glabel D_809A32A0
+    .float 0.00005
+
+glabel D_809A32A4
+    .float 12.7
+
+.text
 glabel func_809A2D28
 /* 001C8 809A2D28 27BDFF68 */  addiu   $sp, $sp, 0xFF68           ## $sp = FFFFFF68
 /* 001CC 809A2D2C AFB10038 */  sw      $s1, 0x0038($sp)           
@@ -213,5 +237,3 @@ glabel func_809A2D28
 /* 004F4 809A3054 8FB10038 */  lw      $s1, 0x0038($sp)           
 /* 004F8 809A3058 03E00008 */  jr      $ra                        
 /* 004FC 809A305C 27BD0098 */  addiu   $sp, $sp, 0x0098           ## $sp = 00000000
-
-

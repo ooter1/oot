@@ -1,3 +1,13 @@
+.rdata
+glabel D_80B9CAF0
+    .asciz "Warning : move BG 登録失敗(%s %d)(name %d)(arg_data 0x%04x)\n"
+    .balign 4
+
+glabel D_80B9CB30
+    .asciz "../z_obj_oshihiki.c"
+    .balign 4
+
+.text
 glabel func_80B9B180
 /* 00000 80B9B180 27BDFFC8 */  addiu   $sp, $sp, 0xFFC8           ## $sp = FFFFFFC8
 /* 00004 80B9B184 AFBF0024 */  sw      $ra, 0x0024($sp)           
@@ -38,5 +48,3 @@ glabel func_80B9B180
 /* 0007C 80B9B1FC 27BD0038 */  addiu   $sp, $sp, 0x0038           ## $sp = 00000000
 /* 00080 80B9B200 03E00008 */  jr      $ra                        
 /* 00084 80B9B204 00000000 */  nop
-
-

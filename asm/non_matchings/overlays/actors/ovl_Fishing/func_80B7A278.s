@@ -1,3 +1,31 @@
+.rdata
+glabel D_80B7B304
+    .asciz "../z_fishing.c"
+    .balign 4
+
+glabel D_80B7B314
+    .asciz "../z_fishing.c"
+    .balign 4
+
+glabel D_80B7B324
+    .asciz "../z_fishing.c"
+    .balign 4
+
+glabel D_80B7B334
+    .asciz "../z_fishing.c"
+    .balign 4
+
+.late_rodata
+glabel D_80B7B8E4
+    .float 1500.0
+
+glabel D_80B7B8E8
+    .float 0.08
+
+glabel D_80B7B8EC
+    .float 0.12
+
+.text
 glabel func_80B7A278
 /* 108D8 80B7A278 27BDFF98 */  addiu   $sp, $sp, 0xFF98           ## $sp = FFFFFF98
 /* 108DC 80B7A27C AFB00028 */  sw      $s0, 0x0028($sp)
@@ -41,7 +69,7 @@ glabel func_80B7A278
 /* 10974 80B7A314 AD2E02C0 */  sw      $t6, 0x02C0($t1)           ## 000002C0
 /* 10978 80B7A318 AC4F0000 */  sw      $t7, 0x0000($v0)           ## 00000000
 /* 1097C 80B7A31C 85180160 */  lh      $t8, 0x0160($t0)           ## 00000160
-/* 10980 80B7A320 3C0E8016 */  lui     $t6, 0x8016                ## $t6 = 80160000
+/* 10980 80B7A320 3C0E8016 */  lui     $t6, %hi(gSegments)
 /* 10984 80B7A324 3421FFFF */  ori     $at, $at, 0xFFFF           ## $at = 00FFFFFF
 /* 10988 80B7A328 0018C880 */  sll     $t9, $t8,  2
 /* 1098C 80B7A32C 00992021 */  addu    $a0, $a0, $t9
@@ -52,7 +80,7 @@ glabel func_80B7A278
 /* 109A0 80B7A340 000B6702 */  srl     $t4, $t3, 28
 /* 109A4 80B7A344 000C6880 */  sll     $t5, $t4,  2
 /* 109A8 80B7A348 01CD7021 */  addu    $t6, $t6, $t5
-/* 109AC 80B7A34C 8DCE6FA8 */  lw      $t6, 0x6FA8($t6)           ## 80166FA8
+/* 109AC 80B7A34C 8DCE6FA8 */  lw      $t6, %lo(gSegments)($t6)
 /* 109B0 80B7A350 00815024 */  and     $t2, $a0, $at
 /* 109B4 80B7A354 3C018000 */  lui     $at, 0x8000                ## $at = 80000000
 /* 109B8 80B7A358 014E7821 */  addu    $t7, $t2, $t6
@@ -248,4 +276,3 @@ glabel func_80B7A278
 /* 10C84 80B7A624 00000000 */  nop
 /* 10C88 80B7A628 00000000 */  nop
 /* 10C8C 80B7A62C 00000000 */  nop
-

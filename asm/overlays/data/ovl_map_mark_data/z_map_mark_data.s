@@ -3,9 +3,7 @@
 # assembler directives
 .set noat      # allow manual use of $at
 .set noreorder # don't insert nops after branches
-.set gp=64     # allow use of 64-bit general purposee registers
-
-.section .text
+.set gp=64     # allow use of 64-bit general purpose registers
 
 .section .data
 
@@ -31,10 +29,6 @@ glabel gMapMarkDataTable
 .word D_8085E014
 .word D_8085EC1C
 .word D_8085F090
-
-.section .rodata
-
-
 
 .section .rodata
 D_8085F610:

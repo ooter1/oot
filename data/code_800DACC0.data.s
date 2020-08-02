@@ -3,18 +3,46 @@
 # assembler directives
 .set noat      # allow manual use of $at
 .set noreorder # don't insert nops after branches
-.set gp=64     # allow use of 64-bit general purposee registers
+.set gp=64     # allow use of 64-bit general purpose registers
 
 .section .data
 
-glabel D_8012F090
-    .incbin "baserom.z64", 0xBA6230, 0x8
+.balign 16
 
-glabel D_8012F098
-    .incbin "baserom.z64", 0xBA6238, 0x18
+glabel D_8012E090
+    .incbin "baserom.z64", 0xBA5230, 0x200
 
-glabel D_8012F0B0
-    .incbin "baserom.z64", 0xBA6250, 0x4
+glabel D_8012E290
+    .incbin "baserom.z64", 0xBA5430, 0x200
+
+glabel D_8012E490
+    .incbin "baserom.z64", 0xBA5630, 0x200
+
+glabel D_8012E690
+    .incbin "baserom.z64", 0xBA5830, 0x200
+
+glabel D_8012E890
+    .incbin "baserom.z64", 0xBA5A30, 0x200
+
+glabel D_8012EA90
+    .incbin "baserom.z64", 0xBA5C30, 0x200
+
+glabel D_8012EC90
+    .incbin "baserom.z64", 0xBA5E30, 0x200
+
+glabel D_8012EE90
+    .incbin "baserom.z64", 0xBA6030, 0x200
+
+glabel gWaveSamples
+    .word D_8012E090
+    .word D_8012E290
+    .word D_8012E490
+    .word D_8012E690
+    .word D_8012E890
+    .word D_8012EA90
+    .word D_8012EC90
+    .word D_8012EE90
+    .word D_8012EE90
 
 glabel D_8012F0B4
     .incbin "baserom.z64", 0xBA6254, 0x200
@@ -40,13 +68,13 @@ glabel D_8012FAC4
 glabel D_8012FAD4
     .incbin "baserom.z64", 0xBA6C74, 0x10
 
-glabel D_8012FAE4
+glabel gZeroNoteSub
     .incbin "baserom.z64", 0xBA6C84, 0x20
 
-glabel D_8012FB04
+glabel gDefaultNoteSub
     .incbin "baserom.z64", 0xBA6CA4, 0x20
 
-glabel D_8012FB24
+glabel gHeadsetPanQuantization
     .incbin "baserom.z64", 0xBA6CC4, 0x7E
 
 glabel D_8012FBA2
@@ -55,13 +83,13 @@ glabel D_8012FBA2
 glabel D_8012FBAA
     .incbin "baserom.z64", 0xBA6D4A, 0x7E
 
-glabel D_8012FC28
+glabel gHeadsetPanVolume
     .incbin "baserom.z64", 0xBA6DC8, 0x1FC
 
 glabel D_8012FE24
     .incbin "baserom.z64", 0xBA6FC4, 0x4
 
-glabel D_8012FE28
+glabel gStereoPanVolume
     .incbin "baserom.z64", 0xBA6FC8, 0x1D7
 
 glabel D_8012FFFF
@@ -82,7 +110,7 @@ glabel D_80130006
 glabel D_80130024
     .incbin "baserom.z64", 0xBA71C4, 0x4
 
-glabel D_80130028
+glabel gDefaultPanVolume
     .incbin "baserom.z64", 0xBA71C8, 0x1FC
 
 glabel D_80130224

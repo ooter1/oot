@@ -1,3 +1,17 @@
+.rdata
+glabel D_80915268
+    .asciz "DAMAGE   .................................\n"
+    .balign 4
+
+glabel D_80915294
+    .asciz "TIME0 %d ********************************************\n"
+    .balign 4
+
+.late_rodata
+glabel D_80915440
+    .float -0.2
+
+.text
 glabel func_809122A4
 /* 01C64 809122A4 27BDFFD8 */  addiu   $sp, $sp, 0xFFD8           ## $sp = FFFFFFD8
 /* 01C68 809122A8 AFB00018 */  sw      $s0, 0x0018($sp)
@@ -85,5 +99,3 @@ glabel func_809122A4
 /* 01D88 809123C8 27BD0028 */  addiu   $sp, $sp, 0x0028           ## $sp = 00000000
 /* 01D8C 809123CC 03E00008 */  jr      $ra
 /* 01D90 809123D0 00000000 */  nop
-
-

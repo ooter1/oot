@@ -1,3 +1,12 @@
+.late_rodata
+glabel jtbl_80A487AC
+    .word L80A475D4
+    .word L80A4788C
+    .word L80A47728
+    .word L80A477EC
+    .word L80A47860
+
+.text
 glabel func_80A47578
 /* 04848 80A47578 27BDFFC8 */  addiu   $sp, $sp, 0xFFC8           ## $sp = FFFFFFC8
 /* 0484C 80A4757C AFBF001C */  sw      $ra, 0x001C($sp)           
@@ -226,5 +235,3 @@ glabel L80A4788C
 /* 04B64 80A47894 27BD0038 */  addiu   $sp, $sp, 0x0038           ## $sp = 00000000
 /* 04B68 80A47898 03E00008 */  jr      $ra                        
 /* 04B6C 80A4789C 00000000 */  nop
-
-

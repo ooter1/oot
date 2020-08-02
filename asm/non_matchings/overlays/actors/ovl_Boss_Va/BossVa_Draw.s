@@ -1,3 +1,37 @@
+.rdata
+glabel D_8095C470
+    .asciz "../z_boss_va.c"
+    .balign 4
+
+glabel D_8095C480
+    .asciz "../z_boss_va.c"
+    .balign 4
+
+.late_rodata
+glabel jtbl_8095C840
+.word L80959318
+.word L809594D0
+.word L809594D0
+.word L809594D0
+.word L80959510
+.word L80959510
+.word L80959510
+.word L80959578
+.word L80959578
+.word L80959578
+.word L80959578
+.word L80959578
+.word L80959578
+.word L80959578
+.word L80959578
+.word L80959578
+.word L80959578
+.word L80959550
+.word L80959550
+.word L80959550
+.word L8095978C
+
+.text
 glabel BossVa_Draw
 /* 09F08 809591C8 27BDFF30 */  addiu   $sp, $sp, 0xFF30           ## $sp = FFFFFF30
 /* 09F0C 809591CC 3C0F8096 */  lui     $t7, %hi(D_8095C2AC)       ## $t7 = 80960000
@@ -300,7 +334,7 @@ glabel L80959578
 /* 0A378 80959638 86040030 */  lh      $a0, 0x0030($s0)           ## 00000030
 /* 0A37C 8095963C 86050032 */  lh      $a1, 0x0032($s0)           ## 00000032
 /* 0A380 80959640 00003025 */  or      $a2, $zero, $zero          ## $a2 = 00000000
-/* 0A384 80959644 0C034421 */  jal     Matrix_RotateZYX
+/* 0A384 80959644 0C034421 */  jal     Matrix_RotateRPY
 /* 0A388 80959648 24070001 */  addiu   $a3, $zero, 0x0001         ## $a3 = 00000001
 /* 0A38C 8095964C C60401A0 */  lwc1    $f4, 0x01A0($s0)           ## 000001A0
 /* 0A390 80959650 3C013D80 */  lui     $at, 0x3D80                ## $at = 3D800000
@@ -414,5 +448,3 @@ glabel L8095978C
 /* 0A528 809597E8 8FB10038 */  lw      $s1, 0x0038($sp)
 /* 0A52C 809597EC 03E00008 */  jr      $ra
 /* 0A530 809597F0 27BD00D0 */  addiu   $sp, $sp, 0x00D0           ## $sp = 00000000
-
-

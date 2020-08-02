@@ -6,25 +6,25 @@
 
 #include "z_bg_spot12_saku.h"
 
-#define ROOM 0x00
 #define FLAGS 0x00000000
 
-static void BgSpot12Saku_Init(BgSpot12Saku* this, GlobalContext* globalCtx);
-static void BgSpot12Saku_Destroy(BgSpot12Saku* this, GlobalContext* globalCtx);
-static void BgSpot12Saku_Update(BgSpot12Saku* this, GlobalContext* globalCtx);
-static void BgSpot12Saku_Draw(BgSpot12Saku* this, GlobalContext* globalCtx);
+#define THIS ((BgSpot12Saku*)thisx)
 
-static void func_808B3550(BgSpot12Saku* this);
-static void func_808B357C(BgSpot12Saku* this, GlobalContext* globalCtx);
-static void func_808B35E4(BgSpot12Saku* this);
-static void func_808B3604(BgSpot12Saku* this, GlobalContext* globalCtx);
-static void func_808B3714(BgSpot12Saku* this);
-static void func_808B37AC(BgSpot12Saku* this, GlobalContext* globalCtx);
+void BgSpot12Saku_Init(Actor* thisx, GlobalContext* globalCtx);
+void BgSpot12Saku_Destroy(Actor* thisx, GlobalContext* globalCtx);
+void BgSpot12Saku_Update(Actor* thisx, GlobalContext* globalCtx);
+void BgSpot12Saku_Draw(Actor* thisx, GlobalContext* globalCtx);
+
+void func_808B3550(BgSpot12Saku* this);
+void func_808B357C(BgSpot12Saku* this, GlobalContext* globalCtx);
+void func_808B35E4(BgSpot12Saku* this);
+void func_808B3604(BgSpot12Saku* this, GlobalContext* globalCtx);
+void func_808B3714(BgSpot12Saku* this);
+void func_808B37AC(BgSpot12Saku* this, GlobalContext* globalCtx);
 
 const ActorInit Bg_Spot12_Saku_InitVars = {
     ACTOR_BG_SPOT12_SAKU,
     ACTORTYPE_BG,
-    ROOM,
     FLAGS,
     OBJECT_SPOT12_OBJ,
     sizeof(BgSpot12Saku),
@@ -34,17 +34,17 @@ const ActorInit Bg_Spot12_Saku_InitVars = {
     (ActorFunc)BgSpot12Saku_Draw,
 };
 
-static InitChainEntry initChain[] = {
+static InitChainEntry sInitChain[] = {
     ICHAIN_VEC3F_DIV1000(scale, 100, ICHAIN_CONTINUE),
-    ICHAIN_F32(unk_F4, 1200, ICHAIN_CONTINUE),
-    ICHAIN_F32(unk_F8, 500, ICHAIN_CONTINUE),
-    ICHAIN_F32(unk_FC, 1000, ICHAIN_STOP),
+    ICHAIN_F32(uncullZoneForward, 1200, ICHAIN_CONTINUE),
+    ICHAIN_F32(uncullZoneScale, 500, ICHAIN_CONTINUE),
+    ICHAIN_F32(uncullZoneDownward, 1000, ICHAIN_STOP),
 };
 
 extern Gfx D_06002260[];
 extern UNK_TYPE D_0600238C;
 
-static void func_808B3420(BgSpot12Saku* this, GlobalContext* globalCtx, UNK_TYPE collision, DynaPolyMoveFlag flags) {
+void func_808B3420(BgSpot12Saku* this, GlobalContext* globalCtx, UNK_TYPE collision, DynaPolyMoveFlag flags) {
     Actor* thisx = &this->dyna.actor;
     s32 localC = 0;
     s32 pad[2];
@@ -58,11 +58,11 @@ static void func_808B3420(BgSpot12Saku* this, GlobalContext* globalCtx, UNK_TYPE
     }
 }
 
-static void BgSpot12Saku_Init(BgSpot12Saku* this, GlobalContext* globalCtx) {
-    Actor* thisx = &this->dyna.actor;
+void BgSpot12Saku_Init(Actor* thisx, GlobalContext* globalCtx) {
+    BgSpot12Saku* this = THIS;
 
     func_808B3420(this, globalCtx, &D_0600238C, 0);
-    Actor_ProcessInitChain(thisx, initChain);
+    Actor_ProcessInitChain(thisx, sInitChain);
     if (Flags_GetSwitch(globalCtx, thisx->params & 0x3F)) {
         func_808B3714(this);
     } else {
@@ -70,11 +70,13 @@ static void BgSpot12Saku_Init(BgSpot12Saku* this, GlobalContext* globalCtx) {
     }
 }
 
-static void BgSpot12Saku_Destroy(BgSpot12Saku* this, GlobalContext* globalCtx) {
+void BgSpot12Saku_Destroy(Actor* thisx, GlobalContext* globalCtx) {
+    BgSpot12Saku* this = THIS;
+
     DynaPolyInfo_Free(globalCtx, &globalCtx->colCtx.dyna, this->dyna.dynaPolyId);
 }
 
-static void func_808B3550(BgSpot12Saku* this) {
+void func_808B3550(BgSpot12Saku* this) {
     Actor* thisx = &this->dyna.actor;
 
     this->actionFunc = func_808B357C;
@@ -83,7 +85,7 @@ static void func_808B3550(BgSpot12Saku* this) {
     thisx->posRot.pos.z = thisx->initPosRot.pos.z;
 }
 
-static void func_808B357C(BgSpot12Saku* this, GlobalContext* globalCtx) {
+void func_808B357C(BgSpot12Saku* this, GlobalContext* globalCtx) {
     Actor* thisx = &this->dyna.actor;
 
     if (Flags_GetSwitch(globalCtx, thisx->params & 0x3F)) {
@@ -93,13 +95,13 @@ static void func_808B357C(BgSpot12Saku* this, GlobalContext* globalCtx) {
     }
 }
 
-static void func_808B35E4(BgSpot12Saku* this) {
+void func_808B35E4(BgSpot12Saku* this) {
     if (this->unk_168 == 0) {
         this->actionFunc = func_808B3604;
     }
 }
 
-static void func_808B3604(BgSpot12Saku* this, GlobalContext* globalCtx) {
+void func_808B3604(BgSpot12Saku* this, GlobalContext* globalCtx) {
     f32 temp_ret = Math_SmoothScaleMaxMinF(&this->dyna.actor.scale.x, 0.001f / 0.14f, 0.16f, 0.0022f, 0.001f);
     f32 temp_f18 = ((0.1f - this->dyna.actor.scale.x) * 840.0f);
 
@@ -109,13 +111,13 @@ static void func_808B3604(BgSpot12Saku* this, GlobalContext* globalCtx) {
         this->dyna.actor.initPosRot.pos.z - (Math_Coss(this->dyna.actor.shape.rot.y + 0x4000) * temp_f18);
     if (fabsf(temp_ret) < 0.0001f) {
         func_808B3714(this);
-        Audio_PlayActorSound2(&this->dyna.actor, 0x280E);
+        Audio_PlayActorSound2(&this->dyna.actor, NA_SE_EV_BRIDGE_OPEN_STOP);
     } else {
-        func_8002F974(&this->dyna.actor, 0x2067);
+        func_8002F974(&this->dyna.actor, NA_SE_EV_METALGATE_OPEN - SFX_FLAG);
     }
 }
 
-static void func_808B3714(BgSpot12Saku* this) {
+void func_808B3714(BgSpot12Saku* this) {
     Actor* thisx = &this->dyna.actor;
 
     this->actionFunc = func_808B37AC;
@@ -124,16 +126,18 @@ static void func_808B3714(BgSpot12Saku* this) {
     thisx->posRot.pos.z = thisx->initPosRot.pos.z - (Math_Coss(thisx->shape.rot.y + 0x4000) * 78.0f);
 }
 
-static void func_808B37AC(BgSpot12Saku* this, GlobalContext* globalCtx) {
+void func_808B37AC(BgSpot12Saku* this, GlobalContext* globalCtx) {
 }
 
-static void BgSpot12Saku_Update(BgSpot12Saku* this, GlobalContext* globalCtx) {
+void BgSpot12Saku_Update(Actor* thisx, GlobalContext* globalCtx) {
+    BgSpot12Saku* this = THIS;
+
     if (this->unk_168 > 0) {
         this->unk_168 -= 1;
     }
     this->actionFunc(this, globalCtx);
 }
 
-static void BgSpot12Saku_Draw(BgSpot12Saku* this, GlobalContext* globalCtx) {
-    Gfx_DrawDListOpa(globalCtx, &D_06002260);
+void BgSpot12Saku_Draw(Actor* thisx, GlobalContext* globalCtx) {
+    Gfx_DrawDListOpa(globalCtx, D_06002260);
 }

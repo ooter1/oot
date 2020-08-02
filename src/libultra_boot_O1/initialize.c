@@ -8,8 +8,8 @@ typedef struct {
     u32 ins_0C; // nop
 } struct_exceptionPreamble;
 
-u64 osClockRate = 62500000;
-u32 osViClock = VI_NTSC_CLOCK;
+u64 osClockRate = OS_CLOCK_RATE;
+s32 osViClock = VI_NTSC_CLOCK;
 u32 __osShutdown = 0;
 u32 __OSGlobalIntMask = 0x003FFF01;
 

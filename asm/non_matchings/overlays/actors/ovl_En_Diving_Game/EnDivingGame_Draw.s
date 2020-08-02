@@ -1,3 +1,13 @@
+.rdata
+glabel D_809EF17C
+    .asciz "../z_en_diving_game.c"
+    .balign 4
+
+glabel D_809EF194
+    .asciz "../z_en_diving_game.c"
+    .balign 4
+
+.text
 glabel EnDivingGame_Draw
 /* 016D4 809EEF44 27BDFF98 */  addiu   $sp, $sp, 0xFF98           ## $sp = FFFFFF98
 /* 016D8 809EEF48 AFB20030 */  sw      $s2, 0x0030($sp)
@@ -37,7 +47,7 @@ glabel EnDivingGame_Draw
 /* 01760 809EEFD0 AC620004 */  sw      $v0, 0x0004($v1)           ## 00000004
 /* 01764 809EEFD4 8E0202C0 */  lw      $v0, 0x02C0($s0)           ## 000002C0
 /* 01768 809EEFD8 3C04809F */  lui     $a0, %hi(D_809EF0E0)       ## $a0 = 809F0000
-/* 0176C 809EEFDC 3C198016 */  lui     $t9, 0x8016                ## $t9 = 80160000
+/* 0176C 809EEFDC 3C198016 */  lui     $t9, %hi(gSegments)
 /* 01770 809EEFE0 24490008 */  addiu   $t1, $v0, 0x0008           ## $t1 = 00000008
 /* 01774 809EEFE4 AE0902C0 */  sw      $t1, 0x02C0($s0)           ## 000002C0
 /* 01778 809EEFE8 AC4A0000 */  sw      $t2, 0x0000($v0)           ## 00000000
@@ -53,7 +63,7 @@ glabel EnDivingGame_Draw
 /* 017A0 809EF010 000E7F02 */  srl     $t7, $t6, 28
 /* 017A4 809EF014 000FC080 */  sll     $t8, $t7,  2
 /* 017A8 809EF018 0338C821 */  addu    $t9, $t9, $t8
-/* 017AC 809EF01C 8F396FA8 */  lw      $t9, 0x6FA8($t9)           ## 80166FA8
+/* 017AC 809EF01C 8F396FA8 */  lw      $t9, %lo(gSegments)($t9)
 /* 017B0 809EF020 00816824 */  and     $t5, $a0, $at
 /* 017B4 809EF024 3C018000 */  lui     $at, 0x8000                ## $at = 80000000
 /* 017B8 809EF028 01B94021 */  addu    $t0, $t5, $t9
@@ -82,4 +92,3 @@ glabel EnDivingGame_Draw
 /* 01814 809EF084 00000000 */  nop
 /* 01818 809EF088 00000000 */  nop
 /* 0181C 809EF08C 00000000 */  nop
-

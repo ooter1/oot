@@ -1,3 +1,14 @@
+.rdata
+
+glabel D_8082FAEC
+    .asciz "../z_kaleido_scope_PAL.c"
+    .balign 4
+
+glabel D_8082FB08
+    .asciz "../z_kaleido_scope_PAL.c"
+    .balign 4
+
+.text
 glabel func_8081FE30
 /* 0C610 8081FE30 27BDFF80 */  addiu   $sp, $sp, 0xFF80           ## $sp = FFFFFF80
 /* 0C614 8081FE34 AFBF0014 */  sw      $ra, 0x0014($sp)           
@@ -222,5 +233,3 @@ glabel func_8081FE30
 /* 0C960 80820180 27BD0080 */  addiu   $sp, $sp, 0x0080           ## $sp = 00000000
 /* 0C964 80820184 03E00008 */  jr      $ra                        
 /* 0C968 80820188 00000000 */  nop
-
-

@@ -1,3 +1,13 @@
+.rdata
+glabel D_809C4C44
+    .asciz "../z_en_bom_bowl_man.c"
+    .balign 4
+
+glabel D_809C4C5C
+    .asciz "../z_en_bom_bowl_man.c"
+    .balign 4
+
+.text
 glabel EnBomBowlMan_Draw
 /* 012BC 809C48EC 27BDFFB0 */  addiu   $sp, $sp, 0xFFB0           ## $sp = FFFFFFB0
 /* 012C0 809C48F0 AFBF002C */  sw      $ra, 0x002C($sp)
@@ -19,7 +29,7 @@ glabel EnBomBowlMan_Draw
 /* 01300 809C4930 37390020 */  ori     $t9, $t9, 0x0020           ## $t9 = DB060020
 /* 01304 809C4934 8CA302C0 */  lw      $v1, 0x02C0($a1)           ## 000002C0
 /* 01308 809C4938 3C04809C */  lui     $a0, %hi(D_809C4AA8)       ## $a0 = 809C0000
-/* 0130C 809C493C 3C0E8016 */  lui     $t6, 0x8016                ## $t6 = 80160000
+/* 0130C 809C493C 3C0E8016 */  lui     $t6, %hi(gSegments)
 /* 01310 809C4940 24780008 */  addiu   $t8, $v1, 0x0008           ## $t8 = 00000008
 /* 01314 809C4944 ACB802C0 */  sw      $t8, 0x02C0($a1)           ## 000002C0
 /* 01318 809C4948 AC790000 */  sw      $t9, 0x0000($v1)           ## 00000000
@@ -35,7 +45,7 @@ glabel EnBomBowlMan_Draw
 /* 01340 809C4970 000B6702 */  srl     $t4, $t3, 28
 /* 01344 809C4974 000C6880 */  sll     $t5, $t4,  2
 /* 01348 809C4978 01CD7021 */  addu    $t6, $t6, $t5
-/* 0134C 809C497C 8DCE6FA8 */  lw      $t6, 0x6FA8($t6)           ## 80166FA8
+/* 0134C 809C497C 8DCE6FA8 */  lw      $t6, %lo(gSegments)($t6)
 /* 01350 809C4980 00815024 */  and     $t2, $a0, $at
 /* 01354 809C4984 3C018000 */  lui     $at, 0x8000                ## $at = 80000000
 /* 01358 809C4988 014E7821 */  addu    $t7, $t2, $t6
@@ -64,4 +74,3 @@ glabel EnBomBowlMan_Draw
 /* 013B4 809C49E4 00000000 */  nop
 /* 013B8 809C49E8 00000000 */  nop
 /* 013BC 809C49EC 00000000 */  nop
-

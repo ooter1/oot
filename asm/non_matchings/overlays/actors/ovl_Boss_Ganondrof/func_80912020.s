@@ -1,3 +1,8 @@
+.late_rodata
+glabel D_8091543C
+    .float 1.99000000954
+
+.text
 glabel func_80912020
 /* 019E0 80912020 27BDFFE0 */  addiu   $sp, $sp, 0xFFE0           ## $sp = FFFFFFE0
 /* 019E4 80912024 AFBF0014 */  sw      $ra, 0x0014($sp)
@@ -40,5 +45,3 @@ glabel func_80912020
 /* 01A70 809120B0 27BD0020 */  addiu   $sp, $sp, 0x0020           ## $sp = 00000000
 /* 01A74 809120B4 03E00008 */  jr      $ra
 /* 01A78 809120B8 00000000 */  nop
-
-

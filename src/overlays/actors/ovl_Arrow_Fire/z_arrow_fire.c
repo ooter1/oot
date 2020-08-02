@@ -1,19 +1,20 @@
 /*
  * File: z_arrow_fire.c
  * Overlay: ovl_Arrow_Fire
- * Description: Fire Arrow actor. Spawned by and attached to a normal arrow.
+ * Description: Fire Arrow. Spawned by and attached to a normal arrow.
  */
 
 #include "z_arrow_fire.h"
-#include "../ovl_En_Arrow/z_en_arrow.h"
+#include "overlays/actors/ovl_En_Arrow/z_en_arrow.h"
 
-#define ROOM 0x00
 #define FLAGS 0x02000010
 
-void ArrowFire_Init(ArrowFire* this, GlobalContext* globalCtx);
-void ArrowFire_Destroy(ArrowFire* this, GlobalContext* globalCtx);
-void ArrowFire_Update(ArrowFire* this, GlobalContext* globalCtx);
-void ArrowFire_Draw(ArrowFire* this, GlobalContext* globalCtx);
+#define THIS ((ArrowFire*)thisx)
+
+void ArrowFire_Init(Actor* thisx, GlobalContext* globalCtx);
+void ArrowFire_Destroy(Actor* thisx, GlobalContext* globalCtx);
+void ArrowFire_Update(Actor* thisx, GlobalContext* globalCtx);
+void ArrowFire_Draw(Actor* thisx, GlobalContext* globalCtx);
 
 void ArrowFire_Charge(ArrowFire* this, GlobalContext* globalCtx);
 void ArrowFire_Fly(ArrowFire* this, GlobalContext* globalCtx);
@@ -24,7 +25,6 @@ void ArrowFire_Hit(ArrowFire* this, GlobalContext* globalCtx);
 const ActorInit Arrow_Fire_InitVars = {
     ACTOR_ARROW_FIRE,
     ACTORTYPE_ITEMACTION,
-    ROOM,
     FLAGS,
     OBJECT_GAMEPLAY_KEEP,
     sizeof(ArrowFire),
@@ -34,35 +34,37 @@ const ActorInit Arrow_Fire_InitVars = {
     (ActorFunc)ArrowFire_Draw,
 };
 
-static InitChainEntry initChain[] = {
-    ICHAIN_F32(unk_F4, 2000, ICHAIN_STOP),
+static InitChainEntry sInitChain[] = {
+    ICHAIN_F32(uncullZoneForward, 2000, ICHAIN_STOP),
 };
 
-void ArrowFire_SetupAction(ArrowFire* this, ActorFunc* actionFunc) {
+void ArrowFire_SetupAction(ArrowFire* this, ArrowFireActionFunc actionFunc) {
     this->actionFunc = actionFunc;
 }
 
-void ArrowFire_Init(ArrowFire* this, GlobalContext* globalCtx) {
-    Actor_ProcessInitChain(&this->actor, initChain);
+void ArrowFire_Init(Actor* thisx, GlobalContext* globalCtx) {
+    ArrowFire* this = THIS;
+
+    Actor_ProcessInitChain(&this->actor, sInitChain);
     this->radius = 0;
     this->unk_158 = 1.0f;
     ArrowFire_SetupAction(&this->actor, ArrowFire_Charge);
     Actor_SetScale(this, 0.01f);
-    this->alpha = 0xA0;
+    this->alpha = 160;
     this->timer = 0;
     this->unk_15C = 0.0f;
 }
 
-void ArrowFire_Destroy(ArrowFire* this, GlobalContext* globalCtx) {
+void ArrowFire_Destroy(Actor* thisx, GlobalContext* globalCtx) {
     func_800876C8(globalCtx);
-    // Translates to: ""Disappearance" = Disappearance"
+    // Translates to: "Disappearance"
     LOG_STRING("消滅", "../z_arrow_fire.c", 421);
 }
 
 void ArrowFire_Charge(ArrowFire* this, GlobalContext* globalCtx) {
     EnArrow* arrow;
 
-    arrow = this->actor.attachedA;
+    arrow = (EnArrow*)this->actor.attachedA;
     if ((arrow == NULL) || (arrow->actor.update == NULL)) {
         Actor_Kill(&this->actor);
         return;
@@ -75,14 +77,14 @@ void ArrowFire_Charge(ArrowFire* this, GlobalContext* globalCtx) {
     this->actor.posRot.pos = arrow->actor.posRot.pos;
     this->actor.shape.rot = arrow->actor.shape.rot;
 
-    func_8002F974(&this->actor, NA_SE_PL_ARROW_CHARGE_FIRE);
+    func_8002F974(&this->actor, NA_SE_PL_ARROW_CHARGE_FIRE - SFX_FLAG);
 
     // If arrow's attached is null, Link has fired the arrow
     if (arrow->actor.attachedA == NULL) {
         this->unkPos = this->actor.posRot.pos;
         this->radius = 10;
         ArrowFire_SetupAction(this, ArrowFire_Fly);
-        this->alpha = 0xFF;
+        this->alpha = 255;
     }
 }
 
@@ -97,13 +99,13 @@ void ArrowFire_Hit(ArrowFire* this, GlobalContext* globalCtx) {
     f32 offset;
     u16 timer;
 
-    if (this->actor.unk_F0 < 50.0f) {
+    if (this->actor.projectedW < 50.0f) {
         scale = 10.0f;
     } else {
-        if (950.0f < this->actor.unk_F0) {
+        if (950.0f < this->actor.projectedW) {
             scale = 310.0f;
         } else {
-            scale = this->actor.unk_F0;
+            scale = this->actor.projectedW;
             scale = ((scale - 50.0f) * (1.0f / 3.0f)) + 10.0f;
         }
     }
@@ -149,7 +151,7 @@ void ArrowFire_Fly(ArrowFire* this, GlobalContext* globalCtx) {
     f32 distanceScaled;
     s32 pad;
 
-    arrow = this->actor.attachedA;
+    arrow = (EnArrow*)this->actor.attachedA;
     if ((arrow == NULL) || (arrow->actor.update == NULL)) {
         Actor_Kill(&this->actor);
         return;
@@ -168,9 +170,9 @@ void ArrowFire_Fly(ArrowFire* this, GlobalContext* globalCtx) {
         Audio_PlayActorSound2(&this->actor, NA_SE_IT_EXPLOSION_FRAME);
         ArrowFire_SetupAction(this, ArrowFire_Hit);
         this->timer = 32;
-        this->alpha = 0xFF;
+        this->alpha = 255;
     } else if (arrow->timer < 34) {
-        if (this->alpha < 0x23) {
+        if (this->alpha < 35) {
             Actor_Kill(&this->actor);
         } else {
             this->alpha -= 0x19;
@@ -178,7 +180,9 @@ void ArrowFire_Fly(ArrowFire* this, GlobalContext* globalCtx) {
     }
 }
 
-void ArrowFire_Update(ArrowFire* this, GlobalContext* globalCtx) {
+void ArrowFire_Update(Actor* thisx, GlobalContext* globalCtx) {
+    ArrowFire* this = THIS;
+
     if (globalCtx->msgCtx.msgMode == 0xD || globalCtx->msgCtx.msgMode == 0x11) {
         Actor_Kill(&this->actor);
     } else {
@@ -186,9 +190,9 @@ void ArrowFire_Update(ArrowFire* this, GlobalContext* globalCtx) {
     }
 }
 
-void ArrowFire_Draw(ArrowFire* this, GlobalContext* globalCtx) {
-    s32 pad1;
-    s32 pad2;
+void ArrowFire_Draw(Actor* thisx, GlobalContext* globalCtx) {
+    ArrowFire* this = THIS;
+    s32 pad;
     u32 stateFrames;
     GraphicsContext* gfxCtx;
     Actor* tranform;
@@ -196,7 +200,7 @@ void ArrowFire_Draw(ArrowFire* this, GlobalContext* globalCtx) {
     Gfx* dispRefs[4];
 
     stateFrames = globalCtx->state.frames;
-    arrow = this->actor.attachedA;
+    arrow = (EnArrow*)this->actor.attachedA;
     if (1) {}
 
     if ((arrow != NULL) && (arrow->actor.update != NULL) && (this->timer < 255)) {
@@ -214,7 +218,7 @@ void ArrowFire_Draw(ArrowFire* this, GlobalContext* globalCtx) {
         // Draw red effect over the screen when arrow hits
         if (this->unk_15C > 0) {
             gfxCtx->polyXlu.p = func_800937C0(gfxCtx->polyXlu.p);
-            gDPSetPrimColor(gfxCtx->polyXlu.p++, 0, 0, (s32)(40.0f * this->unk_15C) & 0xFF, 0x00, 0x00,
+            gDPSetPrimColor(gfxCtx->polyXlu.p++, 0, 0, (s32)(40.0f * this->unk_15C) & 0xFF, 0, 0,
                             (s32)(150.0f * this->unk_15C) & 0xFF);
             gDPSetAlphaDither(gfxCtx->polyXlu.p++, G_AD_DISABLE);
             gDPSetColorDither(gfxCtx->polyXlu.p++, G_CD_DISABLE);
@@ -223,9 +227,9 @@ void ArrowFire_Draw(ArrowFire* this, GlobalContext* globalCtx) {
 
         // Draw fire on the arrow
         func_80093D84(globalCtx->state.gfxCtx);
-        gDPSetPrimColor(gfxCtx->polyXlu.p++, 0x80, 0x80, 0xFF, 0xC8, 0x00, this->alpha);
-        gDPSetEnvColor(gfxCtx->polyXlu.p++, 0xFF, 0x00, 0x00, 0x80);
-        Matrix_RotateZYX(0x4000, 0x0, 0x0, MTXMODE_APPLY);
+        gDPSetPrimColor(gfxCtx->polyXlu.p++, 0x80, 0x80, 255, 200, 0, this->alpha);
+        gDPSetEnvColor(gfxCtx->polyXlu.p++, 255, 0, 0, 128);
+        Matrix_RotateRPY(0x4000, 0x0, 0x0, MTXMODE_APPLY);
         if (this->timer != 0) {
             Matrix_Translate(0.0f, 0.0f, 0.0f, MTXMODE_APPLY);
         } else {
@@ -235,11 +239,11 @@ void ArrowFire_Draw(ArrowFire* this, GlobalContext* globalCtx) {
         Matrix_Translate(0.0f, -700.0f, 0.0f, MTXMODE_APPLY);
         gSPMatrix(gfxCtx->polyXlu.p++, Matrix_NewMtx(globalCtx->state.gfxCtx, "../z_arrow_fire.c", 666),
                   G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-        gSPDisplayList(gfxCtx->polyXlu.p++, textureDL);
+        gSPDisplayList(gfxCtx->polyXlu.p++, sTextureDL);
         gSPDisplayList(gfxCtx->polyXlu.p++,
                        Gfx_TwoTexScroll(globalCtx->state.gfxCtx, 0, 255 - (stateFrames * 2) % 256, 0, 64, 32, 1,
                                         255 - stateFrames % 256, 511 - (stateFrames * 10) % 512, 64, 64));
-        gSPDisplayList(gfxCtx->polyXlu.p++, vertexDL);
+        gSPDisplayList(gfxCtx->polyXlu.p++, sVertexDL);
         Graph_CloseDisps(dispRefs, globalCtx->state.gfxCtx, "../z_arrow_fire.c", 682);
     }
 }

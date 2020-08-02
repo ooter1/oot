@@ -1,3 +1,35 @@
+.rdata
+glabel D_80877F24
+    .asciz "../z_bg_ganon_otyuka.c"
+    .balign 4
+
+glabel D_80877F3C
+    .asciz "../z_bg_ganon_otyuka.c"
+    .balign 4
+
+glabel D_80877F54
+    .asciz "../z_bg_ganon_otyuka.c"
+    .balign 4
+
+glabel D_80877F6C
+    .asciz "../z_bg_ganon_otyuka.c"
+    .balign 4
+
+glabel D_80877F84
+    .asciz "../z_bg_ganon_otyuka.c"
+    .balign 4
+
+.late_rodata
+glabel D_80877FAC
+    .float 3.1415927
+
+ glabel D_80877FB0
+    .float 3.1415927
+
+ glabel D_80877FB4
+    .float 0.3
+
+.text
 glabel BgGanonOtyuka_Draw
 /* 00810 80876130 27BDFF20 */  addiu   $sp, $sp, 0xFF20           ## $sp = FFFFFF20
 /* 00814 80876134 AFA400E0 */  sw      $a0, 0x00E0($sp)           
@@ -15,7 +47,7 @@ glabel BgGanonOtyuka_Draw
 /* 00844 80876164 AFB00048 */  sw      $s0, 0x0048($sp)           
 /* 00848 80876168 F7B60040 */  sdc1    $f22, 0x0040($sp)          
 /* 0084C 8087616C F7B40038 */  sdc1    $f20, 0x0038($sp)          
-/* 00850 80876170 0C030129 */  jal     func_800C04A4              
+/* 00850 80876170 0C030129 */  jal     Gameplay_GetCamera              
 /* 00854 80876174 00002825 */  or      $a1, $zero, $zero          ## $a1 = 00000000
 /* 00858 80876178 3C01C1F0 */  lui     $at, 0xC1F0                ## $at = C1F00000
 /* 0085C 8087617C 44812000 */  mtc1    $at, $f4                   ## $f4 = -30.00
@@ -615,4 +647,3 @@ glabel BgGanonOtyuka_Draw
 /* 01114 80876A34 00000000 */  nop
 /* 01118 80876A38 00000000 */  nop
 /* 0111C 80876A3C 00000000 */  nop
-

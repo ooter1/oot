@@ -1,3 +1,17 @@
+.rdata
+glabel D_8094AC28
+    .asciz "../z_boss_tw.c"
+    .balign 4
+
+glabel D_8094AC38
+    .asciz "../z_boss_tw.c"
+    .balign 4
+
+.late_rodata
+glabel D_8094B06C
+ .word 0x458FC000
+
+.text
 glabel BossTw_Draw
 /* 0A5A4 80943274 27BDFF70 */  addiu   $sp, $sp, 0xFF70           ## $sp = FFFFFF70
 /* 0A5A8 80943278 AFBF0044 */  sw      $ra, 0x0044($sp)
@@ -27,8 +41,8 @@ glabel BossTw_Draw
 /* 0A608 809432D8 AE3802C0 */  sw      $t8, 0x02C0($s1)           ## 000002C0
 /* 0A60C 809432DC AC650000 */  sw      $a1, 0x0000($v1)           ## 00000000
 /* 0A610 809432E0 861904CC */  lh      $t9, 0x04CC($s0)           ## 000004CC
-/* 0A614 809432E4 3C088016 */  lui     $t0, 0x8016                ## $t0 = 80160000
-/* 0A618 809432E8 25086FA8 */  addiu   $t0, $t0, 0x6FA8           ## $t0 = 80166FA8
+/* 0A614 809432E4 3C088016 */  lui     $t0, %hi(gSegments)
+/* 0A618 809432E8 25086FA8 */  addiu   $t0, %lo(gSegments)
 /* 0A61C 809432EC 00195080 */  sll     $t2, $t9,  2
 /* 0A620 809432F0 00CA5821 */  addu    $t3, $a2, $t2
 /* 0A624 809432F4 8D640000 */  lw      $a0, 0x0000($t3)           ## 00000000
@@ -458,5 +472,3 @@ glabel BossTw_Draw
 /* 0AC74 80943944 8FB20040 */  lw      $s2, 0x0040($sp)
 /* 0AC78 80943948 03E00008 */  jr      $ra
 /* 0AC7C 8094394C 27BD0090 */  addiu   $sp, $sp, 0x0090           ## $sp = 00000000
-
-

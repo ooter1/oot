@@ -1,3 +1,17 @@
+.rdata
+glabel D_80A06124
+    .asciz "../z_en_elf.c"
+    .balign 4
+
+glabel D_80A06134
+    .asciz "../z_en_elf.c"
+    .balign 4
+
+.late_rodata
+glabel D_80A0623C
+    .float 0.0011666666250675917
+
+.text
 glabel EnElf_Draw
 /* 03C28 80A05858 27BDFF80 */  addiu   $sp, $sp, 0xFF80           ## $sp = FFFFFF80
 /* 03C2C 80A0585C AFBF002C */  sw      $ra, 0x002C($sp)
@@ -13,12 +27,12 @@ glabel EnElf_Draw
 /* 03C54 80A05884 5700019E */  bnel    $t8, $zero, .L80A05F00
 /* 03C58 80A05888 8FBF002C */  lw      $ra, 0x002C($sp)
 /* 03C5C 80A0588C 8C59067C */  lw      $t9, 0x067C($v0)           ## 0000067C
-/* 03C60 80A05890 3C0B8016 */  lui     $t3, 0x8016                ## $t3 = 80160000
+/* 03C60 80A05890 3C0B8016 */  lui     $t3, %hi(gGameInfo)
 /* 03C64 80A05894 24050020 */  addiu   $a1, $zero, 0x0020         ## $a1 = 00000020
 /* 03C68 80A05898 001952C0 */  sll     $t2, $t9, 11
 /* 03C6C 80A0589C 0543000C */  bgezl   $t2, .L80A058D0
 /* 03C70 80A058A0 8CC40000 */  lw      $a0, 0x0000($a2)           ## 00000000
-/* 03C74 80A058A4 8D6BFA90 */  lw      $t3, -0x0570($t3)          ## 8015FA90
+/* 03C74 80A058A4 8D6BFA90 */  lw      $t3, %lo(gGameInfo)($t3)
 /* 03C78 80A058A8 C48800EC */  lwc1    $f8, 0x00EC($a0)           ## 000000EC
 /* 03C7C 80A058AC 856C1508 */  lh      $t4, 0x1508($t3)           ## 80161508
 /* 03C80 80A058B0 448C2000 */  mtc1    $t4, $f4                   ## $f4 = 0.00
@@ -462,5 +476,3 @@ glabel EnElf_Draw
 /* 042D4 80A05F04 27BD0080 */  addiu   $sp, $sp, 0x0080           ## $sp = 00000000
 /* 042D8 80A05F08 03E00008 */  jr      $ra
 /* 042DC 80A05F0C 00000000 */  nop
-
-

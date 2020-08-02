@@ -1,3 +1,17 @@
+.rdata
+glabel D_80A0E120
+    .asciz "../z_en_fd.c"
+    .balign 4
+
+glabel D_80A0E130
+    .asciz "../z_en_fd.c"
+    .balign 4
+
+.late_rodata
+glabel D_80A0E1D8
+    .float 0.9
+
+.text
 glabel EnFd_Draw
 /* 0195C 80A0D01C 27BDFF60 */  addiu   $sp, $sp, 0xFF60           ## $sp = FFFFFF60
 /* 01960 80A0D020 3C0F80A1 */  lui     $t7, %hi(D_80A0E0D0)       ## $t7 = 80A10000
@@ -222,8 +236,8 @@ glabel EnFd_Draw
 /* 01CA4 80A0D364 3C0ADB06 */  lui     $t2, 0xDB06                ## $t2 = DB060000
 /* 01CA8 80A0D368 AC620004 */  sw      $v0, 0x0004($v1)           ## 00000004
 /* 01CAC 80A0D36C 8E0202D0 */  lw      $v0, 0x02D0($s0)           ## 000002D0
-/* 01CB0 80A0D370 3C098011 */  lui     $t1, 0x8011                ## $t1 = 80110000
-/* 01CB4 80A0D374 25296280 */  addiu   $t1, $t1, 0x6280           ## $t1 = 80116280
+/* 01CB0 80A0D370 3C098011 */  lui     $t1, %hi(D_80116280)
+/* 01CB4 80A0D374 25296280 */  addiu   $t1, %lo(D_80116280)
 /* 01CB8 80A0D378 24580008 */  addiu   $t8, $v0, 0x0008           ## $t8 = 00000008
 /* 01CBC 80A0D37C AE1802D0 */  sw      $t8, 0x02D0($s0)           ## 000002D0
 /* 01CC0 80A0D380 AC400004 */  sw      $zero, 0x0004($v0)         ## 00000004
@@ -263,5 +277,3 @@ glabel EnFd_Draw
 /* 01D40 80A0D400 8FB10038 */  lw      $s1, 0x0038($sp)
 /* 01D44 80A0D404 03E00008 */  jr      $ra
 /* 01D48 80A0D408 27BD00A0 */  addiu   $sp, $sp, 0x00A0           ## $sp = 00000000
-
-

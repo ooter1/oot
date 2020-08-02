@@ -1,11 +1,11 @@
 .rdata
 glabel D_80139060
-    .asciz "\x1B[43;30mcamera: foward check: too many layer!\n\x1B[m"
+    .asciz "\x1b[43;30mcamera: foward check: too many layer!\n\x1b[m"
     .balign 4
 
 .late_rodata
 glabel D_80139DB4
-    .float 0.00003051851
+    .float 0.00003051851 # (1.0f / 32767.0f)
 
 .text
 glabel func_80044568

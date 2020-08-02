@@ -1,65 +1,61 @@
 /*
  * File: z_bg_spot18_futa.c
  * Overlay: ovl_Bg_Spot18_Futa
- * Description: The lid to a goron jar.
+ * Description: The lid to the spinning goron vase.
  */
 
-#include <ultra64.h>
-#include <global.h>
-#include <z64.h>
+#include "z_bg_spot18_futa.h"
 
-typedef struct {
-    /* 0x0000 */ Actor actor;
-    /* 0x014C */ u32 dynaPolyId;
-    /* 0x0150 */ u32 unk_150[0x5];
-} ActorSpot18Futa; // size = 0x0154
-
-#define ROOM 0x00
 #define FLAGS 0x00000000
 
-static void Init(ActorSpot18Futa* this, GlobalContext* globalCtx);
-static void Destroy(ActorSpot18Futa* this, GlobalContext* globalCtx);
-static void Update(ActorSpot18Futa* this, GlobalContext* globalCtx);
-static void Draw(ActorSpot18Futa* this, GlobalContext* globalCtx);
+#define THIS ((BgSpot18Futa*)thisx)
+
+void BgSpot18Futa_Init(Actor* thisx, GlobalContext* globalCtx);
+void BgSpot18Futa_Destroy(Actor* thisx, GlobalContext* globalCtx);
+void BgSpot18Futa_Update(Actor* thisx, GlobalContext* globalCtx);
+void BgSpot18Futa_Draw(Actor* thisx, GlobalContext* globalCtx);
 
 const ActorInit Bg_Spot18_Futa_InitVars = {
     ACTOR_BG_SPOT18_FUTA,
     ACTORTYPE_PROP,
-    ROOM,
     FLAGS,
     OBJECT_SPOT18_OBJ,
-    sizeof(ActorSpot18Futa),
-    (ActorFunc)Init,
-    (ActorFunc)Destroy,
-    (ActorFunc)Update,
-    (ActorFunc)Draw,
+    sizeof(BgSpot18Futa),
+    (ActorFunc)BgSpot18Futa_Init,
+    (ActorFunc)BgSpot18Futa_Destroy,
+    (ActorFunc)BgSpot18Futa_Update,
+    (ActorFunc)BgSpot18Futa_Draw,
 };
 
-static InitChainEntry initChain[] = {
+static InitChainEntry sInitChain[] = {
     ICHAIN_VEC3F_DIV1000(scale, 100, ICHAIN_CONTINUE),
-    ICHAIN_F32(unk_F4, 1000, ICHAIN_CONTINUE),
-    ICHAIN_F32(unk_F8, 500, ICHAIN_CONTINUE),
-    ICHAIN_F32(unk_FC, 1000, ICHAIN_STOP),
+    ICHAIN_F32(uncullZoneForward, 1000, ICHAIN_CONTINUE),
+    ICHAIN_F32(uncullZoneScale, 500, ICHAIN_CONTINUE),
+    ICHAIN_F32(uncullZoneDownward, 1000, ICHAIN_STOP),
 };
 
-extern u32 DL_SPOT18_FUTA;  // 0x6000368
-extern u32 DL_SPOT18_FUTA2; // 0x6000150
+extern UNK_TYPE D_06000368;
+extern Gfx D_06000150[];
 
-static void Init(ActorSpot18Futa* this, GlobalContext* globalCtx) {
-    s32 pad[2];
+void BgSpot18Futa_Init(Actor* thisx, GlobalContext* globalCtx) {
+    BgSpot18Futa* this = THIS;
+    s32 pad;
     u32 sp1C = 0;
 
     DynaPolyInfo_SetActorMove(&this->actor, 0);
-    DynaPolyInfo_Alloc(&DL_SPOT18_FUTA, &sp1C);
+    DynaPolyInfo_Alloc(&D_06000368, &sp1C);
     this->dynaPolyId = DynaPolyInfo_RegisterActor(globalCtx, &globalCtx->colCtx.dyna, &this->actor, sp1C);
-    Actor_ProcessInitChain(&this->actor, initChain);
+    Actor_ProcessInitChain(&this->actor, sInitChain);
 }
 
-static void Destroy(ActorSpot18Futa* this, GlobalContext* globalCtx) {
+void BgSpot18Futa_Destroy(Actor* thisx, GlobalContext* globalCtx) {
+    BgSpot18Futa* this = THIS;
+
     DynaPolyInfo_Free(globalCtx, &globalCtx->colCtx.dyna, this->dynaPolyId);
 }
 
-static void Update(ActorSpot18Futa* this, GlobalContext* globalCtx) {
+void BgSpot18Futa_Update(Actor* thisx, GlobalContext* globalCtx) {
+    BgSpot18Futa* this = THIS;
     s32 iVar1;
 
     if (this->actor.attachedA == NULL) {
@@ -74,6 +70,6 @@ static void Update(ActorSpot18Futa* this, GlobalContext* globalCtx) {
     }
 }
 
-static void Draw(ActorSpot18Futa* this, GlobalContext* globalCtx) {
-    Gfx_DrawDListOpa(globalCtx, &DL_SPOT18_FUTA2);
+void BgSpot18Futa_Draw(Actor* thisx, GlobalContext* globalCtx) {
+    Gfx_DrawDListOpa(globalCtx, D_06000150);
 }
